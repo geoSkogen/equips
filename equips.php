@@ -2,9 +2,9 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.05.06
-Author:       Joseph Scoggins
-Author URI:   https://github.com/geoSkogen
+Version:      2019.05.23
+Author:       City Ranked Media
+Author URI:
 Text Domain:  equips
 */
 
@@ -18,51 +18,60 @@ $eq_store = array(
   'indices' => array(),
   'params' => array()
 );
+$eq_locales = import_csv_columns('locales', array('ids','names'));
+$eq_zipdecoder = import_csv_columns('zipcodes', array('zips','names'));
+$eq_fsadecoder = import_csv_columns('fsas', array('fsas','names'));
 
-// local data setup
+// Helper Functions - for geolocation lookup
 
-register_activation_hook(__FILE__, 'equips_register_dir');
-
-register_deactivation_hook(__FILE__, 'equips_drop_dir');
-
-function equips_register_dir() {
-  $eq_rows = csv_to_array("/rows.csv",",");
-  $eq_rose = csv_to_array("/rose.csv",",");
-  add_option('equips_rows',$eq_rows);
-  add_option('equips_rose',$eq_rose);
-  error_log("ran activation hook");
+function import_csv_columns($filename, $keys) {
+  $subdir = "resources";
+  $result = array(
+    $keys[0] => array(),
+    $keys[1] => array()
+  );
+  if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+      //optional condition to limit size of locale database to US & Canada (if needed)
+      //  if ($data[2] === 'US' || $data[2] === 'CA') {
+          array_push($result[$keys[0]], $data[0]);
+          array_push($result[$keys[1]], $data[1]);
+      //  }
+    }
+    fclose($handle);
+    return $result;
+  } else {
+    error_log('could not open file');
+    return false;
+  }
 }
 
-function equips_drop_dir() {
-  delete_option('equips_rows',$eq_rows);
-  delete_option('equips_rose',$eq_rose);
-  error_log("dropped equips dir options");
+function eq_decode_zip($zip_arg) {
+  global $eq_zipdecoder;
+  $loc_key = array_search($zip_arg,$eq_zipdecoder['zips']);
+  $loc_name = $eq_zipdecoder['names'][$loc_key];
+  return $loc_name;
 }
 
-// helper functions
+function eq_decode_fsa($fsa_arg) {
+  global $eq_fsadecoder;
+  $loc_key = array_search($fsa_arg,$eq_fsadecoder['fsas']);
+  $loc_name = $eq_fsadecoder['names'][$loc_key];
+  return $loc_name;
+}
 
-function csv_to_array($file, $delimiter) {
-    $filename = __DIR__ . $file;
-    if(!file_exists($filename) || !is_readable($filename)) {
-      error_log("file not found");
-        return FALSE;
-    }
-    $header = NULL;
-    $data = array(
-      'ids' => array(),
-      'names' => array()
-    );
-    if (($handle = fopen($filename, 'r')) !== FALSE)
-    {
-        while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
-        {
-            //error_log(print_r($row));
-            array_push($data['ids'], $row[0]);
-            array_push($data['names'], $row[1]);
-        }
-        fclose($handle);
-    }
-    return $data;
+function eq_locale_lookup($id_num_arg) {
+  global $eq_locales;
+  $fsa_regex = '/^[A-Z]{1}[0-9]{1}[A-Z]{1}$/';
+  $loc_key = array_search($id_num_arg,$eq_locales['ids']);
+  $loc_name = $eq_locales['names'][$loc_key];
+  if (is_numeric($loc_name)) {
+    return eq_decode_zip($loc_name);
+  } else if (preg_match($fsa_regex,$loc_name,$matches)) {
+    return eq_decode_fsa($loc_name);
+  } else {
+    return $loc_name;
+  }
 }
 
 //Admin
@@ -118,7 +127,7 @@ function equips_settings_api_init() {
 function cb_equips_settings_field() {
   global  $eq_current_field_index, $eq_label_toggle, $eq_label_toggle_index;
   $options = get_option('equips');
-
+  //error_log(print_r($options));
   //local namespace assignments based on global settings &/or database state
   $divider = ($eq_label_toggle_index < 2) ? "" : "<br/><br/><hr/>";
   $field_name = $eq_label_toggle[$eq_label_toggle_index];
@@ -130,7 +139,7 @@ function cb_equips_settings_field() {
   $eq_label_toggle_index += ($eq_label_toggle_index < 2) ? 1 : -2;
   $eq_current_field_index += ($eq_label_toggle_index === 0) ? 1 : 0;
   //make an <input/> with dynamic attributes
-  echo "<input class='equips-input' type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
+  echo "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
 }
 
 ////template 2 - after settings section title
@@ -160,13 +169,14 @@ function cb_equips_settings_section() {
 
 function plugin_options_page() {
 ?>
-<div class='wrap'>
-          <h2>equips Settings</h2>
-          <form id='equips-settings' method='post' action='options.php'>
+<div class='form-wrap'>
+          <h2>equips - settings</h2>
+          <form method='post' action='options.php'>
           <?php
                settings_fields( 'equips' );
                do_settings_sections( 'equips' );
-          ?>   <div class='inivs-div' style="display:none;">
+          ?>
+                <div class='inivs-div' style="display:none;">
                     <input class='invis-input' id='drop_field' name=equips[drop] type='text'/>
                </div>
                <p class='submit'>
@@ -184,11 +194,31 @@ add_action( 'admin_init', 'equips_settings_api_init');
 function do_equips($num_str) {
   $eq_options = get_option('equips');
   $result = $eq_options['fallback_' . $num_str];
+  $raw_query = '';
+  $stripped_query = '';
+  //NOTE: RE: security - this plugin is currently only configured to lookup locations
+  //$stripped_query requires further validation before being injected into text content
   if (get_query_var($eq_options['param_' . $num_str], false)) {
-    $result = get_query_var($eq_options['param_' . $num_str], false);
+    $raw_query = get_query_var($eq_options['param_' . $num_str], false);
+    $stripped_query = strip_tags($raw_query);
+    // location - error & content handling for location
+    //must be numeric input; returns fallback if not found -
+    //Update to array of discrete param handling functions per param type in future versions
+    if ($eq_options['param_' . $num_str] === 'location') {
+      if (is_numeric($stripped_query)) {
+        $loc_name = eq_locale_lookup($stripped_query);
+        $result = ($loc_name && $loc_name != 'City' && $loc_name != 'Name') ?
+          ucwords(strtolower($loc_name)) :
+          $result;
+      }
+    }
+  // end location -
   }
   return $result;
 }
+
+//-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
+//-- see README.txt
 
 function eq_shortcode_handler_1() {
   return do_equips('1');
@@ -223,7 +253,7 @@ function equips_triage() {
   });
   foreach ($eq_store['indices'] as $store_key) {
     add_shortcode( $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key);
-  //  error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
+    //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
   }
   return;
 }
