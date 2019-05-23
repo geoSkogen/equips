@@ -1,0 +1,2 @@
+# equips
+EQU[i]PS
