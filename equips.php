@@ -260,7 +260,7 @@ function iterate_zip_nest($name_arr) {
   for($i = 0; $i < count($name_arr); $i++) {
     $result .= "<span> ";
     $result .= $name_arr[$i];
-    $result .= " <span>";
+    $result .= " </span>";
     $result .= ($i === count($name_arr)-1) ? "" : "|";
   }
   $result .= "</div>";
