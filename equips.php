@@ -21,22 +21,58 @@ $eq_store = array(
 $eq_locales = import_csv_columns('locales', array('ids','names'));
 $eq_zipdecoder = import_csv_columns('zipcodes', array('zips','names'));
 $eq_fsadecoder = import_csv_columns('fsas', array('fsas','names'));
+$eq_nothing = import_csv_columns('somethin-csvnest-col', array());
+//error_log(print_r($eq_nothing));
 
 // Helper Functions - for geolocation lookup
 
 function import_csv_columns($filename, $keys) {
   $subdir = "resources";
-  $result = array(
-    $keys[0] => array(),
-    $keys[1] => array()
-  );
+  $csvnest = strpos($filename,'-csvnest-');
+  $result = ($csvnest) ? array() : array(
+      $keys[0] => array(),
+      $keys[1] => array()
+    );
+  $row_index = -1;
+  $key = "";
+  $valid_data = [];
   if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+      $row_index += 1;
+      $valid_data = [];
+      if ($csvnest) {
+        for ($i = 0; $i < count($data); $i++) {
+          if (strpos($filename,'-row')) {
+            if ($i === 0) {
+              $key = strval($data[$i]);
+            } else {
+              if ($data[$i]) {
+                array_push($valid_data,$data[$i]);
+              }
+              if ($i === count($data)-1) {
+                $result[$key] = $valid_data;
+              }
+            }
+          } else if (strpos($filename,'-col')) {
+            if ($row_index === 0) {
+              $result[strval($data[$i])] = array();
+              array_push($keys, $data[$i]);
+            } else {
+              if ($data[$i]) {
+                array_push($result[$keys[$i]],$data[$i]);
+              }
+            }
+          } else {
+            error_log('could not identify csvnest file');
+          }
+        }
+      } else {
       //optional condition to limit size of locale database to US & Canada (if needed)
       //  if ($data[2] === 'US' || $data[2] === 'CA') {
           array_push($result[$keys[0]], $data[0]);
           array_push($result[$keys[1]], $data[1]);
       //  }
+      }
     }
     fclose($handle);
     return $result;
@@ -60,15 +96,15 @@ function eq_decode_fsa($fsa_arg) {
   return $loc_name;
 }
 
-function eq_locale_lookup($id_num_arg) {
+function eq_locale_lookup($id_num_arg, $return_code) {
   global $eq_locales;
   $fsa_regex = '/^[A-Z]{1}[0-9]{1}[A-Z]{1}$/';
   $loc_key = array_search($id_num_arg,$eq_locales['ids']);
   $loc_name = $eq_locales['names'][$loc_key];
   if (is_numeric($loc_name)) {
-    return eq_decode_zip($loc_name);
+    return ($return_code) ? $loc_name : eq_decode_zip($loc_name);
   } else if (preg_match($fsa_regex,$loc_name,$matches)) {
-    return eq_decode_fsa($loc_name);
+    return ($return_code) ? $loc_name : eq_decode_fsa($loc_name);
   } else {
     return $loc_name;
   }
@@ -206,7 +242,7 @@ function do_equips($num_str) {
     //Update to array of discrete param handling functions per param type in future versions
     if ($eq_options['param_' . $num_str] === 'location') {
       if (is_numeric($stripped_query)) {
-        $loc_name = eq_locale_lookup($stripped_query);
+        $loc_name = eq_locale_lookup($stripped_query, false);
         $result = ($loc_name && $loc_name != 'City' && $loc_name != 'Name') ?
           ucwords(strtolower($loc_name)) :
           $result;
@@ -217,6 +253,35 @@ function do_equips($num_str) {
   return $result;
 }
 
+function iterate_zip_nest($name_arr) {
+  $result = "";
+  $result .= "<div>";
+  foreach($name_arr as $name) {
+    $result .= "<span> ";
+    $result .= $name;
+    $result .= " <span>|";
+  }
+  $result .= "</div>";
+  return $result;
+}
+
+function eq_shortcode_handler_zip_nest() {
+  global $eq_nothing;
+  $result = "eq nothing";
+  if (get_query_var('location', false)) {
+    $raw_query = get_query_var('location', false);
+    $stripped_query = strip_tags($raw_query);
+    $loc_code = eq_locale_lookup($stripped_query, true);
+    $zip_nest = ($eq_nothing[strval($loc_code)]) ?
+      $eq_nothing[strval($loc_code)] : array();
+    $result = iterate_zip_nest($zip_nest);
+  } else {
+    error_log('no location found');
+  }
+  return $result;
+}
+
+add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
 //-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
 //-- see README.txt
 
