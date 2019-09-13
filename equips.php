@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.05.23
+Version:      2019.09.13
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -18,10 +18,12 @@ $eq_store = array(
   'indices' => array(),
   'params' => array()
 );
+/*
 $eq_locales = import_csv_columns('locales', array('ids','names'));
 $eq_zipdecoder = import_csv_columns('zipcodes', array('zips','names'));
 $eq_fsadecoder = import_csv_columns('fsas', array('fsas','names'));
 $eq_nothing = import_csv_columns('somethin-csvnest-col', array());
+*/
 //error_log(print_r($eq_nothing));
 
 // Helper Functions - for geolocation lookup
@@ -83,21 +85,21 @@ function import_csv_columns($filename, $keys) {
 }
 
 function eq_decode_zip($zip_arg) {
-  global $eq_zipdecoder;
+  $eq_zipdecoder = import_csv_columns('zipcodes', array('zips','names'));
   $loc_key = array_search($zip_arg,$eq_zipdecoder['zips']);
   $loc_name = $eq_zipdecoder['names'][$loc_key];
   return $loc_name;
 }
 
 function eq_decode_fsa($fsa_arg) {
-  global $eq_fsadecoder;
+  $eq_fsadecoder = import_csv_columns('fsas', array('fsas','names'));
   $loc_key = array_search($fsa_arg,$eq_fsadecoder['fsas']);
   $loc_name = $eq_fsadecoder['names'][$loc_key];
   return $loc_name;
 }
 
 function eq_locale_lookup($id_num_arg, $return_code) {
-  global $eq_locales;
+  $eq_locales = import_csv_columns('locales', array('ids','names'));
   $fsa_regex = '/^[A-Z]{1}[0-9]{1}[A-Z]{1}$/';
   $loc_key = array_search($id_num_arg,$eq_locales['ids']);
   $loc_name = $eq_locales['names'][$loc_key];
@@ -267,7 +269,7 @@ function iterate_zip_nest($name_arr) {
 }
 
 function eq_shortcode_handler_zip_nest() {
-  global $eq_nothing;
+  $eq_nothing = import_csv_columns('somethin-csvnest-col', array());
   $result = "eq nothing";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
