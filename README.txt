@@ -40,9 +40,12 @@ Add validation logic for each type of url parameter!
   lookup-by-number fails.
 
 2)
-Upgrade global namespace use to OOP protocol.
+Add shortcode options page for custom geoblock settings!  
 
 3)
+Upgrade global namespace use to OOP protocol.
+
+4)
 --need a solution to redundant incrementing shortcode handler functions with hard-coded
 data. The shortcode handler function is called by a string argument to
 add_shortcode('shortcode', 'handler'), but it does not accept an argument itself;
@@ -56,6 +59,6 @@ being injected into the arguments to add_shortcode(), then the result is a handl
 that doesn't know its own shortcode, because it's being invoked outside of the
 procedure that created it.
 
-4)
+5)
 Flexible form with as many entry fields as the user requires - depends on resolution
 of issues 1 & 2.

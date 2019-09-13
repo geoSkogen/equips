@@ -18,13 +18,6 @@ $eq_store = array(
   'indices' => array(),
   'params' => array()
 );
-/*
-$eq_locales = import_csv_columns('locales', array('ids','names'));
-$eq_zipdecoder = import_csv_columns('zipcodes', array('zips','names'));
-$eq_fsadecoder = import_csv_columns('fsas', array('fsas','names'));
-$eq_nothing = import_csv_columns('somethin-csvnest-col', array());
-*/
-//error_log(print_r($eq_nothing));
 
 // Helper Functions - for geolocation lookup
 
@@ -255,6 +248,12 @@ function do_equips($num_str) {
   return $result;
 }
 
+//GEOBLOCK SERVICE AREA
+//Currently using hard-coded shortcode:
+
+//[eq_zip_nest]
+
+//update HTML until analogous to CR-SUITE GEOBLOCK
 function iterate_zip_nest($name_arr) {
   $result = "";
   $result .= "<div>";
@@ -269,14 +268,14 @@ function iterate_zip_nest($name_arr) {
 }
 
 function eq_shortcode_handler_zip_nest() {
-  $eq_nothing = import_csv_columns('somethin-csvnest-col', array());
-  $result = "eq nothing";
+  $eq_service_areas = import_csv_columns('somethin-csvnest-col', array());
+  $result = "<div>your | generic | geoblock | here</div>";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     $loc_code = eq_locale_lookup($stripped_query, true);
-    $zip_nest = ($eq_nothing[strval($loc_code)]) ?
-      $eq_nothing[strval($loc_code)] : array();
+    $zip_nest = ($eq_service_areas[strval($loc_code)]) ?
+      $eq_service_areas[strval($loc_code)] : array();
     $result = iterate_zip_nest($zip_nest);
   } else {
     error_log('no location found');
@@ -285,6 +284,9 @@ function eq_shortcode_handler_zip_nest() {
 }
 
 add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
+
+//GEOBLOCK SERVICE AREA
+
 //-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
 //-- see README.txt
 
