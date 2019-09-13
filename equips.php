@@ -256,10 +256,11 @@ function do_equips($num_str) {
 function iterate_zip_nest($name_arr) {
   $result = "";
   $result .= "<div>";
-  foreach($name_arr as $name) {
+  for($i = 0; $i < count($name_arr); $i++) {
     $result .= "<span> ";
-    $result .= $name;
-    $result .= " <span>|";
+    $result .= $name_arr[$i];
+    $result .= " <span>";
+    $result .= ($i === count($name_arr)-1) ? "" : "|";
   }
   $result .= "</div>";
   return $result;
