@@ -160,14 +160,14 @@ function cb_equips_settings_field() {
   $options = get_option('equips');
   //error_log(print_r($options));
   //local namespace assignments based on global settings &/or database state
-  $divider = ($eq_label_toggle_index < 2) ? "" : "<br/><br/><hr/>";
+  $divider = ($eq_label_toggle_index < count($eq_label_toggle)-1) ? "" : "<br/><br/><hr/>";
   $field_name = $eq_label_toggle[$eq_label_toggle_index];
   $this_field = $field_name . "_" . strval($eq_current_field_index);
   $this_label = ucwords($field_name) . " " . strval($eq_current_field_index);
   $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
   $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
   //reset globals - toggle label and increment pairing series as needed
-  $eq_label_toggle_index += ($eq_label_toggle_index < 2) ? 1 : -2;
+  $eq_label_toggle_index += ($eq_label_toggle_index < count($eq_label_toggle)-1 ) ? 1 : -(count($eq_label_toggle)-1);
   $eq_current_field_index += ($eq_label_toggle_index === 0) ? 1 : 0;
   //make an <input/> with dynamic attributes
   echo "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
@@ -248,7 +248,7 @@ function do_equips($num_str) {
   return $result;
 }
 
-//GEOBLOCK SERVICE AREA
+// begin GEOBLOCK SERVICE AREA
 //Currently using hard-coded shortcode:
 
 //[eq_zip_nest]
@@ -277,15 +277,14 @@ function eq_shortcode_handler_zip_nest() {
     $zip_nest = ($eq_service_areas[strval($loc_code)]) ?
       $eq_service_areas[strval($loc_code)] : array();
     $result = iterate_zip_nest($zip_nest);
-  } else {
-    error_log('no location found');
+    //error_log('no location found');
   }
   return $result;
 }
 
 add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
 
-//GEOBLOCK SERVICE AREA
+// end GEOBLOCK SERVICE AREA
 
 //-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
 //-- see README.txt
