@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.09.13
+Version:      2019.09.18
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -291,6 +291,8 @@ function eq_shortcode_handler_zip_nest() {
 }
 
 add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
+
+//[eq_branch_name]
 
 function eq_shortcode_handler_branch_name() {
   $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
