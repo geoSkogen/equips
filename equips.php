@@ -38,15 +38,22 @@ function import_csv_columns($filename, $keys) {
       if ($csvnest) {
         for ($i = 0; $i < count($data); $i++) {
           if (strpos($filename,'-row')) {
-            if ($i === 0) {
-              $key = strval($data[$i]);
-            } else {
-              if ($data[$i]) {
-                array_push($valid_data,$data[$i]);
-              }
-              if ($i === count($data)-1) {
-                $result[$key] = $valid_data;
-              }
+            switch ($i) {
+              case 0:
+                $key = strval($data[$i]);
+                break;
+              case 1:
+                $valid_data['city_name'] = strval($data[$i]);
+                break;
+              case 2:
+                $valid_data['branch_name'] = strval($data[$i]);
+                break;
+              case 3:
+                $valid_data['service_area'] = explode(",",$data[$i]);
+                break;
+            }
+            if ($i === count($data)-1) {
+              $result[$key] = $valid_data;
             }
           } else if (strpos($filename,'-col')) {
             if ($row_index === 0) {
@@ -97,6 +104,7 @@ function eq_locale_lookup($id_num_arg, $return_code) {
   $loc_key = array_search($id_num_arg,$eq_locales['ids']);
   $loc_name = $eq_locales['names'][$loc_key];
   if (is_numeric($loc_name)) {
+    if (strlen($loc_name) === 4) { $loc_name = '0' . $loc_name; }
     return ($return_code) ? $loc_name : eq_decode_zip($loc_name);
   } else if (preg_match($fsa_regex,$loc_name,$matches)) {
     return ($return_code) ? $loc_name : eq_decode_fsa($loc_name);
@@ -268,7 +276,7 @@ function iterate_zip_nest($name_arr) {
 }
 
 function eq_shortcode_handler_zip_nest() {
-  $eq_service_areas = import_csv_columns('somethin-csvnest-col', array());
+  $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
   $result = "<div>your | generic | geoblock | here</div>";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
@@ -276,13 +284,29 @@ function eq_shortcode_handler_zip_nest() {
     $loc_code = eq_locale_lookup($stripped_query, true);
     $zip_nest = ($eq_service_areas[strval($loc_code)]) ?
       $eq_service_areas[strval($loc_code)] : array();
-    $result = iterate_zip_nest($zip_nest);
+    $result = iterate_zip_nest($zip_nest['service_area']);
     //error_log('no location found');
   }
   return $result;
 }
 
 add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
+
+function eq_shortcode_handler_branch_name() {
+  $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
+  $result = "<div>generic branch name here</div>";
+  if (get_query_var('location', false)) {
+    $raw_query = get_query_var('location', false);
+    $stripped_query = strip_tags($raw_query);
+    $loc_code = eq_locale_lookup($stripped_query, true);
+    $result = ($eq_service_areas[strval($loc_code)]) ?
+      $eq_service_areas[strval($loc_code)]['branch_name'] : "";
+    //error_log('no location found');
+  }
+  return $result;
+}
+
+add_shortcode('eq_branch_name','eq_shortcode_handler_branch_name');
 
 // end GEOBLOCK SERVICE AREA
 
