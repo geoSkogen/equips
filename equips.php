@@ -282,9 +282,9 @@ function eq_shortcode_handler_zip_nest() {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     $loc_code = eq_locale_lookup($stripped_query, true);
-    $zip_nest = ($eq_service_areas[strval($loc_code)]) ?
-      $eq_service_areas[strval($loc_code)] : array();
-    $result = iterate_zip_nest($zip_nest['service_area']);
+    $zip_nest = ($eq_service_areas[strval($loc_code)]['service_area']) ?
+      $eq_service_areas[strval($loc_code)]['service_area'] : array();
+    $result = iterate_zip_nest($zip_nest);
     //error_log('no location found');
   }
   return $result;
@@ -301,7 +301,7 @@ function eq_shortcode_handler_branch_name() {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     $loc_code = eq_locale_lookup($stripped_query, true);
-    $result = ($eq_service_areas[strval($loc_code)]) ?
+    $result = ($eq_service_areas[strval($loc_code)]['branch_name']) ?
       $eq_service_areas[strval($loc_code)]['branch_name'] : "";
     //error_log('no location found');
   }
