@@ -92,7 +92,7 @@ function eq_decode_fsa($fsa_arg) {
 }
 
 function eq_locale_lookup($id_num_arg, $return_code) {
-  $eq_locales = import_csv_columns('locales-ltd', array('ids','names'));
+  $eq_locales = import_csv_columns('locales', array('ids','names'));
   $fsa_regex = '/^[A-Z]{1}[0-9]{1}[A-Z]{1}$/';
   $loc_key = array_search($id_num_arg,$eq_locales['ids']);
   $loc_name = $eq_locales['names'][$loc_key];
@@ -171,14 +171,14 @@ function iterate_zip_nest($name_arr) {
 
 function eq_shortcode_handler_zip_nest() {
   $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
-  $result = "<div>your | generic | service | area | here</div>";
+  $result = "<div>Baltimore</div>";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     $loc_code = eq_locale_lookup($stripped_query, true);
     $zip_nest = ($eq_service_areas[strval($loc_code)]['service_area']) ?
       $eq_service_areas[strval($loc_code)]['service_area'] :
-      array("your","generic","service","area","here");
+      array("Baltimore");
     $result = iterate_zip_nest($zip_nest);
   }
   return $result;
@@ -190,14 +190,14 @@ add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
 
 function eq_shortcode_handler_branch_name() {
   $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
-  $result = "<div>generic branch name here</div>";
+  $result = "Baltimore - Ehrlich Pest Control in Baltimore and Northern Maryland";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     $loc_code = eq_locale_lookup($stripped_query, true);
     $result = ($eq_service_areas[strval($loc_code)]['branch_name']) ?
       $eq_service_areas[strval($loc_code)]['branch_name'] :
-      "<div>branch name not found</div>";
+      "Baltimore - Ehrlich Pest Control in Baltimore and Northern Maryland";
   }
   return $result;
 }
