@@ -10,10 +10,6 @@ Text Domain:  equips
 
 //Global Namespace - update to OOP protocal in future versions
 
-$eq_field_count = 5;
-$eq_current_field_index = 0;
-$eq_label_toggle = array("param","shortcode","fallback");
-$eq_label_toggle_index = 0;
 $eq_store = array(
   'indices' => array(),
   'params' => array()
@@ -69,11 +65,8 @@ function import_csv_columns($filename, $keys) {
           }
         }
       } else {
-      //optional condition to limit size of locale database to US & Canada (if needed)
-      //  if ($data[2] === 'US' || $data[2] === 'CA') {
-          array_push($result[$keys[0]], $data[0]);
-          array_push($result[$keys[1]], $data[1]);
-      //  }
+        array_push($result[$keys[0]], $data[0]);
+        array_push($result[$keys[1]], $data[1]);
       }
     }
     fclose($handle);
@@ -99,7 +92,7 @@ function eq_decode_fsa($fsa_arg) {
 }
 
 function eq_locale_lookup($id_num_arg, $return_code) {
-  $eq_locales = import_csv_columns('locales', array('ids','names'));
+  $eq_locales = import_csv_columns('locales-ltd', array('ids','names'));
   $fsa_regex = '/^[A-Z]{1}[0-9]{1}[A-Z]{1}$/';
   $loc_key = array_search($id_num_arg,$eq_locales['ids']);
   $loc_name = $eq_locales['names'][$loc_key];
@@ -115,119 +108,20 @@ function eq_locale_lookup($id_num_arg, $return_code) {
 
 //Admin
 
-function equips_register_menu_page() {
-    add_menu_page(
-        'equips',                        // Page Title
-        'equips',                       // Menu Title
-        'manage_options',             // for Capabilities level of user with:
-        'equips',                    // menu Slug(page)
-        'plugin_options_page',     // CB Function plugin_options_page()
-        'dashicons-editor-code',  // Menu Icon
-        20
-
-    );
-}
-add_action( 'admin_menu', 'equips_register_menu_page' );
-
-function equips_settings_api_init() {
-  global $eq_field_count, $eq_current_field_index, $eq_label_toggle;
-
-  add_settings_section(
-    'equips_settings',                         //uniqueID
-    'Associate URL Params with Shortcodes',   //Title
-    'cb_equips_settings_section',            //CallBack Function
-    'equips'                                //page-slug
+if ( !class_exists( 'Equips_Options_Init' ) ) {
+   include_once 'admin/eq_options_init.php';
+   add_action(
+    'admin_menu',
+    array('Equips_Options_Init','equips_register_menu_page')
   );
-
-  for ($i = 1; $i < $eq_field_count + 1; $i++) {
-    $eq_current_field_index = $i;
-    for ($ii = 0; $ii < count($eq_label_toggle); $ii++) {
-      $field_name = $eq_label_toggle[$ii];
-      $this_field = $field_name . "_" . strval($eq_current_field_index);
-      $this_label = ucwords($field_name) . " " . strval($eq_current_field_index);
-
-      add_settings_field(
-        $this_field,                   //uniqueID - "param_1", etc.
-        $this_label,                  //uniqueTitle -
-        'cb_equips_settings_field',  //callback cb_equips_settings_field();
-        'equips',                   //page-slug
-        'equips_settings'          //section (parent settings-section uniqueID)
-      );
-    }
-  }
-  $eq_current_field_index = 1;
-  register_setting( 'equips', 'equips' );
 }
-
-//Templates
-
-////template 1 - settings section field - dynamically rendered <input/>
-
-function cb_equips_settings_field() {
-  global  $eq_current_field_index, $eq_label_toggle, $eq_label_toggle_index;
-  $options = get_option('equips');
-  //error_log(print_r($options));
-  //local namespace assignments based on global settings &/or database state
-  $divider = ($eq_label_toggle_index < count($eq_label_toggle)-1) ? "" : "<br/><br/><hr/>";
-  $field_name = $eq_label_toggle[$eq_label_toggle_index];
-  $this_field = $field_name . "_" . strval($eq_current_field_index);
-  $this_label = ucwords($field_name) . " " . strval($eq_current_field_index);
-  $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
-  $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
-  //reset globals - toggle label and increment pairing series as needed
-  $eq_label_toggle_index += ($eq_label_toggle_index < count($eq_label_toggle)-1 ) ? 1 : -(count($eq_label_toggle)-1);
-  $eq_current_field_index += ($eq_label_toggle_index === 0) ? 1 : 0;
-  //make an <input/> with dynamic attributes
-  echo "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
+if ( !class_exists( 'Equips_Settings_Init' ) ) {
+   include_once 'admin/eq_settings_init.php';
+   add_action(
+     'admin_init',
+     array('Equips_Settings_Init','settings_api_init')
+   );
 }
-
-////template 2 - after settings section title
-
-function cb_equips_settings_section() {
-  $options = get_option('equips');
-  $dropped = $options['drop'];
-  if ($dropped === "TRUE") {
-    error_log('got drop');
-    delete_option('equips');
-  } else {
-    error_log("drop=false");
-  }
-  wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . 'equips-unset-all.js');
-  ?>
-  <hr/>
-  <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
-    <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
-    <button id='drop_button' class='button-primary' style='border:1.5px solid red;'>
-      <?php _e("Delete All") ?>
-    </button>
-  </div>
-  <?php
-}
-
-//// template 3 - <form> body
-
-function plugin_options_page() {
-?>
-<div class='form-wrap'>
-          <h2>equips - settings</h2>
-          <form method='post' action='options.php'>
-          <?php
-               settings_fields( 'equips' );
-               do_settings_sections( 'equips' );
-          ?>
-                <div class='inivs-div' style="display:none;">
-                    <input class='invis-input' id='drop_field' name=equips[drop] type='text'/>
-               </div>
-               <p class='submit'>
-                    <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
-               </p>
-          </form>
-     </div>
-<?php
-}
-
-add_action( 'admin_init', 'equips_settings_api_init');
-
 //Procedure - shortcode-URL-param association
 
 function do_equips($num_str) {
@@ -277,16 +171,15 @@ function iterate_zip_nest($name_arr) {
 
 function eq_shortcode_handler_zip_nest() {
   $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
-  $result = "<div>your | generic | geoblock | here</div>";
+  $result = "<div>your | generic | service | area | here</div>";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     $loc_code = eq_locale_lookup($stripped_query, true);
     $zip_nest = ($eq_service_areas[strval($loc_code)]['service_area']) ?
       $eq_service_areas[strval($loc_code)]['service_area'] :
-      array();
+      array("your","generic","service","area","here");
     $result = iterate_zip_nest($zip_nest);
-    //error_log('no location found');
   }
   return $result;
 }
@@ -304,7 +197,7 @@ function eq_shortcode_handler_branch_name() {
     $loc_code = eq_locale_lookup($stripped_query, true);
     $result = ($eq_service_areas[strval($loc_code)]['branch_name']) ?
       $eq_service_areas[strval($loc_code)]['branch_name'] :
-      "";
+      "<div>branch name not found</div>";
   }
   return $result;
 }
@@ -348,7 +241,8 @@ function equips_triage() {
     return $vars;
   });
   foreach ($eq_store['indices'] as $store_key) {
-    add_shortcode( $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key);
+    add_shortcode(
+      $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key);
     //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
   }
   return;
@@ -373,4 +267,4 @@ function init_equips($counter) {
   }
 }
 
-init_equips($eq_field_count);
+init_equips(Equips_Settings_Init::$field_count);
