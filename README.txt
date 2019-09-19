@@ -1,5 +1,5 @@
 //NOTE: RE: security - this plugin is currently only configured to lookup locations
-//see lines 182 - 198 of equips.php
+//see lines 132 - 145 of equips.php
 //$stripped_query requires further validation before being injected into text content
 
 ===============
@@ -40,10 +40,10 @@ Add validation logic for each type of url parameter!
   lookup-by-number fails.
 
 2)
-Add shortcode options page for custom geoblock settings!  
+Add shortcode options page for custom geoblock settings!
 
 3)
-Upgrade global namespace use to OOP protocol.
+Upgrade global namespace use to OOP protocol.IN PROGRESS!
 
 4)
 --need a solution to redundant incrementing shortcode handler functions with hard-coded
