@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.09.18
+Version:      2019.09.19
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -17,56 +17,38 @@ $eq_store = array(
 
 // Helper Functions - for geolocation lookup
 
-function import_csv_columns($filename, $keys) {
+function import_csv_geo($filename) {
   $subdir = "resources";
-  $csvnest = strpos($filename,'-csvnest-');
-  $result = ($csvnest) ? array() : array(
-      $keys[0] => array(),
-      $keys[1] => array()
-    );
-  $row_index = -1;
+  $result = array();
   $key = "";
   $valid_data = [];
   if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-      $row_index += 1;
       $valid_data = [];
-      if ($csvnest) {
-        for ($i = 0; $i < count($data); $i++) {
-          if (strpos($filename,'-row')) {
-            switch ($i) {
-              case 0:
-                $key = strval($data[$i]);
-                break;
-              case 1:
-                $valid_data['city_name'] = strval($data[$i]);
-                break;
-              case 2:
-                $valid_data['branch_name'] = strval($data[$i]);
-                break;
-              case 3:
-                $valid_data['service_area'] = explode(",",$data[$i]);
-                break;
-            }
-            if ($i === count($data)-1) {
-              $result[$key] = $valid_data;
-            }
-          } else if (strpos($filename,'-col')) {
-            if ($row_index === 0) {
-              $result[strval($data[$i])] = array();
-              array_push($keys, $data[$i]);
-            } else {
-              if ($data[$i]) {
-                array_push($result[$keys[$i]],$data[$i]);
-              }
-            }
-          } else {
-            error_log('could not identify csvnest file');
-          }
+      for ($i = 0; $i < count($data); $i++) {
+        switch ($i) {
+          case 0:
+            $key = strval($data[$i]);
+            break;
+          case 1:
+            $valid_data['city_name'] = strval($data[$i]);
+            break;
+          case 2:
+            $valid_data['country_code'] = strval($data[$i]);
+            break;
+          case 3:
+            $valid_data['branch_name'] = strval($data[$i]);
+            break;
+          case 4:
+            $valid_data['geo_title'] = strval($data[$i]);
+            break;
+          case 5:
+            $valid_data['service_area'] = explode(",",$data[$i]);
+            break;
         }
-      } else {
-        array_push($result[$keys[0]], $data[0]);
-        array_push($result[$keys[1]], $data[1]);
+        if ($i === count($data)-1) {
+          $result[$key] = $valid_data;
+        }
       }
     }
     fclose($handle);
@@ -77,33 +59,17 @@ function import_csv_columns($filename, $keys) {
   }
 }
 
-function eq_decode_zip($zip_arg) {
-  $eq_zipdecoder = import_csv_columns('zipcodes', array('zips','names'));
-  $loc_key = array_search($zip_arg,$eq_zipdecoder['zips']);
-  $loc_name = $eq_zipdecoder['names'][$loc_key];
-  return $loc_name;
-}
-
-function eq_decode_fsa($fsa_arg) {
-  $eq_fsadecoder = import_csv_columns('fsas', array('fsas','names'));
-  $loc_key = array_search($fsa_arg,$eq_fsadecoder['fsas']);
-  $loc_name = $eq_fsadecoder['names'][$loc_key];
-  return $loc_name;
-}
-
-function eq_locale_lookup($id_num_arg, $return_code) {
-  $eq_locales = import_csv_columns('locales', array('ids','names'));
-  $fsa_regex = '/^[A-Z]{1}[0-9]{1}[A-Z]{1}$/';
-  $loc_key = array_search($id_num_arg,$eq_locales['ids']);
-  $loc_name = $eq_locales['names'][$loc_key];
-  if (is_numeric($loc_name)) {
-    if (strlen($loc_name) === 4) { $loc_name = '0' . $loc_name; }
-    return ($return_code) ? $loc_name : eq_decode_zip($loc_name);
-  } else if (preg_match($fsa_regex,$loc_name,$matches)) {
-    return ($return_code) ? $loc_name : eq_decode_fsa($loc_name);
-  } else {
-    return $loc_name;
+function eq_locale_lookup($num_arg) {
+  $result = "";
+  $eq_locales = import_csv_geo('geo2-csvnest-row');
+  if (count($eq_locales[$num_arg])) {
+    $result = array(
+      'city_name' => $eq_locales[$num_arg]['city_name'],
+      'geo_title' => $eq_locales[$num_arg]['geo_title'],
+      'service_area' => $eq_locales[$num_arg]['service_area']
+    );
   }
+  return $result;
 }
 
 //Admin
@@ -139,10 +105,8 @@ function do_equips($num_str) {
     //Update to array of discrete param handling functions per param type in future versions
     if ($eq_options['param_' . $num_str] === 'location') {
       if (is_numeric($stripped_query)) {
-        $loc_name = eq_locale_lookup($stripped_query, false);
-        $result = ($loc_name && $loc_name != 'City' && $loc_name != 'Name') ?
-          ucwords(strtolower($loc_name)) :
-          $result;
+        $loc_data = eq_locale_lookup($stripped_query);
+        $result = ($loc_data) ? $loc_data['city_name'] : $result;
       }
     }
   // end location -
@@ -155,7 +119,6 @@ function do_equips($num_str) {
 
 //[eq_zip_nest]
 
-//update HTML until analogous to CR-SUITE GEOBLOCK
 function iterate_zip_nest($name_arr) {
   $result = "";
   $result .= "<div>";
@@ -170,16 +133,22 @@ function iterate_zip_nest($name_arr) {
 }
 
 function eq_shortcode_handler_zip_nest() {
-  $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
-  $result = "<div>Baltimore</div>";
+  $result = "<div>Pittsburgh, PA | Baltimore, MD | Buffalo, NY | Reading, PA | Manchester, NH | Norristown, PA | Nashua, NH | Parkville, MD | Portland, ME | Niagara Falls, NY</div>";
+  $raw_query = '';
+  $stripped_query = '';
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
-    $loc_code = eq_locale_lookup($stripped_query, true);
-    $zip_nest = ($eq_service_areas[strval($loc_code)]['service_area']) ?
-      $eq_service_areas[strval($loc_code)]['service_area'] :
-      array("Baltimore");
-    $result = iterate_zip_nest($zip_nest);
+    if (is_numeric($stripped_query)) {
+      $loc_data = eq_locale_lookup($stripped_query);
+      $zip_nest = ($loc_data['service_area']) ? $loc_data['service_area'] :
+      array(
+      "Pittsburgh, PA","Baltimore, MD","Buffalo, NY","Reading, PA",
+      "Manchester, NH", "Norristown, PA", "Nashua, NH", "Parkville, MD",
+      "Portland, ME", "Niagara Falls, NY"
+      );
+      $result = iterate_zip_nest($zip_nest);
+    }
   }
   return $result;
 }
@@ -189,15 +158,16 @@ add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
 //[eq_branch_name]
 
 function eq_shortcode_handler_branch_name() {
-  $eq_service_areas = import_csv_columns('geo0-csvnest-row', array());
-  $result = "Baltimore - Ehrlich Pest Control in Baltimore and Northern Maryland";
+  $result = "Maine, New Hampshire, Maryland, Pennsylvania and New York";
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
-    $loc_code = eq_locale_lookup($stripped_query, true);
-    $result = ($eq_service_areas[strval($loc_code)]['branch_name']) ?
-      $eq_service_areas[strval($loc_code)]['branch_name'] :
-      "Baltimore - Ehrlich Pest Control in Baltimore and Northern Maryland";
+    if (is_numeric($stripped_query)) {
+      $loc_data = eq_locale_lookup($stripped_query);
+      $result = ($loc_data['geo_title']) ?
+        $loc_data['geo_title'] :
+        "Maine, New Hampshire, Maryland, Pennsylvania and New York";
+    }
   }
   return $result;
 }
