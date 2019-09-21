@@ -26,6 +26,7 @@ function import_csv_geo($filename) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       $valid_data = array(
         'criteria_id' => strval($data[0]),
+        'city_name' => strval($data[1]),
         'branch_name' => strval($data[3]),
         'geo_title' => strval($data[4]),
         'service_area' => strval($data[5])
@@ -62,6 +63,7 @@ function eq_activate_db () {
   $sql = "CREATE TABLE $table_name (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
     criteria_id mediumint(7) NOT NULL,
+    city_name text NOT NULL,
     branch_name text NOT NULL,
     geo_title text NOT NULL,
     service_area varchar(255) DEFAULT '' NOT NULL,
@@ -81,51 +83,6 @@ function eq_activate_db () {
 }
 
 register_activation_hook( __FILE__, 'eq_activate_db' );
-
-// Helper Functions - for geolocation lookup
-/*
-function import_csv_geo($filename) {
-  $subdir = "resources";
-  $result = array();
-  $key = "";
-  $valid_data = [];
-  if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-      $valid_data = [];
-      for ($i = 0; $i < count($data); $i++) {
-        switch ($i) {
-          case 0:
-            $key = strval($data[$i]);
-            break;
-          case 1:
-            $valid_data['city_name'] = strval($data[$i]);
-            break;
-          case 2:
-            $valid_data['country_code'] = strval($data[$i]);
-            break;
-          case 3:
-            $valid_data['branch_name'] = strval($data[$i]);
-            break;
-          case 4:
-            $valid_data['geo_title'] = strval($data[$i]);
-            break;
-          case 5:
-            $valid_data['service_area'] = explode(",",$data[$i]);
-            break;
-        }
-        if ($i === count($data)-1) {
-          $result[$key] = $valid_data;
-        }
-      }
-    }
-    fclose($handle);
-    return $result;
-  } else {
-    error_log('could not open file');
-    return false;
-  }
-}
-*/
 
 function eq_locale_lookup($num_arg) {
   $result = "";
