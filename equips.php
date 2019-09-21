@@ -15,8 +15,75 @@ $eq_store = array(
   'params' => array()
 );
 
-// Helper Functions - for geolocation lookup
+// Activation - instantiate & populate database
 
+function import_csv_geo($filename) {
+  $subdir = "resources";
+  $result = [];
+  $key = "";
+  $valid_data = [];
+  if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+      $valid_data = array(
+        'criteria_id' => strval($data[0]),
+        'branch_name' => strval($data[3]),
+        'geo_title' => strval($data[4]),
+        'service_area' => strval($data[5])
+      );
+      array_push($result, $valid_data);
+    }
+    fclose($handle);
+    return $result;
+  } else {
+    error_log('could not open file');
+    return false;
+  }
+}
+
+function normalize_row($criteria_id,$branch_name,$geo_title,$service_area) {
+  $data = array(
+    'criteria_id' => $criteria_id,
+    'branch_name' => $branch_name,
+    'geo_title' => $geo_title,
+    'service_area' => $service_area
+  );
+  return $data;
+}
+
+
+function eq_activate_db () {
+  global $wpdb;
+
+  $table_rows = array();
+  $import_filename = "geo2-csvnest-row";
+  $table_name = $wpdb->prefix . "eq_equips";
+  $charset_collate = $wpdb->get_charset_collate();
+
+  $sql = "CREATE TABLE $table_name (
+    id mediumint(9) NOT NULL AUTO_INCREMENT,
+    criteria_id mediumint(7) NOT NULL,
+    branch_name text NOT NULL,
+    geo_title text NOT NULL,
+    service_area varchar(255) DEFAULT '' NOT NULL,
+    PRIMARY KEY  (id)
+  ) $charset_collate;";
+
+  require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+  dbDelta( $sql );
+
+  error_log('created table');
+
+  $table_rows = import_csv_geo($import_filename);
+  error_log("number of table rows found: " .  strval(count($table_rows)));
+  foreach($table_rows as $row) {
+    $wpdb->insert($table_name, $row);
+  }
+}
+
+register_activation_hook( __FILE__, 'eq_activate_db' );
+
+// Helper Functions - for geolocation lookup
+/*
 function import_csv_geo($filename) {
   $subdir = "resources";
   $result = array();
@@ -58,6 +125,7 @@ function import_csv_geo($filename) {
     return false;
   }
 }
+*/
 
 function eq_locale_lookup($num_arg) {
   $result = "";
