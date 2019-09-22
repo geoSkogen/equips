@@ -41,17 +41,6 @@ function import_csv_geo($filename) {
   }
 }
 
-function normalize_row($criteria_id,$branch_name,$geo_title,$service_area) {
-  $data = array(
-    'criteria_id' => $criteria_id,
-    'branch_name' => $branch_name,
-    'geo_title' => $geo_title,
-    'service_area' => $service_area
-  );
-  return $data;
-}
-
-
 function eq_activate_db () {
   global $wpdb;
 
@@ -85,8 +74,14 @@ function eq_activate_db () {
 register_activation_hook( __FILE__, 'eq_activate_db' );
 
 function eq_locale_lookup($num_arg) {
+  global $wpdb;
   $result = "";
-  $eq_locales = import_csv_geo('geo2-csvnest-row');
+  $table_name = $wpdb->prefix . "eq_equips";
+  $result = $wpdb->get_row(
+    "SELECT * FROM wp_eq_equips WHERE criteria_id = " . $num_arg,
+    ARRAY_A
+  );
+  /*
   if (count($eq_locales[$num_arg])) {
     $result = array(
       'city_name' => $eq_locales[$num_arg]['city_name'],
@@ -94,7 +89,9 @@ function eq_locale_lookup($num_arg) {
       'service_area' => $eq_locales[$num_arg]['service_area']
     );
   }
-  return $result;
+  */
+
+  return ($result) ?  $result : '';
 }
 
 //Admin
@@ -166,12 +163,13 @@ function eq_shortcode_handler_zip_nest() {
     $stripped_query = strip_tags($raw_query);
     if (is_numeric($stripped_query)) {
       $loc_data = eq_locale_lookup($stripped_query);
-      $zip_nest = ($loc_data['service_area']) ? $loc_data['service_area'] :
-      array(
-      "Pittsburgh, PA","Baltimore, MD","Buffalo, NY","Reading, PA",
-      "Manchester, NH", "Norristown, PA", "Nashua, NH", "Parkville, MD",
-      "Portland, ME", "Niagara Falls, NY"
-      );
+      $zip_nest = ($loc_data['service_area']) ?
+        explode(',', $loc_data['service_area']) :
+        array(
+          "Pittsburgh, PA","Baltimore, MD","Buffalo, NY","Reading, PA",
+          "Manchester, NH", "Norristown, PA", "Nashua, NH", "Parkville, MD",
+          "Portland, ME", "Niagara Falls, NY"
+        );
       $result = iterate_zip_nest($zip_nest);
     }
   }
