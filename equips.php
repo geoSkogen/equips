@@ -57,17 +57,19 @@ function eq_activate_db () {
     geo_title text NOT NULL,
     service_area varchar(255) DEFAULT '' NOT NULL,
     PRIMARY KEY  (id)
-  ) $charset_collate;";
-
-  require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-  dbDelta( $sql );
-
-  error_log('created table');
-
-  $table_rows = import_csv_geo($import_filename);
-  error_log("number of table rows found: " .  strval(count($table_rows)));
-  foreach($table_rows as $row) {
-    $wpdb->insert($table_name, $row);
+    ) $charset_collate;";
+  $test_query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
+  if ( $wpdb->get_var( $test_query ) == $table_name ) {
+    error_log('db table: ' . $table_name . ' is already associated with this install');
+  } else {
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+    dbDelta( $sql );
+    error_log('created new db table: ' . $table_name . ' for this install');
+    $table_rows = import_csv_geo($import_filename);
+    foreach($table_rows as $row) {
+      $wpdb->insert($table_name, $row);
+    }
+    error_log('added ' . strval(count($table_rows)) . ' rows to db table : ' . $table_name . ' - for this install');
   }
 }
 
