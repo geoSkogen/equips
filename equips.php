@@ -41,6 +41,40 @@ function import_csv_geo($filename) {
   }
 }
 
+function import_csv($filename,$table_type) {
+  $subdir = "resources";
+  $result = [];
+  $key = "";
+  $valid_data = [];
+  if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+      switch($table_type) {
+        case 'geo' :
+          $valid_data = array(
+            'criteria_id' => strval($data[0]),
+            'city_name' => strval($data[1]),
+            'branch_name' => strval($data[3]),
+            'geo_title' => strval($data[4]),
+            'service_area' => strval($data[5])
+          );
+          array_push($result, $valid_data);
+          break;
+        case 'zip' :
+          $result[$data[0]] = $data[1];
+          break;
+        default :
+          error_log('unsupported table type for wp_eq_equips');
+          return false;
+      }
+    }
+    fclose($handle);
+    return $result;
+  } else {
+    error_log('could not open file');
+    return false;
+  }
+}
+
 function eq_activate_db () {
   global $wpdb;
 
@@ -65,7 +99,7 @@ function eq_activate_db () {
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
     error_log('created new db table: ' . $table_name . ' for this install');
-    $table_rows = import_csv_geo($import_filename);
+    $table_rows = import_csv($import_filename, 'geo');
     foreach($table_rows as $row) {
       $wpdb->insert($table_name, $row);
     }
@@ -75,6 +109,42 @@ function eq_activate_db () {
 
 register_activation_hook( __FILE__, 'eq_activate_db' );
 
+
+// Use with GeoPlugin API
+function get_user_ip() {
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
+function validate_ip($str) {
+  $result = $str;
+  return $result;
+}
+
+function get_geo_zip() {
+  $found_ip = get_user_ip();
+  $valid_ip = validate_ip($found_ip);
+  $geo_data = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='. $found_ip));
+  $zip_data = unserialize(
+    file_get_contents(
+      'http://www.geoplugin.net/extras/postalcode.gp?lat=' .
+        $geo_data['geoplugin_latitude'] . '&lon='. $geo_data['geoplugin_longitude'] .
+        '&format=php'
+    )
+  );
+  return $zip_data['geoplugin_postCode'];
+  //error_log(var_dump($zip_data));
+}
+
+
 function eq_locale_lookup($num_arg) {
   global $wpdb;
   $result = "";
@@ -83,18 +153,9 @@ function eq_locale_lookup($num_arg) {
     "SELECT * FROM wp_eq_equips WHERE criteria_id = " . $num_arg,
     ARRAY_A
   );
-  /*
-  if (count($eq_locales[$num_arg])) {
-    $result = array(
-      'city_name' => $eq_locales[$num_arg]['city_name'],
-      'geo_title' => $eq_locales[$num_arg]['geo_title'],
-      'service_area' => $eq_locales[$num_arg]['service_area']
-    );
-  }
-  */
-
   return ($result) ?  $result : '';
 }
+
 
 //Admin
 
