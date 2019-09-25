@@ -202,8 +202,6 @@ function do_equips($num_str) {
 // begin GEOBLOCK SERVICE AREA
 //Currently using hard-coded shortcode:
 
-//[eq_zip_nest]
-
 function iterate_zip_nest($name_arr) {
   $result = "";
   $result .= "<div>";
@@ -217,48 +215,45 @@ function iterate_zip_nest($name_arr) {
   return $result;
 }
 
-function eq_shortcode_handler_zip_nest() {
-  $result = "<div>Pittsburgh, PA | Baltimore, MD | Buffalo, NY | Reading, PA | Manchester, NH | Norristown, PA | Nashua, NH | Parkville, MD | Portland, ME | Niagara Falls, NY</div>";
-  $raw_query = '';
-  $stripped_query = '';
+function eq_shortcode_handler_service_area() {
+  $eq_geo_options = get_option('equips_geo');
+  $result = ($eq_geo_options['service_area']) ?
+    ($eq_geo_options['service_area']) : '';
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     if (is_numeric($stripped_query)) {
       $loc_data = eq_locale_lookup($stripped_query);
-      $zip_nest = ($loc_data['service_area']) ?
-        explode(',', $loc_data['service_area']) :
-        array(
-          "Pittsburgh, PA","Baltimore, MD","Buffalo, NY","Reading, PA",
-          "Manchester, NH", "Norristown, PA", "Nashua, NH", "Parkville, MD",
-          "Portland, ME", "Niagara Falls, NY"
-        );
-      $result = iterate_zip_nest($zip_nest);
+      if ($loc_data) {
+        $result = ($loc_data['service_area']) ?
+          iterate_zip_nest(explode(',',$loc_data['service_area'])) : $result;
+      }
     }
+  } else {
+    // do geopluign lookup ()
   }
   return $result;
 }
 
-add_shortcode('eq_zip_nest','eq_shortcode_handler_zip_nest');
-
-//[eq_branch_name]
-
-function eq_shortcode_handler_branch_name() {
-  $result = "Maine, New Hampshire, Maryland, Pennsylvania and New York";
+function eq_shortcode_handler_locale() {
+  $eq_geo_options = get_option('equips_geo');
+  $result = ($eq_geo_options['locale']) ?
+    ($eq_geo_options['locale']) : '';
   if (get_query_var('location', false)) {
     $raw_query = get_query_var('location', false);
     $stripped_query = strip_tags($raw_query);
     if (is_numeric($stripped_query)) {
       $loc_data = eq_locale_lookup($stripped_query);
-      $result = ($loc_data['geo_title']) ?
-        $loc_data['geo_title'] :
-        "Maine, New Hampshire, Maryland, Pennsylvania and New York";
+      if ($loc_data) {
+        $result = ($loc_data['geo_title']) ?
+          $loc_data['geo_title'] : $result;
+      }
     }
+  } else {
+    // do geopluign lookup ()
   }
   return $result;
 }
-
-add_shortcode('eq_branch_name','eq_shortcode_handler_branch_name');
 
 // end GEOBLOCK SERVICE AREA
 
@@ -288,6 +283,7 @@ function eq_shortcode_handler_5() {
 function equips_triage() {
   global $eq_store;
   $eq_options = get_option('equips');
+  $eq_geo_options = get_option('equips_geo');
   add_filter( 'query_vars', function ( $vars ) {
     global $eq_store;
     $vars = array_merge($vars, $eq_store['params']);
@@ -298,8 +294,20 @@ function equips_triage() {
   });
   foreach ($eq_store['indices'] as $store_key) {
     add_shortcode(
-      $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key);
+      $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key
+    );
     //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
+  }
+
+  if ($eq_geo_options['locale_shortcode']) {
+    add_shortcode(
+      $eq_geo_options['locale_shortcode'], 'eq_shortcode_handler_locale'
+    );
+  }
+  if ($eq_geo_options['service_area_shortcode']) {
+    add_shortcode(
+      $eq_geo_options['service_area_shortcode'], 'eq_shortcode_handler_service_area'
+    );
   }
   return;
 }
@@ -308,7 +316,8 @@ function init_equips($counter) {
   global $eq_store;
   $eq_num_str = "";
   $eq_options = get_option('equips');
-  if ($eq_options) {
+  $eq_geo_options = get_option('equips_geo');
+  //if ($eq_options) {
     for ($i = 1; $i < $counter + 1; $i++) {
       $eq_num_str = strval($i);
       if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
@@ -316,11 +325,18 @@ function init_equips($counter) {
         $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
       }
     }
+    /*
+    foreach ($eq_options as $option) {
+      error_log(print_r($eq_options));
+    }
+    */
     equips_triage();
+    /*
     return true;
   } else {
     return false;
   }
+  */
 }
 
 init_equips(Equips_Settings_Init::$field_count);
