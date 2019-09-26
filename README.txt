@@ -1,3 +1,7 @@
+ADD THIS LINE TO wp-config.php DURING INSTALLATION:
+
+set_time_limit(300);
+
 //NOTE: RE: security - this plugin is currently only configured to lookup locations
 //see lines 132 - 145 of equips.php
 //$stripped_query requires further validation before being injected into text content

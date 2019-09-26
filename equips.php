@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.09.19
+Version:      2019.09.26
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -25,7 +25,7 @@ function import_csv_geo($filename) {
   if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       $valid_data = array(
-        'criteria_id' => strval($data[0]),
+        'criteria_id' => $data[0],
         'city_name' => strval($data[1]),
         'branch_name' => strval($data[3]),
         'geo_title' => strval($data[4]),
@@ -51,7 +51,7 @@ function import_csv($filename,$table_type) {
       switch($table_type) {
         case 'geo' :
           $valid_data = array(
-            'criteria_id' => strval($data[0]),
+            'criteria_id' => $data[0],
             'city_name' => strval($data[1]),
             'branch_name' => strval($data[3]),
             'geo_title' => strval($data[4]),
@@ -79,13 +79,13 @@ function eq_activate_db () {
   global $wpdb;
 
   $table_rows = array();
-  $import_filename = "geo2-csvnest-row";
+  $import_filename = "geo3-csvnest-row";
   $table_name = $wpdb->prefix . "eq_equips";
   $charset_collate = $wpdb->get_charset_collate();
 
   $sql = "CREATE TABLE $table_name (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
-    criteria_id mediumint(7) NOT NULL,
+    criteria_id int(7) NOT NULL,
     city_name text NOT NULL,
     branch_name text NOT NULL,
     geo_title text NOT NULL,
