@@ -11,6 +11,8 @@ class Equips_Settings_Init {
   public static $geo_label_toggle = array(
     "locale",
     "locale_shortcode",
+    "region",
+    "region_shortcode",
     "service_area",
     "service_area_shortcode"
   );

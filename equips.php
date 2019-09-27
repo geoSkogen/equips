@@ -17,31 +17,7 @@ $eq_store = array(
 
 // Activation - instantiate & populate database
 
-function import_csv_geo($filename) {
-  $subdir = "resources";
-  $result = [];
-  $key = "";
-  $valid_data = [];
-  if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-      $valid_data = array(
-        'criteria_id' => $data[0],
-        'city_name' => strval($data[1]),
-        'branch_name' => strval($data[3]),
-        'geo_title' => strval($data[4]),
-        'service_area' => strval($data[5])
-      );
-      array_push($result, $valid_data);
-    }
-    fclose($handle);
-    return $result;
-  } else {
-    error_log('could not open file');
-    return false;
-  }
-}
-
-function import_csv($filename,$table_type) {
+function eq_import_csv($filename,$table_type) {
   $subdir = "resources";
   $result = [];
   $key = "";
@@ -99,7 +75,7 @@ function eq_activate_db () {
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
     dbDelta( $sql );
     error_log('created new db table: ' . $table_name . ' for this install');
-    $table_rows = import_csv($import_filename, 'geo');
+    $table_rows = eq_import_csv($import_filename, 'geo');
     foreach($table_rows as $row) {
       $wpdb->insert($table_name, $row);
     }
@@ -109,8 +85,8 @@ function eq_activate_db () {
 
 register_activation_hook( __FILE__, 'eq_activate_db' );
 
-
 // Use with GeoPlugin API
+/*
 function get_user_ip() {
     if(!empty($_SERVER['HTTP_CLIENT_IP'])){
         //ip from share internet
@@ -123,12 +99,16 @@ function get_user_ip() {
     }
     return $ip;
 }
+*/
 
+/*
 function validate_ip($str) {
   $result = $str;
   return $result;
 }
+*/
 
+/*
 function get_geo_zip() {
   $found_ip = get_user_ip();
   $valid_ip = validate_ip($found_ip);
@@ -143,6 +123,7 @@ function get_geo_zip() {
   return $zip_data['geoplugin_postCode'];
   //error_log(var_dump($zip_data));
 }
+*/
 
 
 function eq_locale_lookup($num_arg) {
@@ -155,7 +136,6 @@ function eq_locale_lookup($num_arg) {
   );
   return ($result) ?  $result : '';
 }
-
 
 //Admin
 
@@ -200,9 +180,8 @@ function do_equips($num_str) {
 }
 
 // begin GEOBLOCK SERVICE AREA
-//Currently using hard-coded shortcode:
 
-function iterate_zip_nest($name_arr) {
+function iterate_service_area($name_arr) {
   $result = "";
   $result .= "<div>";
   for($i = 0; $i < count($name_arr); $i++) {
@@ -226,7 +205,27 @@ function eq_shortcode_handler_service_area() {
       $loc_data = eq_locale_lookup($stripped_query);
       if ($loc_data) {
         $result = ($loc_data['service_area']) ?
-          iterate_zip_nest(explode(',',$loc_data['service_area'])) : $result;
+          iterate_service_area(explode(',',$loc_data['service_area'])) : $result;
+      }
+    }
+  } else {
+    // do geopluign lookup ()
+  }
+  return $result;
+}
+
+function eq_shortcode_handler_region() {
+  $eq_geo_options = get_option('equips_geo');
+  $result = ($eq_geo_options['region']) ?
+    ($eq_geo_options['region']) : '';
+  if (get_query_var('location', false)) {
+    $raw_query = get_query_var('location', false);
+    $stripped_query = strip_tags($raw_query);
+    if (is_numeric($stripped_query)) {
+      $loc_data = eq_locale_lookup($stripped_query);
+      if ($loc_data) {
+        $result = ($loc_data['geo_region']) ?
+          $loc_data['geo_region'] : $result;
       }
     }
   } else {
@@ -298,10 +297,14 @@ function equips_triage() {
     );
     //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
   }
-
   if ($eq_geo_options['locale_shortcode']) {
     add_shortcode(
       $eq_geo_options['locale_shortcode'], 'eq_shortcode_handler_locale'
+    );
+  }
+  if ($eq_geo_options['region_shortcode']) {
+    add_shortcode(
+      $eq_geo_options['region_shortcode'], 'eq_shortcode_handler_region'
     );
   }
   if ($eq_geo_options['service_area_shortcode']) {
@@ -316,7 +319,7 @@ function init_equips($counter) {
   global $eq_store;
   $eq_num_str = "";
   $eq_options = get_option('equips');
-  $eq_geo_options = get_option('equips_geo');
+  //$eq_geo_options = get_option('equips_geo');
   //if ($eq_options) {
     for ($i = 1; $i < $counter + 1; $i++) {
       $eq_num_str = strval($i);
@@ -325,11 +328,6 @@ function init_equips($counter) {
         $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
       }
     }
-    /*
-    foreach ($eq_options as $option) {
-      error_log(print_r($eq_options));
-    }
-    */
     equips_triage();
     /*
     return true;
