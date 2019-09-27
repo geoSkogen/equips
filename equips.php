@@ -31,7 +31,8 @@ function eq_import_csv($filename,$table_type) {
             'city_name' => strval($data[1]),
             'branch_name' => strval($data[3]),
             'geo_title' => strval($data[4]),
-            'service_area' => strval($data[5])
+            'branch_region' => strval($data[5]),
+            'service_area' => strval($data[6])
           );
           array_push($result, $valid_data);
           break;
@@ -55,7 +56,7 @@ function eq_activate_db () {
   global $wpdb;
 
   $table_rows = array();
-  $import_filename = "geo3-csvnest-row";
+  $import_filename = "geo4";
   $table_name = $wpdb->prefix . "eq_equips";
   $charset_collate = $wpdb->get_charset_collate();
 
@@ -65,6 +66,7 @@ function eq_activate_db () {
     city_name text NOT NULL,
     branch_name text NOT NULL,
     geo_title text NOT NULL,
+    branch_region text NOT NULL,
     service_area varchar(255) DEFAULT '' NOT NULL,
     PRIMARY KEY  (id)
     ) $charset_collate;";
@@ -224,8 +226,8 @@ function eq_shortcode_handler_region() {
     if (is_numeric($stripped_query)) {
       $loc_data = eq_locale_lookup($stripped_query);
       if ($loc_data) {
-        $result = ($loc_data['geo_region']) ?
-          $loc_data['geo_region'] : $result;
+        $result = ($loc_data['branch_region']) ?
+          $loc_data['branch_region'] : $result;
       }
     }
   } else {
