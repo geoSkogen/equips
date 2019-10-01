@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.09.26
+Version:      2019.10.1
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -86,47 +86,6 @@ function eq_activate_db () {
 }
 
 register_activation_hook( __FILE__, 'eq_activate_db' );
-
-// Use with GeoPlugin API
-/*
-function get_user_ip() {
-    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-        //ip from share internet
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
-        //ip pass from proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    }else{
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
-}
-*/
-
-/*
-function validate_ip($str) {
-  $result = $str;
-  return $result;
-}
-*/
-
-/*
-function get_geo_zip() {
-  $found_ip = get_user_ip();
-  $valid_ip = validate_ip($found_ip);
-  $geo_data = unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='. $found_ip));
-  $zip_data = unserialize(
-    file_get_contents(
-      'http://www.geoplugin.net/extras/postalcode.gp?lat=' .
-        $geo_data['geoplugin_latitude'] . '&lon='. $geo_data['geoplugin_longitude'] .
-        '&format=php'
-    )
-  );
-  return $zip_data['geoplugin_postCode'];
-  //error_log(var_dump($zip_data));
-}
-*/
-
 
 function eq_locale_lookup($num_arg) {
   global $wpdb;
