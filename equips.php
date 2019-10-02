@@ -7,9 +7,8 @@ Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
 */
-
+defined( 'ABSPATH' ) or die( 'We make the path by walking.');
 //Global Namespace - update to OOP protocal in future versions
-
 $eq_store = array(
   'indices' => array(),
   'params' => array()
@@ -78,10 +77,12 @@ function eq_activate_db () {
     dbDelta( $sql );
     error_log('created new db table: ' . $table_name . ' for this install');
     $table_rows = eq_import_csv($import_filename, 'geo');
-    foreach($table_rows as $row) {
-      $wpdb->insert($table_name, $row);
+    if ($table_rows) {
+      foreach($table_rows as $row) {
+        $wpdb->insert($table_name, $row);
+      }
+      error_log('added ' . strval(count($table_rows)) . ' rows to db table : ' . $table_name . ' - for this install');
     }
-    error_log('added ' . strval(count($table_rows)) . ' rows to db table : ' . $table_name . ' - for this install');
   }
 }
 
@@ -116,28 +117,39 @@ if ( !class_exists( 'Equips_Settings_Init' ) ) {
 }
 //Procedure - shortcode-URL-param association
 
+function do_equips_location($db_slug) {
+  $result = '';
+  if (get_query_var('location', false)) {
+    $raw_query = get_query_var('location', false);
+    $stripped_query = strip_tags($raw_query);
+    if (is_numeric($stripped_query)) {
+      $loc_data = eq_locale_lookup($stripped_query);
+      if ($loc_data) {
+        $result = ($loc_data[$db_slug]) ?
+          $loc_data[$db_slug] : $result;
+      }
+    }
+  } else {
+    // do geopluign lookup ()
+  }
+  return $result;
+}
+
 function do_equips($num_str) {
   $eq_options = get_option('equips');
-  $result = $eq_options['fallback_' . $num_str];
-  $raw_query = '';
-  $stripped_query = '';
+  $fallback = ($eq_options['fallback_' . $num_str]) ?
+    $eq_options['fallback_' . $num_str] : '';
+  $result = '';
   //NOTE: RE: security - this plugin is currently only configured to lookup locations
   //$stripped_query requires further validation before being injected into text content
   if (get_query_var($eq_options['param_' . $num_str], false)) {
-    $raw_query = get_query_var($eq_options['param_' . $num_str], false);
-    $stripped_query = strip_tags($raw_query);
-    // location - error & content handling for location
-    //must be numeric input; returns fallback if not found -
-    //Update to array of discrete param handling functions per param type in future versions
-    if ($eq_options['param_' . $num_str] === 'location') {
-      if (is_numeric($stripped_query)) {
-        $loc_data = eq_locale_lookup($stripped_query);
-        $result = ($loc_data) ? $loc_data['city_name'] : $result;
-      }
+    switch ($eq_options['param_' . $num_str]) {
+      case 'location' :
+        $result = do_equips_location('city_name');
+        break;
     }
-  // end location -
   }
-  return $result;
+  return ($result) ? $result : $fallback;
 }
 
 // begin GEOBLOCK SERVICE AREA
@@ -157,62 +169,27 @@ function iterate_service_area($name_arr) {
 
 function eq_shortcode_handler_service_area() {
   $eq_geo_options = get_option('equips_geo');
-  $result = ($eq_geo_options['service_area']) ?
+  $fallback = ($eq_geo_options['service_area']) ?
     ($eq_geo_options['service_area']) : '';
-  if (get_query_var('location', false)) {
-    $raw_query = get_query_var('location', false);
-    $stripped_query = strip_tags($raw_query);
-    if (is_numeric($stripped_query)) {
-      $loc_data = eq_locale_lookup($stripped_query);
-      if ($loc_data) {
-        $result = ($loc_data['service_area']) ?
-          iterate_service_area(explode(',',$loc_data['service_area'])) : $result;
-      }
-    }
-  } else {
-    // do geopluign lookup ()
-  }
-  return $result;
+  $service_area =  do_equips_location('service_area');
+  return ($service_area) ?
+    iterate_service_area( explode( ',', $service_area) ) : $fallback;
 }
 
 function eq_shortcode_handler_region() {
   $eq_geo_options = get_option('equips_geo');
-  $result = ($eq_geo_options['region']) ?
+  $fallback = ($eq_geo_options['region']) ?
     ($eq_geo_options['region']) : '';
-  if (get_query_var('location', false)) {
-    $raw_query = get_query_var('location', false);
-    $stripped_query = strip_tags($raw_query);
-    if (is_numeric($stripped_query)) {
-      $loc_data = eq_locale_lookup($stripped_query);
-      if ($loc_data) {
-        $result = ($loc_data['branch_region']) ?
-          $loc_data['branch_region'] : $result;
-      }
-    }
-  } else {
-    // do geopluign lookup ()
-  }
-  return $result;
+  $region = do_equips_location('region');
+  return ($region) ? $region : $fallback;
 }
 
 function eq_shortcode_handler_locale() {
   $eq_geo_options = get_option('equips_geo');
-  $result = ($eq_geo_options['locale']) ?
+  $fallback = ($eq_geo_options['locale']) ?
     ($eq_geo_options['locale']) : '';
-  if (get_query_var('location', false)) {
-    $raw_query = get_query_var('location', false);
-    $stripped_query = strip_tags($raw_query);
-    if (is_numeric($stripped_query)) {
-      $loc_data = eq_locale_lookup($stripped_query);
-      if ($loc_data) {
-        $result = ($loc_data['geo_title']) ?
-          $loc_data['geo_title'] : $result;
-      }
-    }
-  } else {
-    // do geopluign lookup ()
-  }
-  return $result;
+  $locale = do_equips_location('geo_title');
+  return ($locale) ? $locale : $fallback;
 }
 
 // end GEOBLOCK SERVICE AREA

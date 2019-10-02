@@ -1,10 +1,11 @@
-ADD THIS LINE TO wp-config.php DURING INSTALLATION:
+ADD THESE LINES TO wp-config.php DURING INSTALLATION:
 
+define( 'WP_MEMORY_LIMIT', '256M' );
 set_time_limit(300);
 
-//NOTE: RE: security - this plugin is currently only configured to lookup locations
-//see lines 132 - 145 of equips.php
-//$stripped_query requires further validation before being injected into text content
+NOTE: RE: security - this plugin is currently only configured to lookup locations
+see lines 144 - 150 of equips.php
+$stripped_query requires further validation before being injected into text content
 
 ===============
 HOW YOU DO THIS
@@ -44,10 +45,10 @@ Add validation logic for each type of url parameter!
   lookup-by-number fails.
 
 2)
-Add shortcode options page for custom geoblock settings!
+Add shortcode options page for custom geoblock settings--DONE!
 
 3)
-Upgrade global namespace use to OOP protocol.IN PROGRESS!
+Upgrade global namespace use to OOP protocol--IN PROGRESS!
 
 4)
 --need a solution to redundant incrementing shortcode handler functions with hard-coded
