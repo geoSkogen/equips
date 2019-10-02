@@ -180,7 +180,7 @@ function eq_shortcode_handler_region() {
   $eq_geo_options = get_option('equips_geo');
   $fallback = ($eq_geo_options['region']) ?
     ($eq_geo_options['region']) : '';
-  $region = do_equips_location('region');
+  $region = do_equips_location('branch_region');
   return ($region) ? $region : $fallback;
 }
 
