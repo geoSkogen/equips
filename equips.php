@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name:  equips
+Plugin Name:  equips_1
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.10.1
+Version:      2019.10.2
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -14,33 +14,43 @@ $eq_store = array(
   'params' => array()
 );
 
-// Activation - instantiate & populate database
+//Locale lookup
 
-function eq_import_csv($filename,$table_type) {
+function import_csv_geo($filename) {
   $subdir = "resources";
-  $result = [];
+  $result = array();
   $key = "";
   $valid_data = [];
   if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-      switch($table_type) {
-        case 'geo' :
-          $valid_data = array(
-            'criteria_id' => $data[0],
-            'city_name' => strval($data[1]),
-            'branch_name' => strval($data[3]),
-            'geo_title' => strval($data[4]),
-            'branch_region' => strval($data[5]),
-            'service_area' => strval($data[6])
-          );
-          array_push($result, $valid_data);
-          break;
-        case 'zip' :
-          $result[$data[0]] = $data[1];
-          break;
-        default :
-          error_log('unsupported table type for wp_eq_equips');
-          return false;
+      $valid_data = [];
+      for ($i = 0; $i < count($data); $i++) {
+        switch ($i) {
+          case 0:
+            $key = strval($data[$i]);
+            break;
+          case 1:
+            $valid_data['city_name'] = strval($data[$i]);
+            break;
+          case 2:
+            $valid_data['country_code'] = strval($data[$i]);
+            break;
+          case 3:
+            $valid_data['branch_name'] = strval($data[$i]);
+            break;
+          case 4:
+            $valid_data['geo_title'] = strval($data[$i]);
+            break;
+          case 5:
+            $valid_data['branch_region'] = strval($data[$i]);
+            break;
+          case 6:
+            $valid_data['service_area'] = explode(",",$data[$i]);
+            break;
+        }
+        if ($i === count($data)-1) {
+          $result[$key] = $valid_data;
+        }
       }
     }
     fclose($handle);
@@ -51,52 +61,18 @@ function eq_import_csv($filename,$table_type) {
   }
 }
 
-function eq_activate_db () {
-  global $wpdb;
-
-  $table_rows = array();
-  $import_filename = "geo4";
-  $table_name = $wpdb->prefix . "eq_equips";
-  $charset_collate = $wpdb->get_charset_collate();
-
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    criteria_id int(7) NOT NULL,
-    city_name text NOT NULL,
-    branch_name text NOT NULL,
-    geo_title text NOT NULL,
-    branch_region text NOT NULL,
-    service_area varchar(255) DEFAULT '' NOT NULL,
-    PRIMARY KEY  (id)
-    ) $charset_collate;";
-  $test_query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $table_name ) );
-  if ( $wpdb->get_var( $test_query ) == $table_name ) {
-    error_log('db table: ' . $table_name . ' is already associated with this install');
-  } else {
-    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-    dbDelta( $sql );
-    error_log('created new db table: ' . $table_name . ' for this install');
-    $table_rows = eq_import_csv($import_filename, 'geo');
-    if ($table_rows) {
-      foreach($table_rows as $row) {
-        $wpdb->insert($table_name, $row);
-      }
-      error_log('added ' . strval(count($table_rows)) . ' rows to db table : ' . $table_name . ' - for this install');
-    }
-  }
-}
-
-register_activation_hook( __FILE__, 'eq_activate_db' );
-
 function eq_locale_lookup($num_arg) {
-  global $wpdb;
   $result = "";
-  $table_name = $wpdb->prefix . "eq_equips";
-  $result = $wpdb->get_row(
-    "SELECT * FROM wp_eq_equips WHERE criteria_id = " . $num_arg,
-    ARRAY_A
-  );
-  return ($result) ?  $result : '';
+  $eq_locales = import_csv_geo('geo4');
+  if (count($eq_locales[$num_arg])) {
+    $result = array(
+      'city_name' => $eq_locales[$num_arg]['city_name'],
+      'geo_title' => $eq_locales[$num_arg]['geo_title'],
+      'branch_region' => $eq_locales[$num_arg]['branch_region'],
+      'service_area' => $eq_locales[$num_arg]['service_area']
+    );
+  }
+  return $result;
 }
 
 //Admin
@@ -173,7 +149,7 @@ function eq_shortcode_handler_service_area() {
     ($eq_geo_options['service_area']) : '';
   $service_area =  do_equips_location('service_area');
   return ($service_area) ?
-    iterate_service_area( explode( ',', $service_area) ) : $fallback;
+    iterate_service_area( $service_area ) : $fallback;
 }
 
 function eq_shortcode_handler_region() {
