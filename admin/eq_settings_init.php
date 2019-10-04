@@ -9,6 +9,8 @@ class Equips_Settings_Init {
     "fallback"
   );
   public static $geo_label_toggle = array(
+    "phone",
+    "phone_shortcode",
     "locale",
     "locale_shortcode",
     "region",

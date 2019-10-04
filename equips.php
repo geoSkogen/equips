@@ -31,7 +31,10 @@ function import_csv_geo($filename, $num_arg) {
         $valid_data['branch_name'] = strval($data[3]);
         $valid_data['geo_title'] = strval($data[4]);
         $valid_data['branch_region'] = strval($data[5]);
+        $valid_data['branch_phone'] = '0987654321';
         $valid_data['service_area'] = explode(",",$data[6]);
+        //$valid_data['branch_phone'] = strval($data[6]);
+        //$valid_data['service_area'] = explode(",",$data[7]);
         break;
       }
     }
@@ -142,6 +145,41 @@ function eq_shortcode_handler_locale() {
   return ($locale) ? $locale : $fallback;
 }
 
+function eq_shortcode_handler_phone( $atts = array() ) {
+
+  function strip_phone_chars ($str) {
+    $result = $str;
+    return $result;
+  }
+
+  $eq_geo_options = get_option('equips_geo');
+  //NOTE:recommend ultimate fallback phone number here in place of ''
+  $fallback = ($eq_geo_options['phone']) ?
+    ($eq_geo_options['phone']) : '';
+  $phone = do_equips_location('branch_phone');
+  $phone = ($phone) ? $phone : $fallback;
+  $href = strip_phone_chars($phone);
+  $icon = $phone;
+
+  extract(shortcode_atts(array(
+     'class' => '',
+     'icon' => ''
+    ), $atts));
+
+  if ($atts) {
+    $icon = ($atts['icon']) ?
+      '<i class="fa fa-phone" aria-hidden="true">' . $phone . '</i>' :
+      $icon;
+    $class = ($atts['class']) ?
+        $atts['class'] : 'no_class';
+  } else {
+    $icon = $phone;
+    $class = 'no_class';
+  }
+
+return "<a class='$class' href='tel:+1" . $href . "' >$icon</a>";
+}
+
 // end GEOBLOCK SERVICE AREA
 
 //-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
@@ -185,6 +223,12 @@ function equips_triage() {
     );
     //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
   }
+  if ($eq_geo_options['phone_shortcode']) {
+    add_shortcode(
+      $eq_geo_options['phone_shortcode'], 'eq_shortcode_handler_phone'
+    );
+  }
+
   if ($eq_geo_options['locale_shortcode']) {
     add_shortcode(
       $eq_geo_options['locale_shortcode'], 'eq_shortcode_handler_locale'
