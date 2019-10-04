@@ -16,7 +16,7 @@ $eq_store = array(
 
 //Locale lookup
 
-function import_csv_geo($filename) {
+function import_csv_geo($filename, $num_arg) {
   $subdir = "resources";
   $result = array();
   $key = "";
@@ -24,37 +24,19 @@ function import_csv_geo($filename) {
   if (($handle = fopen(__DIR__ . "/" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       $valid_data = [];
-      for ($i = 0; $i < count($data); $i++) {
-        switch ($i) {
-          case 0:
-            $key = strval($data[$i]);
-            break;
-          case 1:
-            $valid_data['city_name'] = strval($data[$i]);
-            break;
-          case 2:
-            $valid_data['country_code'] = strval($data[$i]);
-            break;
-          case 3:
-            $valid_data['branch_name'] = strval($data[$i]);
-            break;
-          case 4:
-            $valid_data['geo_title'] = strval($data[$i]);
-            break;
-          case 5:
-            $valid_data['branch_region'] = strval($data[$i]);
-            break;
-          case 6:
-            $valid_data['service_area'] = explode(",",$data[$i]);
-            break;
-        }
-        if ($i === count($data)-1) {
-          $result[$key] = $valid_data;
-        }
+      $key = strval($data[0]);
+      if ($key === $num_arg) {
+        $valid_data['city_name'] = strval($data[1]);
+        $valid_data['country_code'] = strval($data[2]);
+        $valid_data['branch_name'] = strval($data[3]);
+        $valid_data['geo_title'] = strval($data[4]);
+        $valid_data['branch_region'] = strval($data[5]);
+        $valid_data['service_area'] = explode(",",$data[6]);
+        break;
       }
     }
     fclose($handle);
-    return $result;
+    return $valid_data;
   } else {
     error_log('could not open file');
     return false;
@@ -63,15 +45,8 @@ function import_csv_geo($filename) {
 
 function eq_locale_lookup($num_arg) {
   $result = "";
-  $eq_locales = import_csv_geo('geo4');
-  if (count($eq_locales[$num_arg])) {
-    $result = array(
-      'city_name' => $eq_locales[$num_arg]['city_name'],
-      'geo_title' => $eq_locales[$num_arg]['geo_title'],
-      'branch_region' => $eq_locales[$num_arg]['branch_region'],
-      'service_area' => $eq_locales[$num_arg]['service_area']
-    );
-  }
+  $eq_locales = import_csv_geo('geo4', $num_arg);
+  $result = ($eq_locales) ? $eq_locales : $result;
   return $result;
 }
 
@@ -101,8 +76,7 @@ function do_equips_location($db_slug) {
     if (is_numeric($stripped_query)) {
       $loc_data = eq_locale_lookup($stripped_query);
       if ($loc_data) {
-        $result = ($loc_data[$db_slug]) ?
-          $loc_data[$db_slug] : $result;
+        $result = $loc_data[$db_slug];
       }
     }
   } else {
