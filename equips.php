@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips_1
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.10.4
+Version:      2019.10.7
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -31,10 +31,8 @@ function import_csv_geo($filename, $num_arg) {
         $valid_data['branch_name'] = strval($data[3]);
         $valid_data['geo_title'] = strval($data[4]);
         $valid_data['branch_region'] = strval($data[5]);
-        $valid_data['branch_phone'] = '0987654321';
-        $valid_data['service_area'] = explode(",",$data[6]);
-        //$valid_data['branch_phone'] = strval($data[6]);
-        //$valid_data['service_area'] = explode(",",$data[7]);
+        $valid_data['branch_phone'] = strval($data[6]);
+        $valid_data['service_area'] = explode(",",$data[7]);
         break;
       }
     }
@@ -48,7 +46,7 @@ function import_csv_geo($filename, $num_arg) {
 
 function eq_locale_lookup($num_arg) {
   $result = "";
-  $eq_locales = import_csv_geo('geo4', $num_arg);
+  $eq_locales = import_csv_geo('geo5', $num_arg);
   $result = ($eq_locales) ? $eq_locales : $result;
   return $result;
 }
@@ -154,7 +152,7 @@ function eq_shortcode_handler_phone( $atts = array() ) {
   $phone = do_equips_location('branch_phone');
   $phone = ($phone) ? $phone : $fallback;
   $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
-  $icon = $phone;
+  $icon = '';
 
   extract(shortcode_atts(array(
      'class' => '',
@@ -163,16 +161,21 @@ function eq_shortcode_handler_phone( $atts = array() ) {
 
   if ($atts) {
     $icon = ($atts['icon']) ?
-      '<i class="fa fa-phone" aria-hidden="true">' . $phone . '</i>' :
+      '<i class="fa fa-phone" aria-hidden="true"></i>' :
       $icon;
     $class = ($atts['class']) ?
         $atts['class'] : 'no_class';
   } else {
-    $icon = $phone;
+    $icon = '';
     $class = 'no_class';
   }
 
-return "<a class='$class' href='tel:+1" . $href . "' >$icon</a>";
+  add_action( 'wp_footer' , function () use ($href, $phone) {
+    echo "<div id='sticky-bar'><p><a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'><i class='fa fa-phone' aria-hidden='true'></i> $phone </span><span class='sb-deal-text'>$50 OFF for new customers*</span></a></p></div>";
+  });
+
+
+return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
 }
 
 // end GEOBLOCK SERVICE AREA
