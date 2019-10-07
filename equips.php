@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips_1
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.10.2
+Version:      2019.10.4
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -147,18 +147,13 @@ function eq_shortcode_handler_locale() {
 
 function eq_shortcode_handler_phone( $atts = array() ) {
 
-  function strip_phone_chars ($str) {
-    $result = $str;
-    return $result;
-  }
-
   $eq_geo_options = get_option('equips_geo');
   //NOTE:recommend ultimate fallback phone number here in place of ''
   $fallback = ($eq_geo_options['phone']) ?
     ($eq_geo_options['phone']) : '';
   $phone = do_equips_location('branch_phone');
   $phone = ($phone) ? $phone : $fallback;
-  $href = strip_phone_chars($phone);
+  $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
   $icon = $phone;
 
   extract(shortcode_atts(array(
