@@ -29,7 +29,10 @@ how you're using them in the text.
 Example--
 Param 2 : location,
 Shortcode 2 : eq_city,
-Fallback 1 : left (not set) --or-- left blank
+Fallback 1 : you
+
+Example:
+Verminators of [eq_location] have been keeping [eq_city] vermin-free since 1936.
 
 To Edit:
 --Simply change the form fields and re-submit the form
@@ -51,6 +54,9 @@ Add shortcode options page for custom geoblock settings--DONE!
 Upgrade global namespace use to OOP protocol--IN PROGRESS!
 
 4)
+Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
+
+5)
 --need a solution to redundant incrementing shortcode handler functions with hard-coded
 data. The shortcode handler function is called by a string argument to
 add_shortcode('shortcode', 'handler'), but it does not accept an argument itself;
@@ -64,6 +70,6 @@ being injected into the arguments to add_shortcode(), then the result is a handl
 that doesn't know its own shortcode, because it's being invoked outside of the
 procedure that created it.
 
-5)
+6)
 Flexible form with as many entry fields as the user requires - depends on resolution
 of issues 1 & 2.
