@@ -192,6 +192,35 @@ function eq_shortcode_handler_locale() {
   return ($locale) ? $locale : $fallback;
 }
 
+function eq_shortcode_handler_phone( $atts = array() ) {
+  $eq_geo_options = get_option('equips_geo');
+  //NOTE:recommend ultimate fallback phone number here in place of ''
+  $fallback = ($eq_geo_options['phone']) ?
+    ($eq_geo_options['phone']) : '';
+  $phone = do_equips_location('branch_phone');
+  $phone = ($phone) ? $phone : $fallback;
+  $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
+  $icon = '';
+  extract(shortcode_atts(array(
+     'class' => '',
+     'icon' => ''
+    ), $atts));
+  if ($atts) {
+    $icon = ($atts['icon']) ?
+      '<i class="fa fa-phone" aria-hidden="true"></i>' :
+      $icon;
+    $class = ($atts['class']) ?
+        $atts['class'] : 'no_class';
+  } else {
+    $icon = '';
+    $class = 'no_class';
+  }
+  add_action( 'wp_footer' , function () use ($href, $phone) {
+    echo "<div id='sticky-bar'><p><a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'><i class='fa fa-phone' aria-hidden='true'></i> $phone </span><span class='sb-deal-text'>$50 OFF for new customers*</span></a></p></div>";
+  });
+return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
+}
+
 // end GEOBLOCK SERVICE AREA
 
 //-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
@@ -234,6 +263,11 @@ function equips_triage() {
       $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key
     );
     //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
+  }
+  if ($eq_geo_options['phone_shortcode']) {
+    add_shortcode(
+      $eq_geo_options['phone_shortcode'], 'eq_shortcode_handler_phone'
+    );
   }
   if ($eq_geo_options['locale_shortcode']) {
     add_shortcode(
