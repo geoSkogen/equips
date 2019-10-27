@@ -14,6 +14,15 @@ class Equips_Options_Init {
       );
 
       add_submenu_page(
+       'equips',                         //parent menu
+       'equips images',                // Page Title
+       'equips images',               // Menu Title
+       'manage_options',             // for Capabilities level of user with:
+       'equips_images',             // menu Slug(page)
+       array('Equips_Options_Init','equips_images_page')       // CB Function plugin_options_page()
+   );
+
+      add_submenu_page(
         'equips',                         //parent menu
         'equips geo',                // Page Title
         'equips geo',               // Menu Title
@@ -45,8 +54,27 @@ class Equips_Options_Init {
     <?php
   }
 
+  static function equips_images_page() {
+  ?>
+  <div class='form-wrap'>
+    <h2>equips - images</h2>
+    <form method='post' action='options.php' id='equips-images-form'>
+      <?php
+      settings_fields( 'equips_images' );
+      do_settings_sections( 'equips_images' );
+      ?>
+      <div class='inivs-div' style="display:none;">
+        <input class='invis-input' id='drop_field' name=equips_images[drop] type='text'/>
+      </div>
+      <p class='submit'>
+        <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+      </p>
+    </form>
+  </div>
+  <?php
+  }
+
   static function cb_equips_geo_page() {
-  global $eq_field_count;
   ?>
   <div class='form-wrap'>
     <h2>equips - geo</h2>
