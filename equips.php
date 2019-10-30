@@ -115,6 +115,9 @@ if ( !class_exists( 'Equips_Settings_Init' ) ) {
      array('Equips_Settings_Init','settings_api_init')
    );
 }
+if ( !class_exists( 'RankSchema' ) ) {
+   include_once 'rank_schema.php';
+}
 //Procedure - shortcode-URL-param association
 
 function do_equips_location($db_slug) {
@@ -137,10 +140,10 @@ function do_equips_location($db_slug) {
 
 function do_equips_image($num_str, $fb_filepath, $str) {
   $result = '';
-  $eq_images = get_option('equips_images');
-  $best_match_index = RankSchema::testForBestMatch($str, $num_str, $eq_images, '$img');
+  $eq_img_options = get_option('equips_images');
+  $best_match_index = RankSchema::testForBestMatch($str, $num_str, $eq_img_options, 'img');
   $found_file = ($best_match_index) ?
-    $img_options['img_assoc_path_' .  $num_str . "_" . strval($best_match_index)] :
+    $eq_img_options['img_assoc_path_' .  $num_str . "_" . strval($best_match_index)] :
     $fb_filepath;
   $result = "<img src='{$found_file}' style='' />";
   return $result;
@@ -164,14 +167,14 @@ function do_equips($num_str) {
         $result = get_query_var($eq_options['param_' . $num_str], false);
         break;
     }
-    //FORMAT
-    switch ($eq_options['format_' . $num_str]) {
-      case 'img' :
-        $fb_filepath = ($eq_options['img_fb_path_' . $num_str]) ?
-          $eq_options['img_fb_path_' . $num_str] : $fallback;
-        $result = do_equips_image($num_str, $fb_filepath, $result);
-        break;
-    }
+  }
+  //FORMAT
+  switch ($eq_options['format_' . $num_str]) {
+    case 'img' :
+      $fb_filepath = ($eq_options['img_fb_path_' . $num_str]) ?
+        $eq_options['img_fb_path_' . $num_str] : $fallback;
+      $result = do_equips_image($num_str, $fb_filepath, $result);
+      break;
   }
   return $result;
 }

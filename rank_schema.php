@@ -43,7 +43,8 @@ class RankSchema {
   public static function testForBestMatch ($stripped_query, $num_str, $field_options, $field_type) {
       $best_match_index = 0;
       $exact_match = false;
-      $count = $field_options[$field_type . '_assoc_count_' . $num_str];
+      $field_key = $field_type . '_assoc_count_' . $num_str;
+      $count = $field_options[$field_key];
       $match_string = trim(preg_replace('/\s\s+/',' ', $stripped_query));
       $match_arr = explode(" ", $match_string);
       if ($count) {
