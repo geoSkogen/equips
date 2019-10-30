@@ -109,8 +109,12 @@ class Equips_Settings_Init {
     $this_label = ucwords($field_name) . " " . strval(self::$current_field_index);
     $this_index = self::$current_field_index;
     $path_name = "img_fb_path_" . $this_index;
-    $this_path = ( "" != ($options[$path_name]) ) ? $options[$path_name] : "";
-    $placeholder = ("" != ($options[$this_field]) ) ? $options[$this_field] : "(not set)";
+    $this_path =
+      (isset($options[$path_name]) && "" != ($options[$path_name]) ) ?
+        $options[$path_name] : "";
+    $placeholder =
+      (isset($options[$this_field]) && "" != ($options[$this_field]) ) ?
+        $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     //reset globals - toggle label and increment pairing series as needed
     self::$eq_label_toggle_index += (self::$eq_label_toggle_index < sizeof(self::$eq_label_toggle)-1) ? 1 : -(sizeof(self::$eq_label_toggle)-1);
@@ -291,8 +295,11 @@ static function cb_equips_images_section() {
     } else {
       error_log("drop=false");
     }
+    wp_enqueue_media();
+    wp_register_script( 'equips-wp-media', plugins_url('../js/equips-wp-media.js', __FILE__), array('jquery') );
     wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . '../js/equips-unset-all.js');
     wp_enqueue_script('equips-select-submit', plugin_dir_url(__FILE__) . '../js/equips-select-submit.js');
+    wp_enqueue_script( 'equips-wp-media' );
     ?>
     <hr/>
     <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">

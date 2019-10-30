@@ -135,21 +135,45 @@ function do_equips_location($db_slug) {
   return $result;
 }
 
+function do_equips_image($num_str, $fb_filepath, $str) {
+  $result = '';
+  $eq_images = get_option('equips_images');
+  $best_match_index = RankSchema::testForBestMatch($str, $num_str, $eq_images, '$img');
+  $found_file = ($best_match_index) ?
+    $img_options['img_assoc_path_' .  $num_str . "_" . strval($best_match_index)] :
+    $fb_filepath;
+  $result = "<img src='{$found_file}' style='' />";
+  return $result;
+}
+
 function do_equips($num_str) {
   $eq_options = get_option('equips');
-  $fallback = ($eq_options['fallback_' . $num_str]) ?
+  $fallback =
+  ($eq_options['fallback_' . $num_str]) ?
     $eq_options['fallback_' . $num_str] : '';
-  $result = '';
-  //NOTE: RE: security - this plugin is currently only configured to lookup locations
-  //$stripped_query requires further validation before being injected into text content
+  $result = $fallback;
+
   if (get_query_var($eq_options['param_' . $num_str], false)) {
+    //NOTE: RE: security - this plugin is currently only configured to lookup locations
+    //$stripped_query requires further validation before being injected into text content
     switch ($eq_options['param_' . $num_str]) {
       case 'location' :
         $result = do_equips_location('city_name');
         break;
+      case 'keywords' :
+        $result = get_query_var($eq_options['param_' . $num_str], false);
+        break;
+    }
+    //FORMAT
+    switch ($eq_options['format_' . $num_str]) {
+      case 'img' :
+        $fb_filepath = ($eq_options['img_fb_path_' . $num_str]) ?
+          $eq_options['img_fb_path_' . $num_str] : $fallback;
+        $result = do_equips_image($num_str, $fb_filepath, $result);
+        break;
     }
   }
-  return ($result) ? $result : $fallback;
+  return $result;
 }
 
 // begin GEOBLOCK SERVICE AREA
@@ -216,6 +240,7 @@ function eq_shortcode_handler_phone( $atts = array() ) {
     $class = 'no_class';
   }
   add_action( 'wp_footer' , function () use ($href, $phone) {
+    //factor this gack out into its own function with injectable string args
     echo "<div id='sticky-bar'><p><a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'><i class='fa fa-phone' aria-hidden='true'></i> $phone </span><span class='sb-deal-text'>$50 OFF for new customers*</span></a></p></div>";
   });
 return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
