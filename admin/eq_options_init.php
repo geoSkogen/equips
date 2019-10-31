@@ -20,7 +20,16 @@ class Equips_Options_Init {
        'manage_options',             // for Capabilities level of user with:
        'equips_images',             // menu Slug(page)
        array('Equips_Options_Init','equips_images_page')       // CB Function plugin_options_page()
-   );
+      );
+
+      add_submenu_page(
+       'equips',                         //parent menu
+       'equips image styles',                // Page Title
+       'equips image styles',               // Menu Title
+       'manage_options',             // for Capabilities level of user with:
+       'equips_image_styles',             // menu Slug(page)
+       array('Equips_Options_Init','equips_image_styles_page')       // CB Function plugin_options_page()
+      );
 
       add_submenu_page(
         'equips',                         //parent menu
@@ -65,6 +74,26 @@ class Equips_Options_Init {
       ?>
       <div class='inivs-div' style="display:none;">
         <input class='invis-input' id='drop_field' name=equips_images[drop] type='text'/>
+      </div>
+      <p class='submit'>
+        <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+      </p>
+    </form>
+  </div>
+  <?php
+  }
+
+  static function equips_image_styles_page() {
+  ?>
+  <div class='form-wrap'>
+    <h2>equips - image styles</h2>
+    <form method='post' action='options.php' id='equips-image-styles-form'>
+      <?php
+      settings_fields( 'equips_image_styles' );
+      do_settings_sections( 'equips_image_styles' );
+      ?>
+      <div class='inivs-div' style="display:none;">
+        <input class='invis-input' id='drop_field' name=equips_image_styles[drop] type='text'/>
       </div>
       <p class='submit'>
         <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />

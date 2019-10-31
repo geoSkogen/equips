@@ -74,6 +74,8 @@ schema is a three dimensional array of 1) associative images' index numbers and
                 if ($clean_scheme === $match_string) {
                   $result = $iterator;
                   $exact_match = true;
+                  error_log('exact match');
+                  $best_match_index = $index;
                 } else {
                   $this_query = explode(" ", $clean_scheme);
                   $this_scheme[] = $this_query;

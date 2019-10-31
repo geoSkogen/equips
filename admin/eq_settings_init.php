@@ -22,6 +22,7 @@ class Equips_Settings_Init {
   public static $current_field_index = 0;
   public static $eq_label_toggle_index = 0;
   public static $eq_current_img_index = 0;
+  public static $eq_current_img_style_index = 0;
   public static $geo_label_toggle_index = 0;
 
   public static function settings_api_init() {
@@ -33,24 +34,34 @@ class Equips_Settings_Init {
     );
 
     add_settings_section(
-    'equips_images',                         //uniqueID
-    'Associate Keywords with Images',        //Title
-    array('Equips_Settings_Init','cb_equips_images_section'),             //CallBack Function
-    'equips_images'                         //page-slug
-  );
+      'equips_images',                         //uniqueID
+      'Associate Keywords with Images',        //Title
+      array('Equips_Settings_Init','cb_equips_images_section'),             //CallBack Function
+      'equips_images'                         //page-slug
+    );
 
     add_settings_section(
-    'equips_geo',                         //uniqueID
-    'Assign Fallback Values To geo Text',        //Title
-    array('Equips_Settings_Init','cb_equips_geo_section'),//CallBack Function
-    'equips_geo'                         //page-slug
-  );
+      'equips_image_styles',                         //uniqueID
+      'Associate Style Rules with Images',        //Title
+      array('Equips_Settings_Init','cb_equips_image_styles_section'),             //CallBack Function
+      'equips_image_styles'                         //page-slug
+    );
+
+    add_settings_section(
+      'equips_geo',                         //uniqueID
+      'Assign Fallback Values To geo Text',        //Title
+      array('Equips_Settings_Init','cb_equips_geo_section'),//CallBack Function
+      'equips_geo'                         //page-slug
+    );
 
     for ($i = 1; $i < self::$field_count + 1; $i++) {
       self::$current_field_index = $i;
       self::$eq_current_img_index = $i;
+      self::$eq_current_img_style_index = $i;
       $eq_images_field = "image_" . strval(self::$eq_current_img_index);
       $eq_images_label = "Image " . strval(self::$eq_current_img_index);
+      $eq_image_styles_field = "image_style_" . strval(self::$eq_current_img_style_index);
+      $eq_image_styles_label = "Image " . strval(self::$eq_current_img_style_index) . " Styles";
       for ($ii = 0; $ii < count(self::$eq_label_toggle); $ii++) {
         $field_name = self::$eq_label_toggle[$ii];
         $this_field = $field_name . "_" . strval(self::$current_field_index);
@@ -72,9 +83,18 @@ class Equips_Settings_Init {
         'equips_images',
         'equips_images'
       );
+
+      add_settings_field(
+        $eq_image_styles_field,
+        $eq_image_styles_label,
+        array('Equips_Settings_Init','cb_equips_image_styles_field'),
+        'equips_image_styles',
+        'equips_image_styles'
+      );
     }
     self::$current_field_index = 1;
     self::$eq_current_img_index = 1;
+    self::$eq_current_img_style_index = 1;
 
     for ($iii = 0; $iii < count(self::$geo_label_toggle); $iii++) {
       $geo_field_name = self::$geo_label_toggle[$iii];
@@ -92,6 +112,7 @@ class Equips_Settings_Init {
 
     register_setting( 'equips', 'equips' );
     register_setting( 'equips_images', 'equips_images' );
+    register_setting( 'equips_image_styles', 'equips_image_styles' );
     register_setting( 'equips_geo', 'equips_geo' );
   }
 
@@ -210,6 +231,9 @@ if ($img_assoc_count) {
   $elm_arr .= "</div>";
   echo $elm_arr;
 }
+  static function cb_equips_image_styles_field() {
+    echo "<textarea></textarea>";
+  }
 
   static function cb_equips_geo_field() {
     $options = get_option('equips_geo');
@@ -238,6 +262,27 @@ if ($img_assoc_count) {
     if ($dropped === "TRUE") {
       error_log('got drop');
       delete_option('equips_geo');
+    } else {
+      error_log("drop=false");
+    }
+    wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . '../js/equips-unset-all.js');
+    ?>
+    <hr/>
+    <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
+      <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+      <button id='drop_button' class='button-primary' style='border:1.5px solid red;'>
+        <?php _e("Delete All") ?>
+      </button>
+    </div>
+    <?php
+  }
+
+  static function cb_equips_image_styles_section() {
+    $options = get_option('equips_image_styles');
+    $dropped = $options['drop'];
+    if ($dropped === "TRUE") {
+      error_log('got drop');
+      delete_option('equips_image_styles');
     } else {
       error_log("drop=false");
     }
