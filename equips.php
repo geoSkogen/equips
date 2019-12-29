@@ -46,7 +46,7 @@ function import_csv_geo($filename, $num_arg) {
 
 function eq_locale_lookup($num_arg) {
   $result = "";
-  $eq_locales = import_csv_geo('geo5', $num_arg);
+  $eq_locales = import_csv_geo('geo6.1', $num_arg);
   $result = ($eq_locales) ? $eq_locales : $result;
   return $result;
 }
@@ -153,6 +153,8 @@ function eq_shortcode_handler_phone( $atts = array() ) {
   $phone = ($phone) ? $phone : $fallback;
   $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
   $icon = '';
+  $phone_bar_text = ($eq_geo_options['phone_bar_text']) ?
+    ($eq_geo_options['phone_bar_text']) : '';
 
   extract(shortcode_atts(array(
      'class' => '',
@@ -169,10 +171,15 @@ function eq_shortcode_handler_phone( $atts = array() ) {
     $icon = '';
     $class = 'no_class';
   }
-
-  add_action( 'wp_footer' , function () use ($href, $phone) {
-    echo "<div id='sticky-bar'><p><a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'><i class='fa fa-phone' aria-hidden='true'></i> $phone </span><span class='sb-deal-text'>$50 OFF for new customers*</span></a></p></div>";
-  });
+  if ($eq_geo_options['include_phone_bar'] === 'include') {
+    add_action( 'wp_footer' , function () use ($href, $phone, $phone_bar_text) {
+      $result = "<div id='sticky-bar'><p>";
+      $result .= "<a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'>";
+      $result .= "<i class='fa fa-phone' aria-hidden='true'></i> $phone </span>";
+      $result .= "<span class='sb-deal-text'>$phone_bar_text</span></a></p></div>";
+      echo $result;
+    });
+  }
 
 
 return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
