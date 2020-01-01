@@ -47,7 +47,7 @@ function import_csv_geo($filename, $num_arg) {
 function eq_locale_lookup($num_arg) {
   $result = "";
   $eq_locales = import_csv_geo('geo6.1', $num_arg);
-  $result = ($eq_locales) ? $eq_locales : $result;
+  $result = $eq_locales ? : $result;
   return $result;
 }
 
@@ -88,8 +88,7 @@ function do_equips_location($db_slug) {
 
 function do_equips($num_str) {
   $eq_options = get_option('equips');
-  $fallback = ($eq_options['fallback_' . $num_str]) ?
-    $eq_options['fallback_' . $num_str] : '';
+  $fallback = $eq_options['fallback_' . $num_str] ? : '';
   $result = '';
   //NOTE: RE: security - this plugin is currently only configured to lookup locations
   //$stripped_query requires further validation before being injected into text content
@@ -100,7 +99,7 @@ function do_equips($num_str) {
         break;
     }
   }
-  return ($result) ? $result : $fallback;
+  return $result ? : $fallback;
 }
 
 // begin GEOBLOCK SERVICE AREA
@@ -120,8 +119,7 @@ function iterate_service_area($name_arr) {
 
 function eq_shortcode_handler_service_area() {
   $eq_geo_options = get_option('equips_geo');
-  $fallback = ($eq_geo_options['service_area']) ?
-    ($eq_geo_options['service_area']) : '';
+  $fallback = $eq_geo_options['service_area'] ? : '';
   $service_area =  do_equips_location('service_area');
   return ($service_area) ?
     iterate_service_area( $service_area ) : $fallback;
@@ -129,32 +127,28 @@ function eq_shortcode_handler_service_area() {
 
 function eq_shortcode_handler_region() {
   $eq_geo_options = get_option('equips_geo');
-  $fallback = ($eq_geo_options['region']) ?
-    ($eq_geo_options['region']) : '';
+  $fallback = $eq_geo_options['region'] ? : '';
   $region = do_equips_location('branch_region');
   return ($region) ? $region : $fallback;
 }
 
 function eq_shortcode_handler_locale() {
   $eq_geo_options = get_option('equips_geo');
-  $fallback = ($eq_geo_options['locale']) ?
-    ($eq_geo_options['locale']) : '';
+  $fallback = $eq_geo_options['locale'] ? : '';
   $locale = do_equips_location('geo_title');
-  return ($locale) ? $locale : $fallback;
+  return $locale ? : $fallback;
 }
 
 function eq_shortcode_handler_phone( $atts = array() ) {
 
   $eq_geo_options = get_option('equips_geo');
   //NOTE:recommend ultimate fallback phone number here in place of ''
-  $fallback = ($eq_geo_options['phone']) ?
-    ($eq_geo_options['phone']) : '';
+  $fallback = $eq_geo_options['phone'] ? : '';
   $phone = do_equips_location('branch_phone');
-  $phone = ($phone) ? $phone : $fallback;
+  $phone = $phone ? : $fallback;
   $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
   $icon = '';
-  $phone_bar_text = ($eq_geo_options['phone_bar_text']) ?
-    ($eq_geo_options['phone_bar_text']) : '';
+  $phone_bar_text = $eq_geo_options['phone_bar_text'] ? : '';
 
   extract(shortcode_atts(array(
      'class' => '',
@@ -165,8 +159,7 @@ function eq_shortcode_handler_phone( $atts = array() ) {
     $icon = ($atts['icon']) ?
       '<i class="fa fa-phone" aria-hidden="true"></i>' :
       $icon;
-    $class = ($atts['class']) ?
-        $atts['class'] : 'no_class';
+    $class = $atts['class'] ? : 'no_class';
   } else {
     $icon = '';
     $class = 'no_class';
