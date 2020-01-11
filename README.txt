@@ -4,7 +4,7 @@ define( 'WP_MEMORY_LIMIT', '256M' );
 set_time_limit(300);
 
 NOTE: RE: security - this plugin is currently only configured to lookup locations
-see lines 144 - 150 of equips.php
+
 $stripped_query requires further validation before being injected into text content
 
 ===============
@@ -29,7 +29,10 @@ how you're using them in the text.
 Example--
 Param 2 : location,
 Shortcode 2 : eq_city,
-Fallback 1 : left (not set) --or-- left blank
+Fallback 1 : you
+
+Example:
+Verminators of [eq_location] have been keeping [eq_city] vermin-free since 1936.
 
 To Edit:
 --Simply change the form fields and re-submit the form
@@ -48,22 +51,18 @@ Add validation logic for each type of url parameter!
 Add shortcode options page for custom geoblock settings--DONE!
 
 3)
-Upgrade global namespace use to OOP protocol--IN PROGRESS!
+Upgrade global namespace use to OOP protocol--MOSTLY DONE--eq_store is global
+
 
 4)
---need a solution to redundant incrementing shortcode handler functions with hard-coded
-data. The shortcode handler function is called by a string argument to
-add_shortcode('shortcode', 'handler'), but it does not accept an argument itself;
-an ordinary workaround is to write an anonymous function into the second argument to
-add_shortcode('shortcode' function () { .. etc ...}) assign a value to a variable outside the
-handler's scope and allow it to inherit the value -- but because the handler is
-a callback, that would be an even worse design, because there would be no guarantee
-that the value assigned when the caller function was called would persist until the
-callback function executed. If only a variable and an anonymous function are
-being injected into the arguments to add_shortcode(), then the result is a handler
-that doesn't know its own shortcode, because it's being invoked outside of the
-procedure that created it.
+Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
 
 5)
-Flexible form with as many entry fields as the user requires - depends on resolution
-of issues 1 & 2.
+Solve to redundant incrementing shortcode handler functions with hard-coded
+data--DONE!
+
+6)
+Flexible form with as many entry fields as the user requires!--NEXT
+
+7)
+Fix broken path to global database in multisite install environment.
