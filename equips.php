@@ -2,13 +2,15 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.10.1
+Version:      2020.01.10
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
 */
 defined( 'ABSPATH' ) or die( 'We make the path by walking.');
-//Global Namespace - update to OOP protocal in future versions
+
+//Global Namespace -
+
 $eq_store = array(
   'indices' => array(),
   'params' => array()
@@ -115,6 +117,7 @@ if ( !class_exists( 'Equips_Settings_Init' ) ) {
      array('Equips_Settings_Init','settings_api_init')
    );
 }
+
 //Procedure - shortcode-URL-param association
 
 function do_equips_location($db_slug) {
@@ -125,8 +128,7 @@ function do_equips_location($db_slug) {
     if (is_numeric($stripped_query)) {
       $loc_data = eq_locale_lookup($stripped_query);
       if ($loc_data) {
-        $result = ($loc_data[$db_slug]) ?
-          $loc_data[$db_slug] : $result;
+        $result = $loc_data[$db_slug];
       }
     }
   } else {
@@ -137,8 +139,7 @@ function do_equips_location($db_slug) {
 
 function do_equips($num_str) {
   $eq_options = get_option('equips');
-  $fallback = ($eq_options['fallback_' . $num_str]) ?
-    $eq_options['fallback_' . $num_str] : '';
+  $fallback = $eq_options['fallback_' . $num_str] ? : '';
   $result = '';
   //NOTE: RE: security - this plugin is currently only configured to lookup locations
   //$stripped_query requires further validation before being injected into text content
@@ -149,7 +150,7 @@ function do_equips($num_str) {
         break;
     }
   }
-  return ($result) ? $result : $fallback;
+  return $result ? : $fallback;
 }
 
 // begin GEOBLOCK SERVICE AREA
@@ -169,8 +170,7 @@ function iterate_service_area($name_arr) {
 
 function eq_shortcode_handler_service_area() {
   $eq_geo_options = get_option('equips_geo');
-  $fallback = ($eq_geo_options['service_area']) ?
-    ($eq_geo_options['service_area']) : '';
+  $fallback = $eq_geo_options['service_area'] ? : '';
   $service_area =  do_equips_location('service_area');
   return ($service_area) ?
     iterate_service_area( explode( ',', $service_area) ) : $fallback;
@@ -178,29 +178,28 @@ function eq_shortcode_handler_service_area() {
 
 function eq_shortcode_handler_region() {
   $eq_geo_options = get_option('equips_geo');
-  $fallback = ($eq_geo_options['region']) ?
-    ($eq_geo_options['region']) : '';
-  $region = do_equips_location('region');
-  return ($region) ? $region : $fallback;
+  $fallback = $eq_geo_options['region'] ? : '';
+  $region = do_equips_location('branch_region');
+  return $region ? : $fallback;
 }
 
 function eq_shortcode_handler_locale() {
   $eq_geo_options = get_option('equips_geo');
-  $fallback = ($eq_geo_options['locale']) ?
-    ($eq_geo_options['locale']) : '';
+  $fallback = $eq_geo_options['locale'] ? : '';
   $locale = do_equips_location('geo_title');
-  return ($locale) ? $locale : $fallback;
+  return $locale ? : $fallback;
 }
 
 function eq_shortcode_handler_phone( $atts = array() ) {
   $eq_geo_options = get_option('equips_geo');
   //NOTE:recommend ultimate fallback phone number here in place of ''
-  $fallback = ($eq_geo_options['phone']) ?
-    ($eq_geo_options['phone']) : '';
+  $fallback = $eq_geo_options['phone'] ? : '';
   $phone = do_equips_location('branch_phone');
-  $phone = ($phone) ? $phone : $fallback;
+  $phone = $phone ? : $fallback;
   $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
   $icon = '';
+  $phone_bar_text = $eq_geo_options['phone_bar_text'] ? : '';
+
   extract(shortcode_atts(array(
      'class' => '',
      'icon' => ''
@@ -209,42 +208,25 @@ function eq_shortcode_handler_phone( $atts = array() ) {
     $icon = ($atts['icon']) ?
       '<i class="fa fa-phone" aria-hidden="true"></i>' :
       $icon;
-    $class = ($atts['class']) ?
-        $atts['class'] : 'no_class';
+    $class = $atts['class'] ? : 'no_class';
   } else {
     $icon = '';
     $class = 'no_class';
   }
-  add_action( 'wp_footer' , function () use ($href, $phone) {
-    echo "<div id='sticky-bar'><p><a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'><i class='fa fa-phone' aria-hidden='true'></i> $phone </span><span class='sb-deal-text'>$50 OFF for new customers*</span></a></p></div>";
-  });
-return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
+  if ($eq_geo_options['include_phone_bar'] === 'include') {
+    add_action( 'wp_footer' , function () use ($href, $phone, $phone_bar_text) {
+      $result = "<div id='sticky-bar'><p>";
+      $result .= "<a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'>";
+      $result .= "<i class='fa fa-phone' aria-hidden='true'></i> $phone </span>";
+      $result .= "<span class='sb-deal-text'>$phone_bar_text</span></a></p></div>";
+      echo $result;
+    });
+  }
+  return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
 }
 
 // end GEOBLOCK SERVICE AREA
-
-//-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
-//-- see README.txt
-
-function eq_shortcode_handler_1() {
-  return do_equips('1');
-}
-
-function eq_shortcode_handler_2() {
-  return do_equips('2');
-}
-
-function eq_shortcode_handler_3() {
-  return do_equips('3');
-}
-
-function eq_shortcode_handler_4() {
-  return do_equips('4');
-}
-
-function eq_shortcode_handler_5() {
-  return do_equips('5');
-}
+// begin INIT - plugin baseline actions
 
 function equips_triage() {
   global $eq_store;
@@ -253,16 +235,13 @@ function equips_triage() {
   add_filter( 'query_vars', function ( $vars ) {
     global $eq_store;
     $vars = array_merge($vars, $eq_store['params']);
-    foreach ($vars as $var) {
-      //error_log("query var added: " . $var);
-    }
     return $vars;
   });
   foreach ($eq_store['indices'] as $store_key) {
     add_shortcode(
-      $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key
+      $eq_options['shortcode_' . $store_key],
+      function () use ($store_key) {  return do_equips($store_key); }
     );
-    //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
   }
   if ($eq_geo_options['phone_shortcode']) {
     add_shortcode(
@@ -291,22 +270,14 @@ function init_equips($counter) {
   global $eq_store;
   $eq_num_str = "";
   $eq_options = get_option('equips');
-  //$eq_geo_options = get_option('equips_geo');
-  //if ($eq_options) {
-    for ($i = 1; $i < $counter + 1; $i++) {
-      $eq_num_str = strval($i);
-      if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
-        $eq_store['indices'][] = $eq_num_str;
-        $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
-      }
+  for ($i = 1; $i < $counter + 1; $i++) {
+    $eq_num_str = strval($i);
+    if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
+      $eq_store['indices'][] = $eq_num_str;
+      $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
     }
-    equips_triage();
-    /*
-    return true;
-  } else {
-    return false;
   }
-  */
+  equips_triage();
 }
 
 init_equips(Equips_Settings_Init::$field_count);
