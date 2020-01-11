@@ -110,6 +110,22 @@ class Equips_Settings_Init {
       );
     }
 
+    add_settings_field(
+     'include_phone_bar',
+     'Inlcude Phone Bar?',
+     array('Equips_Settings_Init','cb_equips_include_phone_bar_field'),
+     'equips_geo',
+     'equips_geo'
+   );
+
+   add_settings_field(
+     'phone_bar_text',
+     'Phone Bar Text',
+     array('Equips_Settings_Init','cb_equips_phone_bar_field'),
+     'equips_geo',
+     'equips_geo'
+   );
+
     register_setting( 'equips', 'equips' );
     register_setting( 'equips_images', 'equips_images' );
     register_setting( 'equips_image_styles', 'equips_image_styles' );
@@ -252,6 +268,28 @@ if ($img_assoc_count) {
       1 : -(count(self::$geo_label_toggle)-1);
     //make an <input/> with dynamic attributes
     echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
+  }
+
+  static function cb_equips_include_phone_bar_field() {
+    $result = '';
+    $options = get_option('equips_geo');
+    $this_field = 'include_phone_bar';
+    $incl_is_checked = ($options[$this_field] ||
+      "include" === ($options[$this_field])) ? "checked" : "";
+    $excl_is_checked = ("exclude" === ($options[$this_field])) ? "checked" : "";
+    $result .= "<input type='radio' name=equips_geo[{$this_field}] value='include' $incl_is_checked/>";
+    $result .= "<label for='include'>include</label>";
+    $result .= "<input type='radio' name=equips_geo[{$this_field}] value='exclude' $excl_is_checked/>";
+    $result .= "<label for='exclude'>exclude</label>";
+    echo $result;
+  }
+  
+  static function cb_equips_phone_bar_field() {
+    $options = get_option('equips_geo');
+    $this_field = 'phone_bar_text';
+    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
+    echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>";
   }
 
   ////template 2 - after settings section title

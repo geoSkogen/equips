@@ -50,7 +50,6 @@ function eq_do_assoc_input(settings_field_index) {
     // When a file is selected, grab the URL and set it as the text field's value
     mediaUploader.on('select', function() {
       attachment = mediaUploader.state().get('selection').first().toJSON();
-      //$('#city-coupon-business-logo').val(attachment.url);
       var place = $(clickedButton).siblings('input');
       place.val(attachment.url);
       delete clickedButton;
