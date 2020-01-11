@@ -2,13 +2,15 @@
 /*
 Plugin Name:  equips_1
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2019.12.29
+Version:      2020.01.10
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
 */
 defined( 'ABSPATH' ) or die( 'We make the path by walking.');
-//Global Namespace - update to OOP protocal in future versions
+
+//Global Namespace
+
 $eq_store = array(
   'indices' => array(),
   'params' => array()
@@ -67,6 +69,7 @@ if ( !class_exists( 'Equips_Settings_Init' ) ) {
      array('Equips_Settings_Init','settings_api_init')
    );
 }
+
 //Procedure - shortcode-URL-param association
 
 function do_equips_location($db_slug) {
@@ -173,35 +176,11 @@ function eq_shortcode_handler_phone( $atts = array() ) {
       echo $result;
     });
   }
-
-
-return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
+  return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
 }
 
 // end GEOBLOCK SERVICE AREA
-
-//-- not the intended design; still pursuing a workaround to hard-coded shortcode handlers.
-//-- see README.txt
-
-function eq_shortcode_handler_1() {
-  return do_equips('1');
-}
-
-function eq_shortcode_handler_2() {
-  return do_equips('2');
-}
-
-function eq_shortcode_handler_3() {
-  return do_equips('3');
-}
-
-function eq_shortcode_handler_4() {
-  return do_equips('4');
-}
-
-function eq_shortcode_handler_5() {
-  return do_equips('5');
-}
+// begin INIT - plugin baseline actions
 
 function equips_triage() {
   global $eq_store;
@@ -210,16 +189,13 @@ function equips_triage() {
   add_filter( 'query_vars', function ( $vars ) {
     global $eq_store;
     $vars = array_merge($vars, $eq_store['params']);
-    foreach ($vars as $var) {
-      //error_log("query var added: " . $var);
-    }
     return $vars;
   });
   foreach ($eq_store['indices'] as $store_key) {
     add_shortcode(
-      $eq_options['shortcode_' . $store_key], 'eq_shortcode_handler_' . $store_key
+      $eq_options['shortcode_' . $store_key],
+      function () use ($store_key) {  return do_equips($store_key); }
     );
-    //error_log('adding shortcode: ' . $eq_options['shortcode_' . $store_key]);
   }
   if ($eq_geo_options['phone_shortcode']) {
     add_shortcode(
@@ -249,22 +225,14 @@ function init_equips($counter) {
   global $eq_store;
   $eq_num_str = "";
   $eq_options = get_option('equips');
-  //$eq_geo_options = get_option('equips_geo');
-  //if ($eq_options) {
-    for ($i = 1; $i < $counter + 1; $i++) {
-      $eq_num_str = strval($i);
-      if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
-        $eq_store['indices'][] = $eq_num_str;
-        $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
-      }
+  for ($i = 1; $i < $counter + 1; $i++) {
+    $eq_num_str = strval($i);
+    if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
+      $eq_store['indices'][] = $eq_num_str;
+      $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
     }
-    equips_triage();
-    /*
-    return true;
-  } else {
-    return false;
   }
-  */
+  equips_triage();
 }
 
 init_equips(Equips_Settings_Init::$field_count);
