@@ -11,7 +11,7 @@ $stripped_query requires further validation before being injected into text cont
 HOW YOU DO THIS
 ===============
 Specify:
-1) which URL parameter you want to query, e.g., location
+1) which URL parameter you want to query, e.g., /?location=1234567
 2) which shortcode you want to use to inject that parameter's value into the
    text, e.g. eq_location (in which case you'd use [eq_location] on the page).
 3) which value the shortcode should render if the specified url parameter is empty
@@ -53,13 +53,11 @@ Add shortcode options page for custom geoblock settings--DONE!
 3)
 Upgrade global namespace use to OOP protocol--MOSTLY DONE--eq_store is global
 
-
 4)
 Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
 
 5)
-Solve to redundant incrementing shortcode handler functions with hard-coded
-data--DONE!
+Solve to redundant incrementing shortcode handlers--DONE!
 
 6)
 Flexible form with as many entry fields as the user requires!--NEXT
