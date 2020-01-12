@@ -11,7 +11,8 @@ $stripped_query requires further validation before being injected into text cont
 HOW YOU DO THIS
 ===============
 Specify:
-1) which URL parameter you want to query, e.g., location
+1) which URL parameter you want to query, e.g., /?location=1234567, or
+   ?/keywords=this+is+fun
 2) which shortcode you want to use to inject that parameter's value into the
    text, e.g. eq_location (in which case you'd use [eq_location] on the page).
 3) which value the shortcode should render if the specified url parameter is empty
@@ -44,14 +45,21 @@ Design improvements needed:
 ===========================
 1)
 Add validation logic for each type of url parameter!
---currently 'location' must be numeric and will return its fallback value if
+currently:
+
+'location' must be numeric and will return its fallback value if
   lookup-by-number fails.
+
+'keywords' works for image lookup--comma-separated search queries will be
+  ranked by relevance with RankSchema's match tests; it also will inject
+  the tag-stripped query into the text content if the format is set to plain
+  text--DO NOT USE THIS BRANCH IN PRODUCTION UNTIL QUERY VALIDATION IMPROVES.
 
 2)
 Add shortcode options page for custom geoblock settings--DONE!
 
 3)
-Upgrade global namespace use to OOP protocol--MOSTLY DONE--eq_store is global
+Upgrade global namespace use to OOP protocol--MOSTLY DONE!--$eq_store is global
 
 4)
 Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
@@ -60,15 +68,10 @@ Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
 Solve to redundant incrementing shortcode handlers--DONE!
 
 6)
-Flexible form with as many entry fields as the user requires!--NEXT
+Flexible form with as many entry fields as the user requires!--NEXT!
 
 7)
-Fix broken path to global database in multisite install environment.
+Fix broken path to global database in multisite install environment--?
 
 8)
-Associative image uploader in wp_media is broken again. File paths are not
-appearing in the input field (again) and the associations aren't saving.
-Note that this problem is not occurring on the 'equips' form, but only on the
-'equips images' form.  Aren't they using the same JavaScript? Same error was
-afflicting the unmerged dev branch, so it may be endemic to the install
-environment, or theme, or WP version.
+Associative image uploader in wp_media is broken again--FIXED!
