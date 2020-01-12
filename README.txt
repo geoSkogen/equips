@@ -57,8 +57,7 @@ Upgrade global namespace use to OOP protocol--MOSTLY DONE--eq_store is global
 Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
 
 5)
-Solve to redundant incrementing shortcode handler functions with hard-coded
-data--DONE!
+Solve to redundant incrementing shortcode handlers--DONE!
 
 6)
 Flexible form with as many entry fields as the user requires!--NEXT
@@ -67,7 +66,9 @@ Flexible form with as many entry fields as the user requires!--NEXT
 Fix broken path to global database in multisite install environment.
 
 8)
-Associative image uploader in wp_media is broken again! File paths are not
-appearing in the input field (again!) and the associations aren't saving.
+Associative image uploader in wp_media is broken again. File paths are not
+appearing in the input field (again) and the associations aren't saving.
 Note that this problem is not occurring on the 'equips' form, but only on the
-'equips images' form.  Aren't they using the same JavaScript?  WTF?
+'equips images' form.  Aren't they using the same JavaScript? Same error was
+afflicting the unmerged dev branch, so it may be endemic to the install
+environment, or theme, or WP version.
