@@ -31,9 +31,11 @@ class RankSchema {
           $test_slug .= ($elm_index === $slug_length-1) ? $short_arr[$elm_index + $slug_index] :
             $short_arr[$elm_index + $slug_index] . " ";
         }
-        $score += ( strpos(implode(" ",$long_arr),$test_slug) || strpos(implode(" ",$long_arr),$test_slug) === 0 ) ?
-          $slug_length + $slug_length-1 : 0;
-        $slug_index++;
+        if (strlen($test_slug)) {
+          $score += ( strpos(implode(" ",$long_arr),$test_slug) || strpos(implode(" ",$long_arr),$test_slug) === 0 ) ?
+            $slug_length + $slug_length-1 : 0;
+          $slug_index++;
+        }
       }
       $slug_length--;
     }

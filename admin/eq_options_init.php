@@ -64,64 +64,64 @@ class Equips_Options_Init {
   }
 
   static function equips_images_page() {
-  ?>
-  <div class='form-wrap'>
-    <h2>equips - images</h2>
-    <form method='post' action='options.php' id='equips-images-form'>
-      <?php
-      settings_fields( 'equips_images' );
-      do_settings_sections( 'equips_images' );
-      ?>
-      <div class='inivs-div' style="display:none;">
-        <input class='invis-input' id='drop_field' name=equips_images[drop] type='text'/>
-      </div>
-      <p class='submit'>
-        <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
-      </p>
-    </form>
-  </div>
-  <?php
+    ?>
+    <div class='form-wrap'>
+      <h2>equips - images</h2>
+      <form method='post' action='options.php' id='equips-images-form'>
+        <?php
+        settings_fields( 'equips_images' );
+        do_settings_sections( 'equips_images' );
+        ?>
+        <div class='inivs-div' style="display:none;">
+          <input class='invis-input' id='drop_field' name=equips_images[drop] type='text'/>
+        </div>
+        <p class='submit'>
+          <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+        </p>
+      </form>
+    </div>
+    <?php
   }
 
   static function equips_image_styles_page() {
-  ?>
-  <div class='form-wrap'>
-    <h2>equips - image styles</h2>
-    <form method='post' action='options.php' id='equips-image-styles-form'>
-      <?php
-      settings_fields( 'equips_image_styles' );
-      do_settings_sections( 'equips_image_styles' );
-      ?>
-      <div class='inivs-div' style="display:none;">
-        <input class='invis-input' id='drop_field' name=equips_image_styles[drop] type='text'/>
-      </div>
-      <p class='submit'>
-        <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
-      </p>
-    </form>
-  </div>
-  <?php
+    ?>
+    <div class='form-wrap'>
+      <h2>equips - image styles</h2>
+      <form method='post' action='options.php' id='equips-image-styles-form'>
+        <?php
+        settings_fields( 'equips_image_styles' );
+        do_settings_sections( 'equips_image_styles' );
+        ?>
+        <div class='inivs-div' style="display:none;">
+          <input class='invis-input' id='drop_field' name=equips_image_styles[drop] type='text'/>
+        </div>
+        <p class='submit'>
+          <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+        </p>
+      </form>
+    </div>
+    <?php
   }
 
   static function cb_equips_geo_page() {
-  ?>
-  <div class='form-wrap'>
-    <h2>equips - geo</h2>
-    <form method='post' action='options.php' id='equips-geo-form'>
-      <?php
-      settings_fields( 'equips_geo' );
-      do_settings_sections( 'equips_geo' );
-      ?>
-      <div class='inivs-div' style="display:none;">
-        <input class='invis-input' id='drop_field' name=equips_geo[drop] type='text'/>
-      </div>
-      <p class='submit'>
-        <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
-      </p>
-    </form>
-  </div>
-  <?php
-}
+    ?>
+    <div class='form-wrap'>
+      <h2>equips - geo</h2>
+      <form method='post' action='options.php' id='equips-geo-form'>
+        <?php
+        settings_fields( 'equips_geo' );
+        do_settings_sections( 'equips_geo' );
+        ?>
+        <div class='inivs-div' style="display:none;">
+          <input class='invis-input' id='drop_field' name=equips_geo[drop] type='text'/>
+        </div>
+        <p class='submit'>
+          <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+        </p>
+      </form>
+    </div>
+    <?php
+  }
 
 }
 

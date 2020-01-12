@@ -176,77 +176,78 @@ class Equips_Settings_Init {
     echo $input_elm;
   }
 
-static function cb_equips_images_field() {
-  $elm_arr = "";
-  $eq_options = get_option('equips');
-  $img_options = get_option('equips_images');
-  $img_assoc_path = "";
-  // dynamic headband values
-  $eq_param_setting = (isset($eq_options['param_' . strval(self::$eq_current_img_index)]) &&
-    $eq_options['param_' . strval(self::$eq_current_img_index)] != "") ?
-    $eq_options['param_' . strval(self::$eq_current_img_index)] :
-    "<span style='font-weight:700;'>Set the URL parameter for this fallback image.</span>";
-  $eq_shortcode_setting = (isset($eq_options['shortcode_' . strval(self::$eq_current_img_index)]) &&
-    $eq_options['shortcode_' . strval(self::$eq_current_img_index)] != "") ?
-    $eq_options['shortcode_' . strval(self::$eq_current_img_index)] :
-    "<span style='font-weight:700;'>Set the shortcode for this fallback image.</span>";
-  //NOTE: outsource styles to stylesheet
-  $eq_button_style = "background-color:#0085ba;border-color:#0073aa #006799 #006799;color:#fff;height:28px;width:94px;box-shadow:0 1px 0 #006799;text-shadow:0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;border-radius:3px;padding:3px 10px 0 10px;margin:1em;font-size:13px;line-height:26px;cursor:pointer;";
-  // set key string base slugs
-  $img_assoc_id = 'img_assoc_id_' . strval(self::$eq_current_img_index);
-  $img_fb_path = (isset($eq_options['img_fb_path_' . strval(self::$eq_current_img_index)]) &&
-    $eq_options['img_fb_path_' . strval(self::$eq_current_img_index)] != "") ?
-    $eq_options['img_fb_path_' . strval(self::$eq_current_img_index)] :
-    "http://localhost/lotuseaters/wp-content/uploads/woocommerce-placeholder.png";
-  $img_assoc_field = 'img_assoc_path_' . strval(self::$eq_current_img_index) . '_';
-  $img_assoc_file_field = 'img_assoc_file_' . strval(self::$eq_current_img_index) . '_';
-  $img_assoc_count_field = 'img_assoc_count_' . strval(self::$eq_current_img_index);
-  // important procedural step
-  $img_assoc_count = (isset($img_options[$img_assoc_count_field])) ?
-    $img_options[$img_assoc_count_field] :
-    0;
-  self::$eq_current_img_index += 1;
-  // make base settings field
-  $elm_arr .= "<div class='img_assoc' id='" . $img_assoc_id . "'>";
-  $elm_arr .= "<div class='eq_assoc_settings' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size: 16px;'/>";
-  $elm_arr .= "<div class='key-name'>URL Param:&nbsp;</div><div class='value'>" .  $eq_param_setting . "&nbsp;&nbsp;&nbsp;</div>";
-  $elm_arr .= "<div class='key-name'>Shortcode:&nbsp;</div><div class='value'>[" . $eq_shortcode_setting . "]</div>";
-  $elm_arr .= "</div>";
-  $elm_arr .= ($img_assoc_count > 0) ? "" : "<span style='font-weight:700;'>Upload images to associate with URL Param values </span><br/>";
-  $elm_arr .= "<div class='eq_assoc_panel' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size:16px;'/>";
-  $elm_arr .= "<div class='eq-add-assoc-button' style='margin: 2em 1em 2em 1em;" . $eq_button_style . "'>Add New Image</div>";
-  $elm_arr .= "<img style='width:80px;height:80px;margin:0.5em;' src='" . $img_fb_path . "' >";
-  $elm_arr .= "</div>";
-  $elm_arr .= "<div class='inivs-div' style='display:none;'>";
-  $elm_arr .= "<input type='number' name=equips_images[$img_assoc_count_field] value='{$img_assoc_count}' class='eq_assoc_count'>";
-  $elm_arr .= "</div>";
-  $elm_arr .= "<div class='eq_assoc_images' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
-  $elm_arr .= "</div>";
-//begin associate-images-with-keywords
-if ($img_assoc_count) {
-    for ($i = 1; $i < $img_assoc_count+1; $i++) {
-      $this_img_assoc_field = $img_assoc_field . strval($i);
-      $img_assoc_path = (isset($img_options[$this_img_assoc_field])) ?
-        $img_options[$this_img_assoc_field] :
-        "";
-      $img_assoc_keywords_field = 'img_assoc_keywords_' . strval(self::$eq_current_img_index-1) . '_' . strval($i);
-      $img_assoc_keywords = (isset($img_options[$img_assoc_keywords_field])) ?
-        $img_options[$img_assoc_keywords_field] :
-        "";
-      $elm_arr .= "<div class='eq_assoc_section' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
-      $elm_arr .= "<img class='eq_assoc' style='width:80px;height:80px;margin:0.5em 0.5em 0.5em 3em;' src='" . $img_assoc_path . "' >";
-      $elm_arr .= "<textarea name=equips_images[$img_assoc_keywords_field] form='equips-images-form' rows='4' cols='50' style='margin:0.5em 1em;border-radius:3px;border:none;'>";
-      $elm_arr .= $img_assoc_keywords;
-      $elm_arr .= "</textarea><br/>";
-      $elm_arr .= "</div>";
-      $elm_arr .= "<div class='inivs-div' style='display:none;'>";
-      $elm_arr .= "<input type='text' name=equips_images[$this_img_assoc_field] value='{$img_assoc_path}'>";
-      $elm_arr .= "</div>";
+  static function cb_equips_images_field() {
+    $elm_arr = "";
+    $eq_options = get_option('equips');
+    $img_options = get_option('equips_images');
+    $img_assoc_path = "";
+    // dynamic headband values
+    $eq_param_setting = (isset($eq_options['param_' . strval(self::$eq_current_img_index)]) &&
+      $eq_options['param_' . strval(self::$eq_current_img_index)] != "") ?
+      $eq_options['param_' . strval(self::$eq_current_img_index)] :
+      "<span style='font-weight:700;'>Set the URL parameter for this fallback image.</span>";
+    $eq_shortcode_setting = (isset($eq_options['shortcode_' . strval(self::$eq_current_img_index)]) &&
+      $eq_options['shortcode_' . strval(self::$eq_current_img_index)] != "") ?
+      $eq_options['shortcode_' . strval(self::$eq_current_img_index)] :
+      "<span style='font-weight:700;'>Set the shortcode for this fallback image.</span>";
+    //NOTE: outsource styles to stylesheet
+    $eq_button_style = "background-color:#0085ba;border-color:#0073aa #006799 #006799;color:#fff;height:28px;width:94px;box-shadow:0 1px 0 #006799;text-shadow:0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;border-radius:3px;padding:3px 10px 0 10px;margin:1em;font-size:13px;line-height:26px;cursor:pointer;";
+    // set key string base slugs
+    $img_assoc_id = 'img_assoc_id_' . strval(self::$eq_current_img_index);
+    $img_fb_path = (isset($eq_options['img_fb_path_' . strval(self::$eq_current_img_index)]) &&
+      $eq_options['img_fb_path_' . strval(self::$eq_current_img_index)] != "") ?
+      $eq_options['img_fb_path_' . strval(self::$eq_current_img_index)] :
+      "#";
+    $img_assoc_field = 'img_assoc_path_' . strval(self::$eq_current_img_index) . '_';
+    $img_assoc_file_field = 'img_assoc_file_' . strval(self::$eq_current_img_index) . '_';
+    $img_assoc_count_field = 'img_assoc_count_' . strval(self::$eq_current_img_index);
+    // important procedural step
+    $img_assoc_count = (isset($img_options[$img_assoc_count_field])) ?
+      $img_options[$img_assoc_count_field] :
+      0;
+    self::$eq_current_img_index += 1;
+    // make base settings field
+    $elm_arr .= "<div class='img_assoc' id='" . $img_assoc_id . "'>";
+    $elm_arr .= "<div class='eq_assoc_settings' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size: 16px;'/>";
+    $elm_arr .= "<div class='key-name'>URL Param:&nbsp;</div><div class='value'>" .  $eq_param_setting . "&nbsp;&nbsp;&nbsp;</div>";
+    $elm_arr .= "<div class='key-name'>Shortcode:&nbsp;</div><div class='value'>[" . $eq_shortcode_setting . "]</div>";
+    $elm_arr .= "</div>";
+    $elm_arr .= ($img_assoc_count > 0) ? "" : "<span style='font-weight:700;'>Upload images to associate with URL Param values </span><br/>";
+    $elm_arr .= "<div class='eq_assoc_panel' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size:16px;'/>";
+    $elm_arr .= "<div class='eq-add-assoc-button' style='margin: 2em 1em 2em 1em;" . $eq_button_style . "'>Add New Image</div>";
+    $elm_arr .= "<img style='width:80px;height:80px;margin:0.5em;' src='" . $img_fb_path . "' >";
+    $elm_arr .= "</div>";
+    $elm_arr .= "<div class='inivs-div' style='display:none;'>";
+    $elm_arr .= "<input type='number' name=equips_images[$img_assoc_count_field] value='{$img_assoc_count}' class='eq_assoc_count'>";
+    $elm_arr .= "</div>";
+    $elm_arr .= "<div class='eq_assoc_images' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
+    $elm_arr .= "</div>";
+    //begin associate-images-with-keywords
+    if ($img_assoc_count) {
+      for ($i = 1; $i < $img_assoc_count+1; $i++) {
+        $this_img_assoc_field = $img_assoc_field . strval($i);
+        $img_assoc_path = (isset($img_options[$this_img_assoc_field])) ?
+          $img_options[$this_img_assoc_field] :
+          "";
+        $img_assoc_keywords_field = 'img_assoc_keywords_' . strval(self::$eq_current_img_index-1) . '_' . strval($i);
+        $img_assoc_keywords = (isset($img_options[$img_assoc_keywords_field])) ?
+          $img_options[$img_assoc_keywords_field] :
+          "";
+        $elm_arr .= "<div class='eq_assoc_section' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
+        $elm_arr .= "<img class='eq_assoc' style='width:80px;height:80px;margin:0.5em 0.5em 0.5em 3em;' src='" . $img_assoc_path . "' >";
+        $elm_arr .= "<textarea name=equips_images[$img_assoc_keywords_field] form='equips-images-form' rows='4' cols='50' style='margin:0.5em 1em;border-radius:3px;border:none;'>";
+        $elm_arr .= $img_assoc_keywords;
+        $elm_arr .= "</textarea><br/>";
+        $elm_arr .= "</div>";
+        $elm_arr .= "<div class='inivs-div' style='display:none;'>";
+        $elm_arr .= "<input type='text' name=equips_images[$this_img_assoc_field] value='{$img_assoc_path}'>";
+        $elm_arr .= "</div>";
+      }
     }
+    $elm_arr .= "</div>";
+    echo $elm_arr;
   }
-  $elm_arr .= "</div>";
-  echo $elm_arr;
-}
+
   static function cb_equips_image_styles_field() {
     echo "<textarea></textarea>";
   }
@@ -283,7 +284,7 @@ if ($img_assoc_count) {
     $result .= "<label for='exclude'>exclude</label>";
     echo $result;
   }
-  
+
   static function cb_equips_phone_bar_field() {
     $options = get_option('equips_geo');
     $this_field = 'phone_bar_text';
@@ -336,38 +337,38 @@ if ($img_assoc_count) {
     <?php
   }
 
-static function cb_equips_images_section() {
-  $options = get_option('equips_images');
-  $dropped = (isset($options['drop'])) ?
-    $options['drop'] :
-    "FALSE";
-  if ($dropped === "TRUE") {
-    delete_option('equips_images');
-  } else {
-    if ($options) {
-      error_log("current equips_images");
-      foreach ($options as $key => $val) {
-        error_log($key . " =>");
-        error_log("\t" . $val);
+  static function cb_equips_images_section() {
+    $options = get_option('equips_images');
+    $dropped = (isset($options['drop'])) ?
+      $options['drop'] :
+      "FALSE";
+    if ($dropped === "TRUE") {
+      delete_option('equips_images');
+    } else {
+      if ($options) {
+        error_log("current equips_images");
+        foreach ($options as $key => $val) {
+          error_log($key . " =>");
+          error_log("\t" . $val);
+        }
       }
     }
+    wp_enqueue_media();
+    wp_register_script( 'equips-wp-media', plugins_url('../js/equips-wp-media.js', __FILE__), array('jquery') );
+    wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . '../js/equips-unset-all.js');
+    wp_enqueue_script('equips-add-assoc-img', plugin_dir_url(__FILE__) . '../js/equips-add-assoc-img.js');
+    wp_enqueue_script('equips-set-assoc-counts', plugin_dir_url(__FILE__) . '../js/equips-set-assoc-counts.js');
+    wp_enqueue_script( 'equips-wp-media' );
+    ?>
+    <hr/>
+    <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
+      <input name='submit' type='submit' id='submit_top' class='button-primary' value='<?php _e("Save Changes") ?>' />
+      <button id='drop_button' class='button-primary' style='border:1.5px solid red;margin-right:36px;'>
+        <?php _e("Delete All") ?>
+      </button>
+    </div>
+    <?php
   }
-  wp_enqueue_media();
-  wp_register_script( 'equips-wp-media', plugins_url('../js/equips-wp-media.js', __FILE__), array('jquery') );
-  wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . '../js/equips-unset-all.js');
-  wp_enqueue_script('equips-add-assoc-img', plugin_dir_url(__FILE__) . '../js/equips-add-assoc-img.js');
-  wp_enqueue_script('equips-set-assoc-counts', plugin_dir_url(__FILE__) . '../js/equips-set-assoc-counts.js');
-  wp_enqueue_script( 'equips-wp-media' );
-  ?>
-  <hr/>
-  <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
-    <input name='submit' type='submit' id='submit_top' class='button-primary' value='<?php _e("Save Changes") ?>' />
-    <button id='drop_button' class='button-primary' style='border:1.5px solid red;margin-right:36px;'>
-      <?php _e("Delete All") ?>
-    </button>
-  </div>
-  <?php
-}
 
   static function cb_equips_settings_section() {
     $options = get_option('equips');

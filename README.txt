@@ -10,6 +10,7 @@ $stripped_query requires further validation before being injected into text cont
 ===============
 HOW YOU DO THIS
 ===============
+
 Specify:
 1) which URL parameter you want to query, e.g., /?location=1234567, or
    ?/keywords=this+is+fun
