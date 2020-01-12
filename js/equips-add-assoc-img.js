@@ -50,8 +50,8 @@ function eq_do_assoc_input(settings_field_index) {
     // When a file is selected, grab the URL and set it as the text field's value
     mediaUploader.on('select', function() {
       attachment = mediaUploader.state().get('selection').first().toJSON();
-      var place = $(clickedButton).siblings('input');
-      place.val(attachment.url);
+      var place = clickedButton.parentElement.querySelector('.equips-img-select-path');
+      place.value = attachment.url;
       delete clickedButton;
     });
     // Open the uploader dialog
