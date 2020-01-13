@@ -51,7 +51,7 @@ Add validation logic for each type of url parameter!
 Add shortcode options page for custom geoblock settings--DONE!
 
 3)
-Upgrade global namespace use to OOP protocol--MOSTLY DONE--eq_store is global
+Upgrade global namespace use to OOP protocol--MOSTLY DONE!--eq_store is global
 
 4)
 Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
@@ -60,7 +60,7 @@ Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
 Solve to redundant incrementing shortcode handlers--DONE!
 
 6)
-Flexible form with as many entry fields as the user requires!--NEXT
+Flexible form with as many entry fields as the user requires!--DONE!
 
 7)
 Fix broken path to global database in multisite install environment.

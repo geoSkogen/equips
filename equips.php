@@ -2,12 +2,12 @@
 /*
 Plugin Name:  equips_1
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2020.01.10
+Version:      2020.01.12
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
 */
-defined( 'ABSPATH' ) or die( 'We make the path by walking.');
+defined( 'ABSPATH' ) or die( 'We make the path by walking.' );
 
 //Global Namespace
 
