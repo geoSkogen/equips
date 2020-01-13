@@ -227,7 +227,11 @@ function init_equips($counter) {
   $eq_options = get_option('equips');
   for ($i = 1; $i < $counter + 1; $i++) {
     $eq_num_str = strval($i);
-    if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
+    if (
+      (isset($eq_options['param_' . $eq_num_str]) && "" != $eq_options['param_' . $eq_num_str]) &&
+      (isset($eq_options['shortcode_' . $eq_num_str]) && "" != $eq_options['shortcode_' . $eq_num_str])
+       )
+      {
       $eq_store['indices'][] = $eq_num_str;
       $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
     }
@@ -235,4 +239,4 @@ function init_equips($counter) {
   equips_triage();
 }
 
-init_equips(Equips_Settings_Init::$field_count);
+init_equips(Equips_Settings_Init::get_field_count());

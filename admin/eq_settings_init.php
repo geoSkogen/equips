@@ -2,12 +2,25 @@
 
 class Equips_Settings_Init {
 
-  public static $field_count = 5;
+  //public static $field_count = Equips_Settings_Init::get_field_count();
+
+  public static function get_field_count() {
+    $result = '';
+    $option = get_option('equips');
+    if (isset($option['field_count'])) {
+      $result = $option['field_count'];
+    } else {
+      $result = 1;
+    }
+    return $result;
+  }
+
   public static $eq_label_toggle = array(
     "param",
     "shortcode",
     "fallback"
   );
+
   public static $geo_label_toggle = array(
     "phone",
     "phone_shortcode",
@@ -18,6 +31,7 @@ class Equips_Settings_Init {
     "service_area",
     "service_area_shortcode"
   );
+
   public static $current_field_index = 0;
   public static $eq_label_toggle_index = 0;
   public static $geo_label_toggle_index = 0;
@@ -31,13 +45,21 @@ class Equips_Settings_Init {
     );
 
     add_settings_section(
-    'equips_geo',                         //uniqueID
-    'Assign Fallback Values To geo Text',        //Title
-    array('Equips_Settings_Init','cb_equips_geo_section'),//CallBack Function
-    'equips_geo'                         //page-slug
-  );
+      'equips_geo',                         //uniqueID
+      'Assign Fallback Values To geo Text',        //Title
+      array('Equips_Settings_Init','cb_equips_geo_section'),//CallBack Function
+      'equips_geo'                         //page-slug
+    );
 
-    for ($i = 1; $i < self::$field_count + 1; $i++) {
+    add_settings_field(
+      'field_count',
+      'Number of Queries',
+      array('Equips_Settings_Init','cb_equips_field_count'),
+      'equips',
+      'equips_settings'
+    );
+
+    for ($i = 1; $i < self::get_field_count() + 1; $i++) {
       self::$current_field_index = $i;
       for ($ii = 0; $ii < count(self::$eq_label_toggle); $ii++) {
         $field_name = self::$eq_label_toggle[$ii];
@@ -101,7 +123,9 @@ class Equips_Settings_Init {
     $field_name = self::$eq_label_toggle[self::$eq_label_toggle_index];
     $this_field = $field_name . "_" . strval(self::$current_field_index);
     $this_label = ucwords($field_name) . " " . strval(self::$current_field_index);
-    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $placeholder =
+      (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     //reset globals - toggle label and increment pairing series as needed
     self::$eq_label_toggle_index +=
@@ -113,6 +137,18 @@ class Equips_Settings_Init {
     echo "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
   }
 
+  static function cb_equips_field_count() {
+    $result = '<div>';
+    $options = get_option('equips');
+    $this_field = 'field_count';
+    $val = (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : strval(1);
+    $result .= "<input name=equips[{$this_field}] type='number' value='{$val}'/>";
+    $result .= "<input name='submit' type='submit' id='update' class='button-primary' value='Update' />";
+    $result .= "</div><hr/>";
+    echo $result;
+  }
+
   static function cb_equips_geo_field() {
     $options = get_option('equips_geo');
     //error_log(print_r($options));
@@ -122,7 +158,8 @@ class Equips_Settings_Init {
     $field_name = self::$geo_label_toggle[self::$geo_label_toggle_index];
     $this_field = $field_name;
     $this_label = ucwords($field_name);
-    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $placeholder = (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     //reset globals - toggle label and increment pairing series as needed
     self::$geo_label_toggle_index +=
@@ -136,7 +173,7 @@ class Equips_Settings_Init {
     $result = '';
     $options = get_option('equips_geo');
     $this_field = 'include_phone_bar';
-    $incl_is_checked = ($options[$this_field] ||
+    $incl_is_checked = ( $options[$this_field] ||
       "include" === ($options[$this_field])) ? "checked" : "";
     $excl_is_checked = ("exclude" === ($options[$this_field])) ? "checked" : "";
     $result .= "<input type='radio' name=equips_geo[{$this_field}] value='include' $incl_is_checked/>";
@@ -149,7 +186,8 @@ class Equips_Settings_Init {
   static function cb_equips_phone_bar_field() {
     $options = get_option('equips_geo');
     $this_field = 'phone_bar_text';
-    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $placeholder = (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>";
   }
