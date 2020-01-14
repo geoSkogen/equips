@@ -38,7 +38,6 @@ class Equips_Settings_Init {
     $option = get_option('equips');
     $stop = intval($option['field_count']) + 1;
     $result = array();
-    $keys = array_keys($option);
     $meta_data = ['drop','field_count','prev_field_count'];
     foreach ($meta_data as $meta_datum) {
       $result[$meta_datum] = $option[$meta_datum];
