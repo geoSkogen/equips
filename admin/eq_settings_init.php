@@ -2,12 +2,12 @@
 
 class Equips_Settings_Init {
 
-  public static $field_count = 5;
   public static $eq_label_toggle = array(
     "param",
     "shortcode",
     "fallback"
   );
+
   public static $geo_label_toggle = array(
     "phone",
     "phone_shortcode",
@@ -18,9 +18,41 @@ class Equips_Settings_Init {
     "service_area",
     "service_area_shortcode"
   );
+
   public static $current_field_index = 0;
   public static $eq_label_toggle_index = 0;
   public static $geo_label_toggle_index = 0;
+
+  public static function get_field_count() {
+    $result = '';
+    $option = get_option('equips');
+    if (isset($option['field_count'])) {
+      $result = $option['field_count'];
+    } else {
+      $result = 1;
+    }
+    return $result;
+  }
+
+  public static function trim_fields() {
+    $option = get_option('equips');
+    $stop = intval($option['field_count']) + 1;
+    $result = array();
+    $meta_data = ['drop','field_count','prev_field_count'];
+    foreach ($meta_data as $meta_datum) {
+      $result[$meta_datum] = $option[$meta_datum];
+    }
+    for ($i = 1; $i < $stop; $i++) {
+      foreach (self::$eq_label_toggle as $eq_label) {
+        $result[$eq_label . '_' . strval($i)] =
+          (isset($option[$eq_label . '_' . strval($i)]) &&
+            "" != $option[$eq_label . '_' . strval($i)]) ?
+              $option[$eq_label . '_' . strval($i)] : '';
+      }
+    }
+    update_option('equips', $result);
+    return;
+  }
 
   public static function settings_api_init() {
     add_settings_section(
@@ -31,13 +63,21 @@ class Equips_Settings_Init {
     );
 
     add_settings_section(
-    'equips_geo',                         //uniqueID
-    'Assign Fallback Values To geo Text',        //Title
-    array('Equips_Settings_Init','cb_equips_geo_section'),//CallBack Function
-    'equips_geo'                         //page-slug
-  );
+      'equips_geo',                         //uniqueID
+      'Geo Shortcodes & Fallback Text',        //Title
+      array('Equips_Settings_Init','cb_equips_geo_section'),//CallBack Function
+      'equips_geo'                         //page-slug
+    );
 
-    for ($i = 1; $i < self::$field_count + 1; $i++) {
+    add_settings_field(
+      'field_count',
+      'Number of Queries',
+      array('Equips_Settings_Init','cb_equips_field_count'),
+      'equips',
+      'equips_settings'
+    );
+
+    for ($i = 1; $i < self::get_field_count() + 1; $i++) {
       self::$current_field_index = $i;
       for ($ii = 0; $ii < count(self::$eq_label_toggle); $ii++) {
         $field_name = self::$eq_label_toggle[$ii];
@@ -48,8 +88,8 @@ class Equips_Settings_Init {
           $this_field,                   //uniqueID - "param_1", etc.
           $this_label,                  //uniqueTitle -
           array('Equips_Settings_Init','cb_equips_settings_field'),//callback cb_equips_settings_field();
-          'equips',                   //page-slug
-          'equips_settings'          //section (parent settings-section uniqueID)
+          'equips',                    //page-slug
+          'equips_settings'            //section (parent settings-section uniqueID)
         );
       }
     }
@@ -60,11 +100,11 @@ class Equips_Settings_Init {
       $this_geo_label = ucwords(str_replace("_", " ", $geo_field_name));
 
       add_settings_field(
-        $this_geo_field,                   //uniqueID - "param_1", etc.
+        $this_geo_field,                  //uniqueID - "param_1", etc.
         $this_geo_label,                  //uniqueTitle -
         array('Equips_Settings_Init','cb_equips_geo_field'),//callback cb_equips_settings_field();
-        'equips_geo',                   //page-slug
-        'equips_geo'          //section (parent settings-section uniqueID)
+        'equips_geo',                     //page-slug
+        'equips_geo'                     //section (parent settings-section uniqueID)
       );
     }
 
@@ -89,19 +129,18 @@ class Equips_Settings_Init {
   }
 
   //Templates
-
   ////template 3 - settings section field - dynamically rendered <input/>
 
   static function cb_equips_settings_field() {
     $options = get_option('equips');
-    //error_log(print_r($options));
-    //local namespace assignments based on global settings &/or database state
     $divider = (self::$eq_label_toggle_index < count(self::$eq_label_toggle)-1) ?
       "" : "<br/><br/><hr/>";
     $field_name = self::$eq_label_toggle[self::$eq_label_toggle_index];
     $this_field = $field_name . "_" . strval(self::$current_field_index);
     $this_label = ucwords($field_name) . " " . strval(self::$current_field_index);
-    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $placeholder =
+      (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     //reset globals - toggle label and increment pairing series as needed
     self::$eq_label_toggle_index +=
@@ -113,16 +152,33 @@ class Equips_Settings_Init {
     echo "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
   }
 
+  static function cb_equips_field_count() {
+    $result = '<div>';
+    $options = get_option('equips');
+    $this_field = 'field_count';
+    $ghost_field = 'prev_field_count';
+    $invis_atts = "class='invis-input' id='prev_field_count'";
+    $style_rule = "style='display:none'";
+    $val = (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : strval(1);
+    $ghost_val = (isset($options[$ghost_field]) && "" != $options[$ghost_field]) ?
+      $options[$ghost_field] : strval(1);
+    $result .= "<input name=equips[{$this_field}] type='number' value='{$val}'/>";
+    $result .= "<input name='submit' type='submit' id='update' class='button-primary' value='Update' />";
+    $result .= "<input {$style_rule} {$invis_atts} name=equips[{$ghost_field}] type='number' value='{$ghost_val}'/>";
+    $result .= "</div><hr/>";
+    echo $result;
+  }
+
   static function cb_equips_geo_field() {
     $options = get_option('equips_geo');
-    //error_log(print_r($options));
-    //local namespace assignments based on global settings &/or database state
     $divider = (self::$geo_label_toggle_index < count(self::$geo_label_toggle)-1) ?
       "" : "<br/><br/><hr/>";
     $field_name = self::$geo_label_toggle[self::$geo_label_toggle_index];
     $this_field = $field_name;
     $this_label = ucwords($field_name);
-    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $placeholder = (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     //reset globals - toggle label and increment pairing series as needed
     self::$geo_label_toggle_index +=
@@ -136,7 +192,7 @@ class Equips_Settings_Init {
     $result = '';
     $options = get_option('equips_geo');
     $this_field = 'include_phone_bar';
-    $incl_is_checked = ($options[$this_field] ||
+    $incl_is_checked = ( $options[$this_field] ||
       "include" === ($options[$this_field])) ? "checked" : "";
     $excl_is_checked = ("exclude" === ($options[$this_field])) ? "checked" : "";
     $result .= "<input type='radio' name=equips_geo[{$this_field}] value='include' $incl_is_checked/>";
@@ -149,22 +205,24 @@ class Equips_Settings_Init {
   static function cb_equips_phone_bar_field() {
     $options = get_option('equips_geo');
     $this_field = 'phone_bar_text';
-    $placeholder = ("" != ($options[$this_field])) ? $options[$this_field] : "(not set)";
+    $placeholder = (isset($options[$this_field]) && "" != $options[$this_field]) ?
+      $options[$this_field] : "(not set)";
     $value_tag = ($placeholder === "(not set)") ? "placeholder" : "value";
     echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>";
   }
 
   ////template 2 - after settings section title
 
-  static function cb_equips_geo_section() {
-    $options = get_option('equips_geo');
+  static function cb_equips_settings_section() {
+    $options = get_option('equips');
     $dropped = $options['drop'];
     if ($dropped === "TRUE") {
       error_log('got drop');
-      delete_option('equips_geo');
+      delete_option('equips');
     } else {
       error_log("drop=false");
     }
+    self::trim_fields();
     wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . '../js/equips-unset-all.js');
     ?>
     <hr/>
@@ -177,12 +235,13 @@ class Equips_Settings_Init {
     <?php
   }
 
-  static function cb_equips_settings_section() {
-    $options = get_option('equips');
+
+  static function cb_equips_geo_section() {
+    $options = get_option('equips_geo');
     $dropped = $options['drop'];
     if ($dropped === "TRUE") {
       error_log('got drop');
-      delete_option('equips');
+      delete_option('equips_geo');
     } else {
       error_log("drop=false");
     }

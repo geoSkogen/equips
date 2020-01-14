@@ -2,12 +2,12 @@
 /*
 Plugin Name:  equips_1
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2020.01.10
+Version:      2020.01.12
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
 */
-defined( 'ABSPATH' ) or die( 'We make the path by walking.');
+defined( 'ABSPATH' ) or die( 'We make the path by walking.' );
 
 //Global Namespace
 
@@ -182,10 +182,18 @@ function eq_shortcode_handler_phone( $atts = array() ) {
 // end GEOBLOCK SERVICE AREA
 // begin INIT - plugin baseline actions
 
+function init_equips_wp_scripts() {
+  wp_enqueue_script(
+    'equips-append-hrefs',
+    plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js'
+  );
+}
+
 function equips_triage() {
   global $eq_store;
   $eq_options = get_option('equips');
   $eq_geo_options = get_option('equips_geo');
+  add_action('wp_enqueue_scripts','init_equips_wp_scripts');
   add_filter( 'query_vars', function ( $vars ) {
     global $eq_store;
     $vars = array_merge($vars, $eq_store['params']);
@@ -202,7 +210,6 @@ function equips_triage() {
       $eq_geo_options['phone_shortcode'], 'eq_shortcode_handler_phone'
     );
   }
-
   if ($eq_geo_options['locale_shortcode']) {
     add_shortcode(
       $eq_geo_options['locale_shortcode'], 'eq_shortcode_handler_locale'
@@ -227,7 +234,15 @@ function init_equips($counter) {
   $eq_options = get_option('equips');
   for ($i = 1; $i < $counter + 1; $i++) {
     $eq_num_str = strval($i);
-    if ($eq_options['param_' . $eq_num_str] && $eq_options['shortcode_' . $eq_num_str]) {
+    if (
+        ( isset($eq_options['param_' . $eq_num_str]) &&
+          "" != $eq_options['param_' . $eq_num_str]
+        ) &&
+        ( isset($eq_options['shortcode_' . $eq_num_str]) &&
+          "" != $eq_options['shortcode_' . $eq_num_str]
+        )
+       )
+       {
       $eq_store['indices'][] = $eq_num_str;
       $eq_store['params'][] = $eq_options['param_' . $eq_num_str];
     }
@@ -235,4 +250,4 @@ function init_equips($counter) {
   equips_triage();
 }
 
-init_equips(Equips_Settings_Init::$field_count);
+init_equips(Equips_Settings_Init::get_field_count());
