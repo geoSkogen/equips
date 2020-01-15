@@ -172,9 +172,11 @@ class Equips_Settings_Init {
 
   static function cb_equips_geo_field() {
     $options = get_option('equips_geo');
-    $divider = (self::$geo_label_toggle_index < count(self::$geo_label_toggle)-1) ?
-      "" : "<br/><br/><hr/>";
     $field_name = self::$geo_label_toggle[self::$geo_label_toggle_index];
+    $divider = (
+        self::$geo_label_toggle_index === count(self::$geo_label_toggle)-1 ||
+        strpos($field_name,'shortcode')
+      ) ? "<br/><br/><hr/>" : "" ;
     $this_field = $field_name;
     $this_label = ucwords($field_name);
     $placeholder = (isset($options[$this_field]) && "" != $options[$this_field]) ?

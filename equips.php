@@ -7,6 +7,7 @@ Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
 */
+
 defined( 'ABSPATH' ) or die( 'We make the path by walking.' );
 
 //Global Namespace
@@ -183,10 +184,14 @@ function eq_shortcode_handler_phone( $atts = array() ) {
 // begin INIT - plugin baseline actions
 
 function init_equips_wp_scripts() {
-  wp_enqueue_script(
-    'equips-append-hrefs',
-    plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js'
+  global $eq_store;
+  wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . 'js/equips-append-hrefs.js', array('jquery'));
+  wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
+    array(
+      'params' => $eq_store['params']
+    )
   );
+  wp_enqueue_script('equips-append-hrefs');
 }
 
 function equips_triage() {
@@ -194,6 +199,7 @@ function equips_triage() {
   $eq_options = get_option('equips');
   $eq_geo_options = get_option('equips_geo');
   add_action('wp_enqueue_scripts','init_equips_wp_scripts');
+
   add_filter( 'query_vars', function ( $vars ) {
     global $eq_store;
     $vars = array_merge($vars, $eq_store['params']);
