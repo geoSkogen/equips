@@ -165,7 +165,7 @@ class Equips_Settings_Init {
       $options[$ghost_field] : strval(1);
     $result .= "<input name=equips[{$this_field}] type='number' value='{$val}'/>";
     $result .= "<input name='submit' type='submit' id='update' class='button-primary' value='Update' />";
-    $result .= "<input {$style_rule} {$invis_atts} name=equips[{$ghost_field}] type='number' value='{$ghost_val}'/>";
+    $result .= "<input {$style_rule} {$invis_atts} name=equips[{$ghost_field}] type='number' value='{$val}'/>";
     $result .= "</div><hr/>";
     echo $result;
   }
