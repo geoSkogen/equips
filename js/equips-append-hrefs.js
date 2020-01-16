@@ -1,5 +1,3 @@
-//'use strict'
-
 jQuery(document).ready( function($) {
   console.log(equips_settings_obj);
   var pair = []
@@ -18,16 +16,15 @@ jQuery(document).ready( function($) {
   })
 
   pair_string = pair_string.slice(0,pair_string.length-1);
-  console.log(pair_string)
 
   links.forEach( (e) => {
     if (e.href.indexOf(window.location.origin) === 0 &&
-        e.href.indexOf('wp-admin') === -1) {
-      console.log('got origin ' + window.location.origin)
+        e.href.indexOf('wp-admin') === -1 &&
+        e.href != equips_settings_obj.site_url &&
+        e.href != equips_settings_obj.site_url + '/') {
       e.href = e.href + pair_string
     } else {
-      console.log('got no origin ' + window.location.origin)
+
     }
   })
-  console.log(links)
 })

@@ -188,7 +188,8 @@ function init_equips_wp_scripts() {
   wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . 'js/equips-append-hrefs.js', array('jquery'));
   wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
     array(
-      'params' => $eq_store['params']
+      'params' => $eq_store['params'],
+      'site_url' => site_url()
     )
   );
   wp_enqueue_script('equips-append-hrefs');
