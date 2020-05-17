@@ -1,11 +1,7 @@
-ADD THESE LINES TO wp-config.php DURING INSTALLATION:
-
-define( 'WP_MEMORY_LIMIT', '256M' );
-set_time_limit(300);
 
 NOTE: RE: security - this plugin is currently only configured to lookup locations
 
-$stripped_query requires further validation before being injected into text content
+$stripped query requires further validation before being injected into text content
 
 ===============
 HOW YOU DO THIS
@@ -42,25 +38,21 @@ To Edit:
 ===========================
 Design improvements needed:
 ===========================
+
 1)
 Add validation logic for each type of url parameter!
 --currently 'location' must be numeric and will return its fallback value if
   lookup-by-number fails.
 
 2)
-Add shortcode options page for custom geoblock settings--DONE!
+optional stylesheet enqueue for fonts awesome and custom footer.
 
 3)
-Upgrade global namespace use to OOP protocol--MOSTLY DONE!--eq_store is global
+Fix broken path to global database in multisite install environment.
 
 4)
-Add dependencies - stylesheet enqueue for fonts awesome and custom footer.
+Inject values into database table via single sql string instead of row-by-row,
+escape dependency on ADD THESE LINES TO wp-config.php DURING INSTALLATION:
 
-5)
-Solve to redundant incrementing shortcode handlers--DONE!
-
-6)
-Flexible form with as many entry fields as the user requires!--DONE!
-
-7)
-Fix broken path to global database in multisite install environment.
+define( 'WP_MEMORY_LIMIT', '256M' );
+set_time_limit(300);
