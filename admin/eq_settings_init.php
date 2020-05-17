@@ -214,36 +214,20 @@ class Equips_Settings_Init {
   }
 
   ////template 2 - after settings section title
-
-  static function cb_equips_settings_section() {
-    $options = get_option('equips');
-    $dropped = $options['drop'];
-    if ($dropped === "TRUE") {
-      error_log('got drop');
-      delete_option('equips');
-    } else {
-      error_log("drop=false");
-    }
-    self::trim_fields();
-    wp_enqueue_script('equips-unset-all', plugin_dir_url(__FILE__) . '../js/equips-unset-all.js');
-    ?>
-    <hr/>
-    <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
-      <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
-      <button id='drop_button' class='button-primary' style='border:1.5px solid red;'>
-        <?php _e("Delete All") ?>
-      </button>
-    </div>
-    <?php
+  static function cb_equips_geo_section() {
+    self::cb_equips_dynamic_section('equips_geo');
   }
 
+  static function cb_equips_settings_section() {
+    self::cb_equips_dynamic_section('equips');
+  }
 
-  static function cb_equips_geo_section() {
-    $options = get_option('equips_geo');
+  static function cb_equips_dynamic_section($db_slug) {
+    $options = get_option($db_slug);
     $dropped = $options['drop'];
     if ($dropped === "TRUE") {
       error_log('got drop');
-      delete_option('equips_geo');
+      delete_option($db_slug);
     } else {
       error_log("drop=false");
     }
