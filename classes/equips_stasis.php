@@ -1,0 +1,214 @@
+<?php
+
+class Equips_Stasis {
+
+  public static $eq_store = array('indices'=>[],'params=[]');
+  public static $options = array();
+  public static $geo_options = array();
+  public static $local_info = array();
+
+  function __construct() {
+
+  }
+
+  public static function init_equips($counter) {
+
+    $eq_num_str = "";
+    $eq_options = get_option('equips');
+    self::$options = $eq_options;
+    for ($i = 1; $i < $counter + 1; $i++) {
+      $eq_num_str = strval($i);
+      if (
+          ( isset($eq_options['param_' . $eq_num_str]) &&
+            "" != $eq_options['param_' . $eq_num_str]
+          ) &&
+          ( isset($eq_options['shortcode_' . $eq_num_str]) &&
+            "" != $eq_options['shortcode_' . $eq_num_str]
+          )
+         )
+         {
+        self::$eq_store['indices'][] = $eq_num_str;
+        self::$eq_store['params'][] = $eq_options['param_' . $eq_num_str];
+      }
+    }
+    self::equips_triage($eq_options);
+    return;
+  }
+
+  public static function equips_triage($eq_options) {
+
+    $eq_geo_options = get_option('equips_geo');
+    self::$geo_options = $eq_geo_options;
+
+    add_action('wp_enqueue_scripts',array('Equips_Stasis','init_equips_wp_scripts'));
+    //register the URL parameters and their dynamic shortcode handler
+    add_filter( 'query_vars', function ( $vars ) {
+      $vars = array_merge($vars, self::$eq_store['params']);
+      return $vars;
+    });
+    foreach (self::$eq_store['indices'] as $store_key) {
+      add_shortcode(
+        $eq_options['shortcode_' . $store_key],
+        function () use ($store_key) {  return self::do_equips($store_key); }
+      );
+    }
+    //register the geo-swap shotcodes
+    if ($eq_geo_options['phone_shortcode']) {
+      add_shortcode(
+        $eq_geo_options['phone_shortcode'], array('Equips_Stasis','eq_shortcode_handler_phone')
+      );
+    }
+    if ($eq_geo_options['locale_shortcode']) {
+      add_shortcode(
+        $eq_geo_options['locale_shortcode'], array('Equips_Stasis','eq_shortcode_handler_locale')
+      );
+    }
+    if ($eq_geo_options['region_shortcode']) {
+      add_shortcode(
+        $eq_geo_options['region_shortcode'], array('Equips_Stasis','eq_shortcode_handler_region')
+      );
+    }
+    if ($eq_geo_options['service_area_shortcode']) {
+      add_shortcode(
+        $eq_geo_options['service_area_shortcode'], array('Equips_Stasis','eq_shortcode_handler_service_area')
+      );
+    }
+    return;
+  }
+
+  public static function init_equips_wp_scripts() {
+    self::$eq_store;
+    wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
+    wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
+      array(
+        'params' => self::$eq_store['params'],
+        'site_url' => site_url()
+      )
+    );
+    wp_enqueue_script('equips-append-hrefs');
+  }
+  // returns a local attribute by name and URL param
+  public static function do_equips_location($db_slug) {
+    $result = '';
+    if (get_query_var('location', false)) {
+      $raw_query = get_query_var('location', false);
+      $stripped_query = strip_tags($raw_query);
+      //locations can only be looked up by unique numeric key
+      if (is_numeric($stripped_query)) {
+        //check if the static property already exists
+        if (count(array_keys(self::$local_info)) && isset(self::$local_info[$db_slug])) {
+          $result = self::$local_info[$db_slug];
+          error_log('found static record of local info; no lookup required');
+        //if not, try looking it up
+        } else {
+          error_log('looking up geo5 locale');
+          $equips_local_monster = new Equips_Local_Monster('geo5');
+          $loc_data = $equips_local_monster->get_local($stripped_query);
+          $result = (count(array_keys(($loc_data))) && isset($loc_data[$db_slug])) ?
+            $loc_data[$db_slug] : $result;
+          //if the location was found, commit it to the static var for future use
+          if ($result) {
+            error_log('looked up geo locale; committed to static record');
+            self::$local_info = $loc_data;
+          }
+        }
+      }
+    } else {
+      // do geopluign lookup ()
+    }
+    return $result;
+  }
+  // DYNAMIC shortcode handler
+  // determines which URL param is being used, and whether it has a routine
+  public static function do_equips($num_str) {
+    $fallback = self::$options['fallback_' . $num_str] ? : '';
+    $result = '';
+    //NOTE: RE: security - this plugin is currently only configured to lookup locations
+    //$stripped_query requires further validation before being injected into text content
+    if (get_query_var(self::$options['param_' . $num_str], false)) {
+      switch (self::$options['param_' . $num_str]) {
+        case 'location' :
+          $result = self::do_equips_location('city_name');
+          break;
+      }
+    }
+    return $result ? : $fallback;
+  }
+
+  // GEOBLOCK & SERVICE AREA shortcode handlers
+
+  static function iterate_service_area($name_arr) {
+    $result = "";
+    $result .= "<div>";
+    for($i = 0; $i < count($name_arr); $i++) {
+      $result .= "<span> ";
+      $result .= $name_arr[$i];
+      $result .= " </span>";
+      $result .= ($i === count($name_arr)-1) ? "" : "|";
+    }
+    $result .= "</div>";
+    return $result;
+  }
+
+  public static function eq_shortcode_handler_service_area() {
+    return self::eq_shortcode_handler_geo_dynamic('service_area');
+  }
+
+  public static function eq_shortcode_handler_region() {
+    return self::eq_shortcode_handler_geo_dynamic('region');
+  }
+
+  public static function eq_shortcode_handler_locale() {
+    return self::eq_shortcode_handler_geo_dynamic('locale');
+  }
+
+  static function eq_shortcode_handler_geo_dynamic($slug) {
+    $eq_geo_options = get_option('equips_geo');
+    $fallback = $eq_geo_options[$slug] ? : '';
+    $val = self::do_equips_location($slug);
+    if ($slug==='service_area') {
+      $result = ($val) ? self::iterate_service_area($val) : $fallback;
+    } else {
+      $result = $val ? : $fallback;
+    }
+    return $result;
+  }
+
+  public static function eq_shortcode_handler_phone( $atts = array() ) {
+
+    $eq_geo_options = get_option('equips_geo');
+    $fallback = $eq_geo_options['phone'] ? : '';
+    $phone = self::do_equips_location('phone');
+    $phone = $phone ? : $fallback;
+    $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
+    $icon = '';
+    $phone_bar_text = $eq_geo_options['phone_bar_text'] ? : '';
+
+    extract(shortcode_atts(array(
+       'class' => '',
+       'icon' => ''
+      ), $atts));
+
+    if ($atts) {
+      $icon = ($atts['icon']) ?
+        '<i class="fa fa-phone" aria-hidden="true"></i>' :
+        $icon;
+      $class = $atts['class'] ? : 'no_class';
+    } else {
+      $icon = '';
+      $class = 'no_class';
+    }
+    if ($eq_geo_options['include_phone_bar'] === 'include') {
+      add_action( 'wp_footer' , function () use ($href, $phone, $phone_bar_text) {
+        $result = "<div id='sticky-bar'><p>";
+        $result .= "<a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'>";
+        $result .= "<i class='fa fa-phone' aria-hidden='true'></i> $phone </span>";
+        $result .= "<span class='sb-deal-text'>$phone_bar_text</span></a></p></div>";
+        echo $result;
+      });
+    }
+    return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
+  }
+}
+
+?>
