@@ -95,6 +95,10 @@ class Equips_Stasis {
       $stripped_query = self::$utm_assoc['location'];
       $db_file = 'geo20';
       error_log('got utm based locale query');
+    } else if (isset(self::$utm_assoc['content']) && self::$utm_assoc['content']) {
+      $stripped_query = self::$utm_assoc['content'];
+      $db_file = 'geo20';
+      error_log('got utm based locale query');
     } else if (get_query_var('location', false)) {
       $raw_query = get_query_var('location', false);
       //locations can only be looked up by unique numeric key
@@ -136,6 +140,7 @@ class Equips_Stasis {
       //NOTE: RE: security - this plugin is currently only configured to lookup locations
       //$stripped_query requires further validation before being injected into text content
       case 'location' :
+      case 'content' :
         $result = self::do_equips_location('city_name');
         break;
       default :
@@ -186,7 +191,7 @@ class Equips_Stasis {
       case 'utm' :
         $query_str = $_SERVER['QUERY_STRING'];
         $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
-        $result = self::do_equips_utm($key_val['key'],$key_val['val']);
+        $result = ($key_val) ? self::do_equips_utm($key_val['key'],$key_val['val']) : '';
         break;
       default :
     }
