@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips local
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2020.05.18
+Version:      2020.05.28
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips

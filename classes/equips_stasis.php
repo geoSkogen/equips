@@ -103,6 +103,8 @@ class Equips_Stasis {
       $db_file = 'geo5';
       error_log('got standard locale query');
     } else {
+      $query_str = $_SERVER['QUERY_STRING'];
+      $key_val = self::get_equips_utm('location',$query_str);
       // do geopluign lookup ()
     }
     //check if the static property already exists
@@ -146,15 +148,15 @@ class Equips_Stasis {
     if ($query_str) {
       $utm_arr = explode('&',$query_str);
       foreach($utm_arr as $item) {
-        error_log('UTM_');
+        error_log('querystring item:');
         error_log($item);
         $key_val = explode('=',$item);
-        $key = str_replace('utm_','',$key_val[0]);
-        $val = strip_tags($key_val[1]);
-        if ($key===$param) {
-          error_log('UTM_');
-          error_log($key);
+        if ($key_val[0]==='utm_' . $param) {
+          $key = str_replace('utm_','',$key_val[0]);
+          $val = strip_tags($key_val[1]);
           $result = array('key'=>$key,'val'=>$val);
+          error_log('your param: UTM_');
+          error_log($key);
           self::$utm_assoc[$key] = $val;
           break;
         }
@@ -165,15 +167,15 @@ class Equips_Stasis {
   // DYNAMIC shortcode handler
   // determines which URL param is being used, and whether it has a routine
   public static function do_equips($num_str) {
+    $result = '';
     $type = self::$options['type_' . $num_str];
     $fallback = self::$options['fallback_' . $num_str] ? : '';
-    $result = '';
     switch ($type) {
       case 'standard' :
-  //NOTE: RE: security - this plugin is currently only configured to lookup locations
-  //$stripped_query requires further validation before being injected into text content
         if (get_query_var(self::$options['param_' . $num_str], false)) {
           switch (self::$options['param_' . $num_str]) {
+            //NOTE: RE: security - this plugin is currently only configured to lookup locations
+            //$stripped_query requires further validation before being injected into text content
             case 'location' :
               $result = self::do_equips_location('city_name');
               break;
