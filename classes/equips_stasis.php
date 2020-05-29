@@ -6,6 +6,7 @@ class Equips_Stasis {
   public static $options = array();
   public static $geo_options = array();
   public static $local_info = array();
+  public static $utm_assoc = array();
 
   function __construct() {
 
@@ -90,47 +91,102 @@ class Equips_Stasis {
   // returns a local attribute by name and URL param
   public static function do_equips_location($db_slug) {
     $result = '';
-    if (get_query_var('location', false)) {
+    if (isset(self::$utm_assoc['location']) && self::$utm_assoc['location']) {
+      $stripped_query = self::$utm_assoc['location'];
+      $db_file = 'geo20';
+      error_log('got utm based locale query');
+    } else if (get_query_var('location', false)) {
       $raw_query = get_query_var('location', false);
-      $stripped_query = strip_tags($raw_query);
       //locations can only be looked up by unique numeric key
-      if (is_numeric($stripped_query)) {
-        //check if the static property already exists
-        if (count(array_keys(self::$local_info)) && isset(self::$local_info[$db_slug])) {
-          $result = self::$local_info[$db_slug];
-          error_log('found static record of local info; no lookup required');
-        //if not, try looking it up
-        } else {
-          error_log('looking up geo5 locale');
-          $equips_local_monster = new Equips_Local_Monster('geo5');
-          $loc_data = $equips_local_monster->get_local($stripped_query);
-          $result = (count(array_keys(($loc_data))) && isset($loc_data[$db_slug])) ?
-            $loc_data[$db_slug] : $result;
-          //if the location was found, commit it to the static var for future use
-          if ($result) {
-            error_log('looked up geo locale; committed to static record');
-            self::$local_info = $loc_data;
-          }
-        }
-      }
+      $stripped_query = is_numeric(strip_tags($raw_query)) ?
+        strip_tags($raw_query) : '';
+      $db_file = 'geo5';
+      error_log('got standard locale query');
     } else {
       // do geopluign lookup ()
+    }
+    //check if the static property already exists
+    if (count(array_keys(self::$local_info)) && isset(self::$local_info[$db_slug])) {
+      $result = self::$local_info[$db_slug];
+      error_log('found static record of local info; no lookup required');
+    //if not, try looking it up
+    } else if (isset($db_file)) {
+      error_log("looking up $db_file locale");
+      $equips_local_monster = new Equips_Local_Monster($db_file);
+      $loc_data = $equips_local_monster->get_local($stripped_query);
+      $result = (count(array_keys(($loc_data))) && isset($loc_data[$db_slug])) ?
+        $loc_data[$db_slug] : $result;
+      //if the location was found, commit it to the static var for future use
+      if ($result) {
+        error_log('looked up geo locale; committed to static record');
+        self::$local_info = $loc_data;
+      }
+    } else {
+
+    }
+
+    return $result;
+  }
+
+  public static function do_equips_utm($key,$val) {
+    $result = '';
+    switch($key) {
+      //NOTE: RE: security - this plugin is currently only configured to lookup locations
+      //$stripped_query requires further validation before being injected into text content
+      case 'location' :
+        $result = self::do_equips_location('city_name');
+        break;
+      default :
+    }
+    return $result;
+  }
+
+  public static function get_equips_utm($param,$query_str) {
+    $result = '';
+    if ($query_str) {
+      $utm_arr = explode('&',$query_str);
+      foreach($utm_arr as $item) {
+        error_log('UTM_');
+        error_log($item);
+        $key_val = explode('=',$item);
+        $key = str_replace('utm_','',$key_val[0]);
+        $val = strip_tags($key_val[1]);
+        if ($key===$param) {
+          error_log('UTM_');
+          error_log($key);
+          $result = array('key'=>$key,'val'=>$val);
+          self::$utm_assoc[$key] = $val;
+          break;
+        }
+      }
     }
     return $result;
   }
   // DYNAMIC shortcode handler
   // determines which URL param is being used, and whether it has a routine
   public static function do_equips($num_str) {
+    $type = self::$options['type_' . $num_str];
     $fallback = self::$options['fallback_' . $num_str] ? : '';
     $result = '';
-    //NOTE: RE: security - this plugin is currently only configured to lookup locations
-    //$stripped_query requires further validation before being injected into text content
-    if (get_query_var(self::$options['param_' . $num_str], false)) {
-      switch (self::$options['param_' . $num_str]) {
-        case 'location' :
-          $result = self::do_equips_location('city_name');
-          break;
-      }
+    switch ($type) {
+      case 'standard' :
+  //NOTE: RE: security - this plugin is currently only configured to lookup locations
+  //$stripped_query requires further validation before being injected into text content
+        if (get_query_var(self::$options['param_' . $num_str], false)) {
+          switch (self::$options['param_' . $num_str]) {
+            case 'location' :
+              $result = self::do_equips_location('city_name');
+              break;
+            default :
+          }
+        }
+        break;
+      case 'utm' :
+        $query_str = $_SERVER['QUERY_STRING'];
+        $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
+        $result = self::do_equips_utm($key_val['key'],$key_val['val']);
+        break;
+      default :
     }
     return $result ? : $fallback;
   }

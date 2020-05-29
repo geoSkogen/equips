@@ -5,7 +5,8 @@ class Equips_Settings_Init {
   public static $eq_label_toggle = array(
     "param",
     "shortcode",
-    "fallback"
+    "fallback",
+    "type"
   );
 
   public static $geo_label_toggle = array(
@@ -149,7 +150,22 @@ class Equips_Settings_Init {
     self::$current_field_index += (self::$eq_label_toggle_index === 0) ?
       1 : 0;
     //make an <input/> with dynamic attributes
-    echo "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
+    if ($field_name==='type') {
+      $placeholder = ($placeholder==='(not set)') ? 'standard' : $placeholder;
+      $is_selected = ['standard'=>'','utm'=>''];
+      $is_selected[$placeholder] = 'checked';
+      $str = "<div style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
+      $str .= "<input type='radio' name=equips[{$this_field}] value='standard' ";
+      $str .= " {$is_selected['standard']} style='margin:0.5em' />";
+      $str .= "<label for='$this_field'>standard</label>";
+      $str .= "<input type='radio' name=equips[{$this_field}] value='utm' ";
+      $str .= " {$is_selected['utm']} style='margin:0 0.5em 0 1em' />";
+      $str .= "<label for='$this_field'>UTM parameter</label>";
+      $str .= "</div>" . $divider;
+    } else {
+      $str = "<input type='text' name=equips[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
+    }
+    echo $str;
   }
 
   static function cb_equips_field_count() {
