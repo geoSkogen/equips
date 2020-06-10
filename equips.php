@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name:  equips local
+Plugin Name:  EQU[$i]PS Local
 Description:  Extensible Queries of URL Parameters for Shortcode
-Version:      2020.05.28
+Version:      2020.06.10
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
