@@ -45,10 +45,14 @@ jQuery(document).ready( function($) {
                 if (locale_name && geoblock_vals) {
                   console.log(locale_name);
                   console.log(geoblock_vals);
-                  str = h3.textContent;
-                  str = str.replace('your area', ' ' + locale_name);
-                  h3.innerText = str;
-                  geoh3.innerText = geo_pipe(geoblock_vals);
+                  if (h3) {
+                    str = h3.textContent;
+                    str = str.replace('your area', ' ' + locale_name);
+                    h3.innerText = str;
+                  }
+                  if (geoh3) {
+                    geoh3.innerText = geo_pipe(geoblock_vals);
+                  }
                   console.log(str);
                 }
               } else {
