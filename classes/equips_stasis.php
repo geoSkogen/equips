@@ -94,11 +94,11 @@ class Equips_Stasis {
   // returns a local attribute by name and URL param
   public static function do_equips_location($db_slug) {
     $result = '';
-    if (isset(self::$utm_assoc['location']) && self::$utm_assoc['location']) {
+    if ( !empty(self::$utm_assoc['location']) ) {
       $stripped_query = self::$utm_assoc['location'];
       $db_file = 'geo20';
       error_log('got utm based locale query');
-    } else if (isset(self::$utm_assoc['content']) && self::$utm_assoc['content']) {
+    } else if ( !empty(self::$utm_assoc['content']) ) {
       $stripped_query = self::$utm_assoc['content'];
       $db_file = 'geo20';
       error_log('got utm based locale query');
@@ -111,14 +111,15 @@ class Equips_Stasis {
       error_log('got standard locale query');
     } else {
       $query_str = $_SERVER['QUERY_STRING'];
-      $key_val = self::get_equips_utm('location',$query_str);
+      $key_val = self::get_equips_utm('content',$query_str);
+      $stripped_query = (!empty(self::$utm_assoc['content'])) ?
+        self::$utm_assoc['content']: '';
       // do geopluign lookup ()
     }
     //check if the static property already exists
     if (count(array_keys(self::$local_info)) && !empty(self::$local_info[$db_slug])) {
       $result = self::$local_info[$db_slug];
       error_log('found static record of local info; no lookup required');
-      error_log($result);
     //if not, try looking it up
     } else if (isset($db_file)) {
       error_log("looking up $db_file locale");
@@ -135,7 +136,6 @@ class Equips_Stasis {
     } else {
 
     }
-    error_log($result);
     return $result;
   }
 
@@ -156,31 +156,21 @@ class Equips_Stasis {
   public static function get_equips_utm($param,$query_str) {
     $result = '';
     if ($query_str) {
+
       $utm_arr = explode('&',$query_str);
-      error_log($utm_arr[0]);
+
       foreach($utm_arr as $item) {
-        error_log('querystring item:');
-        error_log($item);
-        error_log('your param');
-        error_log($param);
         $key_val = explode('=',$item);
-        error_log('keyval0');
-        error_log($key_val[0]);
-        error_log('keyval1');
-        error_log($key_val[1]);
+
         if ($key_val[0]=='utm_' . $param) {
+
           $key = str_replace('utm_','',$key_val[0]);
           $val = strip_tags($key_val[1]);
           $result = array('key'=>$key,'val'=>$val);
-          error_log('your param: UTM_');
-          error_log($key);
-          error_log('your param val');
-          error_log($val);
           self::$utm_assoc[$key] = $val;
           break;
         }
       }
-      error_log(strval(count($utm_arr)) . ' total utms found');
     } else {
       error_log('querystring item not found');
       error_log($query_str);
@@ -208,10 +198,6 @@ class Equips_Stasis {
         break;
       case 'utm' :
         $query_str = $_SERVER['QUERY_STRING'];
-        error_log('Query String');
-        error_log($query_str);
-        error_log('Your UTM Param');
-        error_log(self::$options['param_' . $num_str]);
         $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
         $result = ($key_val) ? self::do_equips_utm($key_val['key'],$key_val['val']) : '';
         break;
