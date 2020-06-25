@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name:  EQUiPs Local
-Description:  Extensible Queries of URL Parameters for Shortcode - w/ JavaScript UTM swap
-Version:      2020.06.25
+Description:  Extensible Queries of URL Parameters for Shortcode - w/ JavaScript UTM swap + utm-content-gf-injector
+Version:      2020.06.25.1
 Author:       City Ranked Media
 Author URI:
 Text Domain:  equips
@@ -34,3 +34,10 @@ if ( !class_exists( 'Equips_Stasis' ) ) {
 }
 
 Equips_Stasis::init_equips(Equips_Settings_Init::get_field_count());
+
+function local_utm_content_gf_injector() {
+  wp_register_script('equips-utm-content-gf-injector', plugin_dir_url(__FILE__) . 'js/' . 'equips-utm-content-gf-injector' . '.js');
+  wp_enqueue_script('equips-utm-content-gf-injector');
+}
+
+add_action( 'wp_enqueue_scripts','local_utm_content_gf_injector');
