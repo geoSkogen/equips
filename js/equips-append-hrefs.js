@@ -46,9 +46,9 @@ jQuery(document).ready( function($) {
                   console.log(locale_name);
                   console.log(geoblock_vals);
                   str = h3.textContent;
-                  str = str.replace('your area',locale_name)
+                  str = str.replace('your area', ' ' + locale_name);
                   h3.innerText = str;
-                  geoh3 = geo_pipe(geoblock_vals);
+                  geoh3.innerText = geo_pipe(geoblock_vals);
                   console.log(str);
                 }
               } else {

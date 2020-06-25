@@ -110,10 +110,12 @@ class Equips_Stasis {
       $db_file = 'geo5';
       error_log('got standard locale query');
     } else {
+      /*
       $query_str = $_SERVER['QUERY_STRING'];
       $key_val = self::get_equips_utm('content',$query_str);
       $stripped_query = (!empty(self::$utm_assoc['content'])) ?
         self::$utm_assoc['content']: '';
+      */  
       // do geopluign lookup ()
     }
     //check if the static property already exists
@@ -197,9 +199,11 @@ class Equips_Stasis {
         }
         break;
       case 'utm' :
+        /*
         $query_str = $_SERVER['QUERY_STRING'];
         $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
         $result = ($key_val) ? self::do_equips_utm($key_val['key'],$key_val['val']) : '';
+        */
         break;
       default :
     }
