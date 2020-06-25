@@ -1,0 +1,1963 @@
+[24-Jun-2020 21:21:28 UTC] No Adwords Number found 
+[24-Jun-2020 14:21:28 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:21:28 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:21:28 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:21:28 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:21:28 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:23:30 UTC] auditor:event=wp_login {"user_id":3,"blog_id":1,"event":"wp_login","current_user_id":0,"remote_addr":"73.157.227.25"}
+[24-Jun-2020 21:23:31 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "read_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 21:23:31 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "edit_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 21:32:45 UTC] No Adwords Number found 
+[24-Jun-2020 14:32:45 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:32:45 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:32:45 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:32:45 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:32:45 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:34:58 UTC] No Adwords Number found 
+[24-Jun-2020 14:34:58 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:34:58 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:34:58 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:34:58 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:34:58 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:36:06 UTC] No Adwords Number found 
+[24-Jun-2020 14:36:06 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:36:06 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:36:06 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:36:07 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:36:07 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:42:16 UTC] No Adwords Number found 
+[24-Jun-2020 21:42:16 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:42:16 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 14:42:16 America/Los_Angeles] Query String
+[24-Jun-2020 14:42:16 America/Los_Angeles] 
+[24-Jun-2020 14:42:16 America/Los_Angeles] Query String
+[24-Jun-2020 14:42:16 America/Los_Angeles] 
+[24-Jun-2020 14:42:16 America/Los_Angeles] Query String
+[24-Jun-2020 14:42:16 America/Los_Angeles] 
+[24-Jun-2020 21:44:47 UTC] No Adwords Number found 
+[24-Jun-2020 14:44:47 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:44:48 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:47:52 UTC] No Adwords Number found 
+[24-Jun-2020 14:47:52 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:47:52 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:47:52 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:47:52 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:47:52 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:48:03 UTC] No Adwords Number found 
+[24-Jun-2020 14:48:03 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:48:36 UTC] No Adwords Number found 
+[24-Jun-2020 14:48:37 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:48:37 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:48:37 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:48:37 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:48:37 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:48:59 UTC] auditor:scan=fingerprint {"blog_id":1,"kind":"wp-core","name":"wp-includes","slug":"wp-includes","ver":"5.4.2","sig":"v1:nohash"}
+[24-Jun-2020 21:48:59 UTC] auditor:scan=fingerprint {"blog_id":1,"kind":"wp-core","name":"wp-admin","slug":"wp-admin","ver":"5.4.2","sig":"v1:nohash"}
+[24-Jun-2020 21:49:01 UTC] No Adwords Number found 
+[24-Jun-2020 21:49:01 UTC] querystring item:
+[24-Jun-2020 21:49:01 UTC] utm_content=miami
+[24-Jun-2020 21:49:01 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 21:49:01 UTC] querystring item:
+[24-Jun-2020 21:49:01 UTC] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:49:01 America/Los_Angeles] querystring item:
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:49:01 America/Los_Angeles] querystring item:
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:49:01 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 14:49:01 America/Los_Angeles] Query String
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] querystring item:
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 14:49:01 America/Los_Angeles] content
+[24-Jun-2020 14:49:01 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 14:49:01 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 14:49:01 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 14:49:01 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 14:49:01 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 14:49:01 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 14:49:01 America/Los_Angeles] Query String
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] querystring item:
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 14:49:01 America/Los_Angeles] content
+[24-Jun-2020 14:49:01 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 14:49:01 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 14:49:01 America/Los_Angeles] Query String
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] querystring item:
+[24-Jun-2020 14:49:01 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 14:49:01 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 14:49:01 America/Los_Angeles] content
+[24-Jun-2020 14:49:01 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 14:49:01 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 14:49:01 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 14:49:01 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 21:49:16 UTC] No Adwords Number found 
+[24-Jun-2020 21:49:16 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 266
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:49:16 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 14:49:16 America/Los_Angeles] Query String
+[24-Jun-2020 14:49:16 America/Los_Angeles] 
+[24-Jun-2020 14:49:16 America/Los_Angeles] Query String
+[24-Jun-2020 14:49:16 America/Los_Angeles] 
+[24-Jun-2020 14:49:16 America/Los_Angeles] Query String
+[24-Jun-2020 14:49:16 America/Los_Angeles] 
+[24-Jun-2020 21:58:29 UTC] No Adwords Number found 
+[24-Jun-2020 14:58:29 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:58:29 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:58:29 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:58:29 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 14:58:29 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:59:08 UTC] No Adwords Number found 
+[24-Jun-2020 14:59:08 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 14:59:08 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 21:59:37 UTC] auditor:event=wp_login {"user_id":3,"blog_id":1,"event":"wp_login","current_user_id":0,"remote_addr":"73.157.227.25"}
+[24-Jun-2020 21:59:38 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "read_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 21:59:38 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "edit_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 22:00:20 UTC] No Adwords Number found 
+[24-Jun-2020 22:00:20 UTC] utm_content=miami
+[24-Jun-2020 22:00:20 UTC] querystring item:
+[24-Jun-2020 22:00:20 UTC] utm_content=miami
+[24-Jun-2020 22:00:20 UTC] 1 total utms found
+[24-Jun-2020 22:00:20 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 22:00:20 UTC] utm_content=miami
+[24-Jun-2020 22:00:20 UTC] querystring item:
+[24-Jun-2020 22:00:20 UTC] utm_content=miami
+[24-Jun-2020 22:00:20 UTC] 1 total utms found
+[24-Jun-2020 15:00:20 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:00:20 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:00:20 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:20 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:00:20 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:20 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:00:20 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 15:00:20 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:00:20 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:20 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:00:20 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:20 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:00:20 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 15:00:20 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:00:21 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:00:21 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:00:21 America/Los_Angeles] Query String
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:00:21 America/Los_Angeles] content
+[24-Jun-2020 15:00:21 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:00:21 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:00:21 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 15:00:21 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 15:00:21 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 15:00:21 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 15:00:21 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 15:00:21 America/Los_Angeles] Query String
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:00:21 America/Los_Angeles] content
+[24-Jun-2020 15:00:21 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:00:21 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:00:21 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:00:21 America/Los_Angeles] Query String
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:00:21 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:00:21 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:00:21 America/Los_Angeles] content
+[24-Jun-2020 15:00:21 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:00:21 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:00:21 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:00:21 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:00:21 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 22:00:31 UTC] No Adwords Number found 
+[24-Jun-2020 22:00:31 UTC] querystring item not found
+[24-Jun-2020 22:00:31 UTC] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 173
+[24-Jun-2020 22:00:31 UTC] 
+[24-Jun-2020 22:00:31 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 22:00:31 UTC] querystring item not found
+[24-Jun-2020 22:00:31 UTC] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 173
+[24-Jun-2020 22:00:31 UTC] 
+[24-Jun-2020 22:00:31 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:00:31 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 173
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:00:31 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 173
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 271
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:00:31 America/Los_Angeles] Query String
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:00:31 America/Los_Angeles] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 173
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] Query String
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] Query String
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 15:00:31 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:00:31 America/Los_Angeles] 
+[24-Jun-2020 22:01:30 UTC] No Adwords Number found 
+[24-Jun-2020 15:01:30 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:01:30 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:01:30 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:01:30 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:01:30 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:10:55 UTC] No Adwords Number found 
+[24-Jun-2020 15:10:55 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:10:55 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:10:55 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:10:55 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:10:55 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:15:04 UTC] No Adwords Number found 
+[24-Jun-2020 15:15:04 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:15:04 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:15:35 UTC] drop=false
+[24-Jun-2020 22:16:08 UTC] No Adwords Number found 
+[24-Jun-2020 15:16:08 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:16:08 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:16:08 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:16:08 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:16:08 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:16:20 UTC] drop=false
+[24-Jun-2020 22:16:20 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/admin/eq_settings_init.php on line 213
+[24-Jun-2020 22:16:20 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/admin/eq_settings_init.php on line 214
+[24-Jun-2020 22:16:20 UTC] PHP Notice:  Undefined index: include_phone_bar in /nas/content/live/localrentokil/wp-content/plugins/equips_2/admin/eq_settings_init.php on line 215
+[24-Jun-2020 22:16:39 UTC] drop=false
+[24-Jun-2020 22:17:02 UTC] No Adwords Number found 
+[24-Jun-2020 15:17:02 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:17:02 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:17:02 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:17:02 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:17:02 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:19:40 UTC] No Adwords Number found 
+[24-Jun-2020 22:19:40 UTC] utm_content=miami
+[24-Jun-2020 22:19:40 UTC] querystring item:
+[24-Jun-2020 22:19:40 UTC] utm_content=miami
+[24-Jun-2020 22:19:40 UTC] keyval0
+[24-Jun-2020 22:19:40 UTC] utm_content
+[24-Jun-2020 22:19:40 UTC] keyval1
+[24-Jun-2020 22:19:40 UTC] miami
+[24-Jun-2020 22:19:40 UTC] 1 total utms found
+[24-Jun-2020 22:19:40 UTC] utm_content=miami
+[24-Jun-2020 22:19:40 UTC] querystring item:
+[24-Jun-2020 22:19:40 UTC] utm_content=miami
+[24-Jun-2020 22:19:40 UTC] keyval0
+[24-Jun-2020 22:19:40 UTC] utm_content
+[24-Jun-2020 22:19:40 UTC] keyval1
+[24-Jun-2020 22:19:40 UTC] miami
+[24-Jun-2020 22:19:40 UTC] 1 total utms found
+[24-Jun-2020 15:19:40 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:19:40 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval0
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval1
+[24-Jun-2020 15:19:40 America/Los_Angeles] miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:19:40 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval0
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval1
+[24-Jun-2020 15:19:40 America/Los_Angeles] miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:19:40 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:19:40 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:19:40 America/Los_Angeles] Query String
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval0
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval1
+[24-Jun-2020 15:19:40 America/Los_Angeles] miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:19:40 America/Los_Angeles] content
+[24-Jun-2020 15:19:40 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:19:40 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:19:40 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 15:19:40 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 15:19:40 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 15:19:40 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 15:19:40 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 15:19:40 America/Los_Angeles] Query String
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval0
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval1
+[24-Jun-2020 15:19:40 America/Los_Angeles] miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:19:40 America/Los_Angeles] content
+[24-Jun-2020 15:19:40 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:19:40 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:19:40 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:19:40 America/Los_Angeles] Query String
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval0
+[24-Jun-2020 15:19:40 America/Los_Angeles] utm_content
+[24-Jun-2020 15:19:40 America/Los_Angeles] keyval1
+[24-Jun-2020 15:19:40 America/Los_Angeles] miami
+[24-Jun-2020 15:19:40 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:19:40 America/Los_Angeles] content
+[24-Jun-2020 15:19:40 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:19:40 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:19:40 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:19:40 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:19:40 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 22:20:03 UTC] No Adwords Number found 
+[24-Jun-2020 22:20:03 UTC] querystring item not found
+[24-Jun-2020 22:20:03 UTC] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 177
+[24-Jun-2020 22:20:03 UTC] 
+[24-Jun-2020 22:20:03 UTC] querystring item not found
+[24-Jun-2020 22:20:03 UTC] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:20:03 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 177
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:20:03 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 177
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:20:03 America/Los_Angeles] Query String
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:20:03 America/Los_Angeles] content
+[24-Jun-2020 15:20:03 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:20:03 America/Los_Angeles] PHP Notice:  Undefined variable: query_string in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 177
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] Query String
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:20:03 America/Los_Angeles] content
+[24-Jun-2020 15:20:03 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] Query String
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:20:03 America/Los_Angeles] content
+[24-Jun-2020 15:20:03 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 15:20:03 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:20:03 America/Los_Angeles] 
+[24-Jun-2020 22:21:02 UTC] auditor:event=wp_login {"user_id":3,"blog_id":1,"event":"wp_login","current_user_id":0,"remote_addr":"73.157.227.25"}
+[24-Jun-2020 22:21:03 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "read_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 22:21:03 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "edit_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 22:21:09 UTC] drop=false
+[24-Jun-2020 22:21:28 UTC] No Adwords Number found 
+[24-Jun-2020 22:21:28 UTC] utm_content=miami
+[24-Jun-2020 22:21:28 UTC] querystring item:
+[24-Jun-2020 22:21:28 UTC] utm_content=miami
+[24-Jun-2020 22:21:28 UTC] keyval0
+[24-Jun-2020 22:21:28 UTC] utm_content
+[24-Jun-2020 22:21:28 UTC] keyval1
+[24-Jun-2020 22:21:28 UTC] miami
+[24-Jun-2020 22:21:28 UTC] 1 total utms found
+[24-Jun-2020 22:21:28 UTC] utm_content=miami
+[24-Jun-2020 22:21:28 UTC] querystring item:
+[24-Jun-2020 22:21:28 UTC] utm_content=miami
+[24-Jun-2020 22:21:28 UTC] keyval0
+[24-Jun-2020 22:21:28 UTC] utm_content
+[24-Jun-2020 22:21:28 UTC] keyval1
+[24-Jun-2020 22:21:28 UTC] miami
+[24-Jun-2020 22:21:28 UTC] 1 total utms found
+[24-Jun-2020 15:21:28 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:21:28 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval0
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval1
+[24-Jun-2020 15:21:28 America/Los_Angeles] miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:21:28 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval0
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval1
+[24-Jun-2020 15:21:28 America/Los_Angeles] miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:21:28 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:21:28 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:21:28 America/Los_Angeles] Query String
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:21:28 America/Los_Angeles] content
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval0
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval1
+[24-Jun-2020 15:21:28 America/Los_Angeles] miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:21:28 America/Los_Angeles] content
+[24-Jun-2020 15:21:28 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:21:28 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:21:28 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 15:21:28 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 15:21:28 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 15:21:28 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 15:21:28 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 15:21:28 America/Los_Angeles] Query String
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:21:28 America/Los_Angeles] content
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval0
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval1
+[24-Jun-2020 15:21:28 America/Los_Angeles] miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:21:28 America/Los_Angeles] content
+[24-Jun-2020 15:21:28 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:21:28 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:21:28 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:21:28 America/Los_Angeles] Query String
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:21:28 America/Los_Angeles] content
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval0
+[24-Jun-2020 15:21:28 America/Los_Angeles] utm_content
+[24-Jun-2020 15:21:28 America/Los_Angeles] keyval1
+[24-Jun-2020 15:21:28 America/Los_Angeles] miami
+[24-Jun-2020 15:21:28 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:21:28 America/Los_Angeles] content
+[24-Jun-2020 15:21:28 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:21:28 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:21:28 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:21:28 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:21:28 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 22:29:05 UTC] No Adwords Number found 
+[24-Jun-2020 22:29:05 UTC] utm_content=miami
+[24-Jun-2020 22:29:05 UTC] querystring item:
+[24-Jun-2020 22:29:05 UTC] utm_content=miami
+[24-Jun-2020 22:29:05 UTC] keyval0
+[24-Jun-2020 22:29:05 UTC] utm_content
+[24-Jun-2020 22:29:05 UTC] keyval1
+[24-Jun-2020 22:29:05 UTC] miami
+[24-Jun-2020 22:29:05 UTC] 1 total utms found
+[24-Jun-2020 22:29:05 UTC] utm_content=miami
+[24-Jun-2020 22:29:05 UTC] querystring item:
+[24-Jun-2020 22:29:05 UTC] utm_content=miami
+[24-Jun-2020 22:29:05 UTC] keyval0
+[24-Jun-2020 22:29:05 UTC] utm_content
+[24-Jun-2020 22:29:05 UTC] keyval1
+[24-Jun-2020 22:29:05 UTC] miami
+[24-Jun-2020 22:29:05 UTC] 1 total utms found
+[24-Jun-2020 15:29:05 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:29:05 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval0
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval1
+[24-Jun-2020 15:29:05 America/Los_Angeles] miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:29:05 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval0
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval1
+[24-Jun-2020 15:29:05 America/Los_Angeles] miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:29:05 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:29:05 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:29:05 America/Los_Angeles] Query String
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:29:05 America/Los_Angeles] content
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval0
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval1
+[24-Jun-2020 15:29:05 America/Los_Angeles] miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:29:05 America/Los_Angeles] content
+[24-Jun-2020 15:29:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:29:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:29:05 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 15:29:05 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 15:29:05 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 15:29:05 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 15:29:05 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 15:29:05 America/Los_Angeles] Query String
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:29:05 America/Los_Angeles] content
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval0
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval1
+[24-Jun-2020 15:29:05 America/Los_Angeles] miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:29:05 America/Los_Angeles] content
+[24-Jun-2020 15:29:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:29:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:29:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:29:05 America/Los_Angeles] Query String
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:29:05 America/Los_Angeles] content
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval0
+[24-Jun-2020 15:29:05 America/Los_Angeles] utm_content
+[24-Jun-2020 15:29:05 America/Los_Angeles] keyval1
+[24-Jun-2020 15:29:05 America/Los_Angeles] miami
+[24-Jun-2020 15:29:05 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 15:29:05 America/Los_Angeles] content
+[24-Jun-2020 15:29:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 15:29:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:29:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 15:29:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 15:29:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 22:30:41 UTC] No Adwords Number found 
+[24-Jun-2020 15:30:41 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:30:41 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:32:11 UTC] No Adwords Number found 
+[24-Jun-2020 15:32:12 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:32:12 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:32:12 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:32:12 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:32:12 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 22:37:04 UTC] No Adwords Number found 
+[24-Jun-2020 22:37:04 UTC] querystring item not found
+[24-Jun-2020 22:37:04 UTC] 
+[24-Jun-2020 22:37:04 UTC] querystring item not found
+[24-Jun-2020 22:37:04 UTC] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:37:04 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:37:04 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 15:37:04 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 15:37:04 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 15:37:04 America/Los_Angeles] Query String
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:37:04 America/Los_Angeles] content
+[24-Jun-2020 15:37:04 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] Query String
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:37:04 America/Los_Angeles] content
+[24-Jun-2020 15:37:04 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] Query String
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 15:37:04 America/Los_Angeles] content
+[24-Jun-2020 15:37:04 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 15:37:04 America/Los_Angeles] querystring item not found
+[24-Jun-2020 15:37:04 America/Los_Angeles] 
+[24-Jun-2020 23:01:31 UTC] No Adwords Number found 
+[24-Jun-2020 16:01:31 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:01:31 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:01:31 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:01:31 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:01:31 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:09:48 UTC] No Adwords Number found 
+[24-Jun-2020 23:09:48 UTC] querystring item not found
+[24-Jun-2020 23:09:48 UTC] 
+[24-Jun-2020 23:09:48 UTC] 
+[24-Jun-2020 23:09:48 UTC] querystring item not found
+[24-Jun-2020 23:09:48 UTC] 
+[24-Jun-2020 23:09:48 UTC] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:09:48 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:09:48 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:09:48 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:09:48 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:09:48 America/Los_Angeles] Query String
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:09:48 America/Los_Angeles] content
+[24-Jun-2020 16:09:48 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] Query String
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:09:48 America/Los_Angeles] content
+[24-Jun-2020 16:09:48 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] Query String
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:09:48 America/Los_Angeles] content
+[24-Jun-2020 16:09:48 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 16:09:48 America/Los_Angeles] 
+[24-Jun-2020 23:14:55 UTC] No Adwords Number found 
+[24-Jun-2020 16:14:55 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:14:55 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:16:12 UTC] No Adwords Number found 
+[24-Jun-2020 23:16:12 UTC] got standard locale query
+[24-Jun-2020 23:16:12 UTC] looking up geo5 locale
+[24-Jun-2020 23:16:12 UTC] local info array keys not found; using CSV lookup
+[24-Jun-2020 23:16:12 UTC] logging CSV file path for debugging
+[24-Jun-2020 23:16:12 UTC] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo5.csv
+[24-Jun-2020 23:16:12 UTC] looked up geo locale; committed to static record
+[24-Jun-2020 23:16:12 UTC] (610) 288-0965
+[24-Jun-2020 23:16:12 UTC] (610) 288-0965
+[24-Jun-2020 23:16:12 UTC] got standard locale query
+[24-Jun-2020 23:16:12 UTC] found static record of local info; no lookup required
+[24-Jun-2020 23:16:12 UTC] (610) 288-0965
+[24-Jun-2020 23:16:12 UTC] (610) 288-0965
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:16:12 America/Los_Angeles] got standard locale query
+[24-Jun-2020 16:16:12 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:16:12 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:16:12 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:16:12 America/Los_Angeles] got standard locale query
+[24-Jun-2020 16:16:12 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:16:12 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:16:12 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:16:12 America/Los_Angeles] Query String
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:16:12 America/Los_Angeles] content
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] your param
+[24-Jun-2020 16:16:12 America/Los_Angeles] content
+[24-Jun-2020 16:16:12 America/Los_Angeles] keyval0
+[24-Jun-2020 16:16:12 America/Los_Angeles] location
+[24-Jun-2020 16:16:12 America/Los_Angeles] keyval1
+[24-Jun-2020 16:16:12 America/Los_Angeles] 1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:16:12 America/Los_Angeles] Query String
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:16:12 America/Los_Angeles] content
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] your param
+[24-Jun-2020 16:16:12 America/Los_Angeles] content
+[24-Jun-2020 16:16:12 America/Los_Angeles] keyval0
+[24-Jun-2020 16:16:12 America/Los_Angeles] location
+[24-Jun-2020 16:16:12 America/Los_Angeles] keyval1
+[24-Jun-2020 16:16:12 America/Los_Angeles] 1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:16:12 America/Los_Angeles] Query String
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:16:12 America/Los_Angeles] content
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:16:12 America/Los_Angeles] location=1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] your param
+[24-Jun-2020 16:16:12 America/Los_Angeles] content
+[24-Jun-2020 16:16:12 America/Los_Angeles] keyval0
+[24-Jun-2020 16:16:12 America/Los_Angeles] location
+[24-Jun-2020 16:16:12 America/Los_Angeles] keyval1
+[24-Jun-2020 16:16:12 America/Los_Angeles] 1018520
+[24-Jun-2020 16:16:12 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:16:12 America/Los_Angeles] got standard locale query
+[24-Jun-2020 16:16:12 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 118
+[24-Jun-2020 16:16:12 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 135
+[24-Jun-2020 23:18:27 UTC] No Adwords Number found 
+[24-Jun-2020 16:18:27 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:18:27 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:20:33 UTC] No Adwords Number found 
+[24-Jun-2020 23:20:33 UTC] querystring item not found
+[24-Jun-2020 23:20:33 UTC] 
+[24-Jun-2020 23:20:33 UTC] 
+[24-Jun-2020 23:20:33 UTC] querystring item not found
+[24-Jun-2020 23:20:33 UTC] 
+[24-Jun-2020 23:20:33 UTC] 
+[24-Jun-2020 16:20:33 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:20:33 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:20:33 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:20:33 America/Los_Angeles] 
+[24-Jun-2020 16:20:33 America/Los_Angeles] 
+[24-Jun-2020 16:20:33 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:20:34 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:20:34 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:20:34 America/Los_Angeles] Query String
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:20:34 America/Los_Angeles] content
+[24-Jun-2020 16:20:34 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] Query String
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:20:34 America/Los_Angeles] content
+[24-Jun-2020 16:20:34 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] Query String
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:20:34 America/Los_Angeles] content
+[24-Jun-2020 16:20:34 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 16:20:34 America/Los_Angeles] 
+[24-Jun-2020 23:20:49 UTC] auditor:event=wp_login {"user_id":3,"blog_id":1,"event":"wp_login","current_user_id":0,"remote_addr":"73.157.227.25"}
+[24-Jun-2020 23:20:50 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "read_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 23:20:50 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "edit_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 23:21:18 UTC] No Adwords Number found 
+[24-Jun-2020 23:21:18 UTC] querystring item not found
+[24-Jun-2020 23:21:18 UTC] 
+[24-Jun-2020 23:21:18 UTC] 
+[24-Jun-2020 23:21:18 UTC] querystring item not found
+[24-Jun-2020 23:21:18 UTC] 
+[24-Jun-2020 23:21:18 UTC] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:21:18 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:21:18 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:21:18 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:21:18 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:21:18 America/Los_Angeles] Query String
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:21:18 America/Los_Angeles] content
+[24-Jun-2020 16:21:18 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] Query String
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:21:18 America/Los_Angeles] content
+[24-Jun-2020 16:21:18 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] Query String
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:21:18 America/Los_Angeles] content
+[24-Jun-2020 16:21:18 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 16:21:18 America/Los_Angeles] 
+[24-Jun-2020 23:21:22 UTC] post=2005
+[24-Jun-2020 23:21:22 UTC] querystring item:
+[24-Jun-2020 23:21:22 UTC] post=2005
+[24-Jun-2020 23:21:22 UTC] your param
+[24-Jun-2020 23:21:22 UTC] location
+[24-Jun-2020 23:21:22 UTC] keyval0
+[24-Jun-2020 23:21:22 UTC] post
+[24-Jun-2020 23:21:22 UTC] keyval1
+[24-Jun-2020 23:21:22 UTC] 2005
+[24-Jun-2020 23:21:22 UTC] querystring item:
+[24-Jun-2020 23:21:22 UTC] action=elementor
+[24-Jun-2020 23:21:22 UTC] your param
+[24-Jun-2020 23:21:22 UTC] location
+[24-Jun-2020 23:21:22 UTC] keyval0
+[24-Jun-2020 23:21:22 UTC] action
+[24-Jun-2020 23:21:22 UTC] keyval1
+[24-Jun-2020 23:21:22 UTC] elementor
+[24-Jun-2020 23:21:22 UTC] 2 total utms found
+[24-Jun-2020 23:21:22 UTC] 
+[24-Jun-2020 16:21:22 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:21:22 America/Los_Angeles] post=2005
+[24-Jun-2020 16:21:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:22 America/Los_Angeles] post=2005
+[24-Jun-2020 16:21:22 America/Los_Angeles] your param
+[24-Jun-2020 16:21:22 America/Los_Angeles] location
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:22 America/Los_Angeles] post
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:22 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:22 America/Los_Angeles] action=elementor
+[24-Jun-2020 16:21:22 America/Los_Angeles] your param
+[24-Jun-2020 16:21:22 America/Los_Angeles] location
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:22 America/Los_Angeles] action
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:22 America/Los_Angeles] elementor
+[24-Jun-2020 16:21:22 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:22 America/Los_Angeles] 
+[24-Jun-2020 16:21:22 America/Los_Angeles] post=2005
+[24-Jun-2020 16:21:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:22 America/Los_Angeles] post=2005
+[24-Jun-2020 16:21:22 America/Los_Angeles] your param
+[24-Jun-2020 16:21:22 America/Los_Angeles] location
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:22 America/Los_Angeles] post
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:22 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:22 America/Los_Angeles] action=elementor
+[24-Jun-2020 16:21:22 America/Los_Angeles] your param
+[24-Jun-2020 16:21:22 America/Los_Angeles] location
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:22 America/Los_Angeles] action
+[24-Jun-2020 16:21:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:22 America/Los_Angeles] elementor
+[24-Jun-2020 16:21:22 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:22 America/Los_Angeles] 
+[24-Jun-2020 16:21:22 America/Los_Angeles] PHP Warning:  Illegal string offset 'pro_widgets' in /nas/content/live/localrentokil/wp-content/plugins/elementor/includes/api.php on line 160
+[24-Jun-2020 16:21:22 America/Los_Angeles] PHP Notice:  Uninitialized string offset: 0 in /nas/content/live/localrentokil/wp-content/plugins/elementor/includes/api.php on line 160
+[24-Jun-2020 23:21:26 UTC] No Adwords Number found 
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005
+[24-Jun-2020 23:21:26 UTC] querystring item:
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005
+[24-Jun-2020 23:21:26 UTC] your param
+[24-Jun-2020 23:21:26 UTC] location
+[24-Jun-2020 23:21:26 UTC] keyval0
+[24-Jun-2020 23:21:26 UTC] elementor-preview
+[24-Jun-2020 23:21:26 UTC] keyval1
+[24-Jun-2020 23:21:26 UTC] 2005
+[24-Jun-2020 23:21:26 UTC] querystring item:
+[24-Jun-2020 23:21:26 UTC] ver=1593040882
+[24-Jun-2020 23:21:26 UTC] your param
+[24-Jun-2020 23:21:26 UTC] location
+[24-Jun-2020 23:21:26 UTC] keyval0
+[24-Jun-2020 23:21:26 UTC] ver
+[24-Jun-2020 23:21:26 UTC] keyval1
+[24-Jun-2020 23:21:26 UTC] 1593040882
+[24-Jun-2020 23:21:26 UTC] 2 total utms found
+[24-Jun-2020 23:21:26 UTC] 
+[24-Jun-2020 23:21:26 UTC] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:21:26 UTC] Query String
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005&ver=1593040882
+[24-Jun-2020 23:21:26 UTC] Your UTM Param
+[24-Jun-2020 23:21:26 UTC] content
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005
+[24-Jun-2020 23:21:26 UTC] querystring item:
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005
+[24-Jun-2020 23:21:26 UTC] your param
+[24-Jun-2020 23:21:26 UTC] content
+[24-Jun-2020 23:21:26 UTC] keyval0
+[24-Jun-2020 23:21:26 UTC] elementor-preview
+[24-Jun-2020 23:21:26 UTC] keyval1
+[24-Jun-2020 23:21:26 UTC] 2005
+[24-Jun-2020 23:21:26 UTC] querystring item:
+[24-Jun-2020 23:21:26 UTC] ver=1593040882
+[24-Jun-2020 23:21:26 UTC] your param
+[24-Jun-2020 23:21:26 UTC] content
+[24-Jun-2020 23:21:26 UTC] keyval0
+[24-Jun-2020 23:21:26 UTC] ver
+[24-Jun-2020 23:21:26 UTC] keyval1
+[24-Jun-2020 23:21:26 UTC] 1593040882
+[24-Jun-2020 23:21:26 UTC] 2 total utms found
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005
+[24-Jun-2020 23:21:26 UTC] querystring item:
+[24-Jun-2020 23:21:26 UTC] elementor-preview=2005
+[24-Jun-2020 23:21:26 UTC] your param
+[24-Jun-2020 23:21:26 UTC] location
+[24-Jun-2020 23:21:26 UTC] keyval0
+[24-Jun-2020 23:21:26 UTC] elementor-preview
+[24-Jun-2020 23:21:26 UTC] keyval1
+[24-Jun-2020 23:21:26 UTC] 2005
+[24-Jun-2020 23:21:26 UTC] querystring item:
+[24-Jun-2020 23:21:26 UTC] ver=1593040882
+[24-Jun-2020 23:21:26 UTC] your param
+[24-Jun-2020 23:21:26 UTC] location
+[24-Jun-2020 23:21:26 UTC] keyval0
+[24-Jun-2020 23:21:26 UTC] ver
+[24-Jun-2020 23:21:26 UTC] keyval1
+[24-Jun-2020 23:21:26 UTC] 1593040882
+[24-Jun-2020 23:21:26 UTC] 2 total utms found
+[24-Jun-2020 23:21:26 UTC] 
+[24-Jun-2020 23:21:26 UTC] PHP Notice:  Undefined index: class in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 278
+[24-Jun-2020 16:21:26 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] location
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] location
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:26 America/Los_Angeles] 
+[24-Jun-2020 16:21:26 America/Los_Angeles] PHP Notice:  Undefined index: class in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 278
+[24-Jun-2020 16:21:26 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:21:26 America/Los_Angeles] Query String
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005&ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:21:26 America/Los_Angeles] content
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] content
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] content
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] location
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] location
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:26 America/Los_Angeles] 
+[24-Jun-2020 16:21:26 America/Los_Angeles] PHP Notice:  Undefined index: class in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 278
+[24-Jun-2020 16:21:26 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:21:26 America/Los_Angeles] Query String
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005&ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:21:26 America/Los_Angeles] content
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] content
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] content
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] location
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2005
+[24-Jun-2020 16:21:26 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver=1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] your param
+[24-Jun-2020 16:21:26 America/Los_Angeles] location
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval0
+[24-Jun-2020 16:21:26 America/Los_Angeles] ver
+[24-Jun-2020 16:21:26 America/Los_Angeles] keyval1
+[24-Jun-2020 16:21:26 America/Los_Angeles] 1593040882
+[24-Jun-2020 16:21:26 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:21:26 America/Los_Angeles] 
+[24-Jun-2020 23:23:33 UTC] drop=false
+[24-Jun-2020 23:24:15 UTC] No Adwords Number found 
+[24-Jun-2020 16:24:15 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:24:15 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:24:19 UTC] meta - 439 - crs.php 
+[24-Jun-2020 23:24:19 UTC] Array
+(
+    [0] => 1
+)
+
+[24-Jun-2020 23:24:19 UTC]  crs_geo_exempt  - 440 crs.php
+[24-Jun-2020 23:24:19 UTC]  Service meta 
+[24-Jun-2020 23:24:43 UTC] No Adwords Number found 
+[24-Jun-2020 16:24:43 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:24:43 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:26:49 UTC] No Adwords Number found 
+[24-Jun-2020 16:26:49 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:26:49 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:26:49 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:26:49 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:26:49 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:27:46 UTC] No Adwords Number found 
+[24-Jun-2020 23:27:46 UTC] querystring item not found
+[24-Jun-2020 23:27:46 UTC] 
+[24-Jun-2020 23:27:46 UTC] 
+[24-Jun-2020 23:27:46 UTC] querystring item not found
+[24-Jun-2020 23:27:46 UTC] 
+[24-Jun-2020 23:27:46 UTC] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:27:46 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:27:46 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:27:46 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:27:46 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:27:46 America/Los_Angeles] Query String
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:27:46 America/Los_Angeles] content
+[24-Jun-2020 16:27:46 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] Query String
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:27:46 America/Los_Angeles] content
+[24-Jun-2020 16:27:46 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] Query String
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:27:46 America/Los_Angeles] content
+[24-Jun-2020 16:27:46 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 16:27:46 America/Los_Angeles] 
+[24-Jun-2020 23:27:56 UTC] post=2006
+[24-Jun-2020 23:27:56 UTC] querystring item:
+[24-Jun-2020 23:27:56 UTC] post=2006
+[24-Jun-2020 23:27:56 UTC] your param
+[24-Jun-2020 23:27:56 UTC] location
+[24-Jun-2020 23:27:56 UTC] keyval0
+[24-Jun-2020 23:27:56 UTC] post
+[24-Jun-2020 23:27:56 UTC] keyval1
+[24-Jun-2020 23:27:56 UTC] 2006
+[24-Jun-2020 23:27:56 UTC] querystring item:
+[24-Jun-2020 23:27:56 UTC] action=elementor
+[24-Jun-2020 23:27:56 UTC] your param
+[24-Jun-2020 23:27:56 UTC] location
+[24-Jun-2020 23:27:56 UTC] keyval0
+[24-Jun-2020 23:27:56 UTC] action
+[24-Jun-2020 23:27:56 UTC] keyval1
+[24-Jun-2020 23:27:56 UTC] elementor
+[24-Jun-2020 23:27:56 UTC] 2 total utms found
+[24-Jun-2020 23:27:56 UTC] 
+[24-Jun-2020 23:27:56 UTC] PHP Warning:  Illegal string offset 'pro_widgets' in /nas/content/live/localrentokil/wp-content/plugins/elementor/includes/api.php on line 160
+[24-Jun-2020 23:27:56 UTC] PHP Notice:  Uninitialized string offset: 0 in /nas/content/live/localrentokil/wp-content/plugins/elementor/includes/api.php on line 160
+[24-Jun-2020 23:28:03 UTC] No Adwords Number found 
+[24-Jun-2020 23:29:03 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "read_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 23:29:03 UTC] PHP Notice:  map_meta_cap was called <strong>incorrectly</strong>. The post type scheduled-action is not registered, so it may not be reliable to check the capability "edit_post" against a post of that type. Please see <a href="https://wordpress.org/support/article/debugging-in-wordpress/">Debugging in WordPress</a> for more information. (This message was added in version 4.4.0.) in /nas/content/live/localrentokil/wp-includes/functions.php on line 5167
+[24-Jun-2020 23:31:21 UTC] No Adwords Number found 
+[24-Jun-2020 23:31:21 UTC] querystring item not found
+[24-Jun-2020 23:31:21 UTC] 
+[24-Jun-2020 23:31:21 UTC] 
+[24-Jun-2020 23:31:21 UTC] querystring item not found
+[24-Jun-2020 23:31:21 UTC] 
+[24-Jun-2020 23:31:21 UTC] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:31:21 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:31:21 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:31:21 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:31:21 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:31:21 America/Los_Angeles] Query String
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:31:21 America/Los_Angeles] content
+[24-Jun-2020 16:31:21 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] Query String
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:31:21 America/Los_Angeles] content
+[24-Jun-2020 16:31:21 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] Query String
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:31:21 America/Los_Angeles] content
+[24-Jun-2020 16:31:21 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 16:31:21 America/Los_Angeles] 
+[24-Jun-2020 23:31:27 UTC] auditor:scan=fingerprint {"blog_id":1,"kind":"theme","name":"JupiterX Child","slug":"jupiterx-child","ver":"1.0.0","sig":"v1:nohash"}
+[24-Jun-2020 23:31:27 UTC] auditor:scan=fingerprint {"blog_id":1,"kind":"theme","name":"JupiterX","slug":"jupiterx","ver":"1.16.0","sig":"v1:nohash"}
+[24-Jun-2020 23:31:27 UTC] auditor:scan=fingerprint {"blog_id":1,"kind":"theme","name":"Twenty Nineteen","slug":"twentynineteen","ver":"1.4","sig":"v1:nohash"}
+[24-Jun-2020 23:31:53 UTC] No Adwords Number found 
+[24-Jun-2020 16:31:53 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:31:53 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:31:53 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:31:53 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:31:53 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:33:05 UTC] No Adwords Number found 
+[24-Jun-2020 23:33:05 UTC] got standard locale query
+[24-Jun-2020 23:33:05 UTC] looking up geo5 locale
+[24-Jun-2020 23:33:05 UTC] local info array keys not found; using CSV lookup
+[24-Jun-2020 23:33:05 UTC] logging CSV file path for debugging
+[24-Jun-2020 23:33:05 UTC] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo5.csv
+[24-Jun-2020 23:33:05 UTC] looked up geo locale; committed to static record
+[24-Jun-2020 23:33:05 UTC] (610) 288-0965
+[24-Jun-2020 23:33:05 UTC] (610) 288-0965
+[24-Jun-2020 23:33:05 UTC] got standard locale query
+[24-Jun-2020 23:33:05 UTC] found static record of local info; no lookup required
+[24-Jun-2020 23:33:05 UTC] (610) 288-0965
+[24-Jun-2020 23:33:05 UTC] (610) 288-0965
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:33:05 America/Los_Angeles] got standard locale query
+[24-Jun-2020 16:33:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:33:05 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:33:05 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:33:05 America/Los_Angeles] got standard locale query
+[24-Jun-2020 16:33:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:33:05 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:33:05 America/Los_Angeles] (610) 288-0965
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:33:05 America/Los_Angeles] Query String
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:33:05 America/Los_Angeles] content
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] your param
+[24-Jun-2020 16:33:05 America/Los_Angeles] content
+[24-Jun-2020 16:33:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:33:05 America/Los_Angeles] location
+[24-Jun-2020 16:33:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:33:05 America/Los_Angeles] 1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:33:05 America/Los_Angeles] Query String
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:33:05 America/Los_Angeles] content
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] your param
+[24-Jun-2020 16:33:05 America/Los_Angeles] content
+[24-Jun-2020 16:33:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:33:05 America/Los_Angeles] location
+[24-Jun-2020 16:33:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:33:05 America/Los_Angeles] 1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:33:05 America/Los_Angeles] Query String
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:33:05 America/Los_Angeles] content
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:33:05 America/Los_Angeles] location=1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] your param
+[24-Jun-2020 16:33:05 America/Los_Angeles] content
+[24-Jun-2020 16:33:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:33:05 America/Los_Angeles] location
+[24-Jun-2020 16:33:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:33:05 America/Los_Angeles] 1018528
+[24-Jun-2020 16:33:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:33:05 America/Los_Angeles] got standard locale query
+[24-Jun-2020 16:33:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 118
+[24-Jun-2020 16:33:05 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 135
+[24-Jun-2020 23:34:31 UTC] drop=false
+[24-Jun-2020 23:34:33 UTC] No Adwords Number found 
+[24-Jun-2020 16:34:33 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:34:34 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:36:44 UTC] No Adwords Number found 
+[24-Jun-2020 23:36:44 UTC] utm_content=miami
+[24-Jun-2020 23:36:44 UTC] querystring item:
+[24-Jun-2020 23:36:44 UTC] utm_content=miami
+[24-Jun-2020 23:36:44 UTC] your param
+[24-Jun-2020 23:36:44 UTC] location
+[24-Jun-2020 23:36:44 UTC] keyval0
+[24-Jun-2020 23:36:44 UTC] utm_content
+[24-Jun-2020 23:36:44 UTC] keyval1
+[24-Jun-2020 23:36:44 UTC] miami
+[24-Jun-2020 23:36:44 UTC] 1 total utms found
+[24-Jun-2020 23:36:44 UTC] 
+[24-Jun-2020 23:36:44 UTC] utm_content=miami
+[24-Jun-2020 23:36:44 UTC] querystring item:
+[24-Jun-2020 23:36:44 UTC] utm_content=miami
+[24-Jun-2020 23:36:44 UTC] your param
+[24-Jun-2020 23:36:44 UTC] location
+[24-Jun-2020 23:36:44 UTC] keyval0
+[24-Jun-2020 23:36:44 UTC] utm_content
+[24-Jun-2020 23:36:44 UTC] keyval1
+[24-Jun-2020 23:36:44 UTC] miami
+[24-Jun-2020 23:36:44 UTC] 1 total utms found
+[24-Jun-2020 23:36:44 UTC] 
+[24-Jun-2020 16:36:44 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:36:44 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:36:44 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:44 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:36:44 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:44 America/Los_Angeles] your param
+[24-Jun-2020 16:36:44 America/Los_Angeles] location
+[24-Jun-2020 16:36:44 America/Los_Angeles] keyval0
+[24-Jun-2020 16:36:44 America/Los_Angeles] utm_content
+[24-Jun-2020 16:36:44 America/Los_Angeles] keyval1
+[24-Jun-2020 16:36:44 America/Los_Angeles] miami
+[24-Jun-2020 16:36:44 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:36:44 America/Los_Angeles] 
+[24-Jun-2020 16:36:44 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:36:44 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:44 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:36:44 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:44 America/Los_Angeles] your param
+[24-Jun-2020 16:36:44 America/Los_Angeles] location
+[24-Jun-2020 16:36:44 America/Los_Angeles] keyval0
+[24-Jun-2020 16:36:44 America/Los_Angeles] utm_content
+[24-Jun-2020 16:36:44 America/Los_Angeles] keyval1
+[24-Jun-2020 16:36:44 America/Los_Angeles] miami
+[24-Jun-2020 16:36:44 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:36:44 America/Los_Angeles] 
+[24-Jun-2020 16:36:45 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:36:45 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:36:45 America/Los_Angeles] Query String
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] keyval0
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content
+[24-Jun-2020 16:36:45 America/Los_Angeles] keyval1
+[24-Jun-2020 16:36:45 America/Los_Angeles] miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param val
+[24-Jun-2020 16:36:45 America/Los_Angeles] miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:36:45 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:36:45 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 16:36:45 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 16:36:45 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 16:36:45 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 16:36:45 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 16:36:45 America/Los_Angeles] Miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Query String
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] keyval0
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content
+[24-Jun-2020 16:36:45 America/Los_Angeles] keyval1
+[24-Jun-2020 16:36:45 America/Los_Angeles] miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param val
+[24-Jun-2020 16:36:45 America/Los_Angeles] miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:36:45 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:36:45 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:36:45 America/Los_Angeles] Miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Query String
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] keyval0
+[24-Jun-2020 16:36:45 America/Los_Angeles] utm_content
+[24-Jun-2020 16:36:45 America/Los_Angeles] keyval1
+[24-Jun-2020 16:36:45 America/Los_Angeles] miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:36:45 America/Los_Angeles] content
+[24-Jun-2020 16:36:45 America/Los_Angeles] your param val
+[24-Jun-2020 16:36:45 America/Los_Angeles] miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:36:45 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:36:45 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:36:45 America/Los_Angeles] Miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] Miami
+[24-Jun-2020 16:36:45 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:36:45 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:36:45 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 118
+[24-Jun-2020 16:36:45 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 135
+[24-Jun-2020 23:37:35 UTC] meta - 439 - crs.php 
+[24-Jun-2020 23:37:35 UTC] Array
+(
+    [0] => 
+)
+
+[24-Jun-2020 23:37:35 UTC]  crs_geo_exempt  - 440 crs.php
+[24-Jun-2020 23:37:35 UTC]  Service meta 
+[24-Jun-2020 23:38:04 UTC] post=2005
+[24-Jun-2020 23:38:04 UTC] querystring item:
+[24-Jun-2020 23:38:04 UTC] post=2005
+[24-Jun-2020 23:38:04 UTC] your param
+[24-Jun-2020 23:38:04 UTC] location
+[24-Jun-2020 23:38:04 UTC] keyval0
+[24-Jun-2020 23:38:04 UTC] post
+[24-Jun-2020 23:38:04 UTC] keyval1
+[24-Jun-2020 23:38:04 UTC] 2005
+[24-Jun-2020 23:38:04 UTC] querystring item:
+[24-Jun-2020 23:38:04 UTC] action=elementor
+[24-Jun-2020 23:38:04 UTC] your param
+[24-Jun-2020 23:38:04 UTC] location
+[24-Jun-2020 23:38:04 UTC] keyval0
+[24-Jun-2020 23:38:04 UTC] action
+[24-Jun-2020 23:38:04 UTC] keyval1
+[24-Jun-2020 23:38:04 UTC] elementor
+[24-Jun-2020 23:38:04 UTC] 2 total utms found
+[24-Jun-2020 23:38:04 UTC] 
+[24-Jun-2020 16:38:04 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:38:04 America/Los_Angeles] post=2005
+[24-Jun-2020 16:38:04 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:04 America/Los_Angeles] post=2005
+[24-Jun-2020 16:38:04 America/Los_Angeles] your param
+[24-Jun-2020 16:38:04 America/Los_Angeles] location
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:04 America/Los_Angeles] post
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:04 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:04 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:04 America/Los_Angeles] action=elementor
+[24-Jun-2020 16:38:04 America/Los_Angeles] your param
+[24-Jun-2020 16:38:04 America/Los_Angeles] location
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:04 America/Los_Angeles] action
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:04 America/Los_Angeles] elementor
+[24-Jun-2020 16:38:04 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:04 America/Los_Angeles] 
+[24-Jun-2020 16:38:04 America/Los_Angeles] post=2005
+[24-Jun-2020 16:38:04 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:04 America/Los_Angeles] post=2005
+[24-Jun-2020 16:38:04 America/Los_Angeles] your param
+[24-Jun-2020 16:38:04 America/Los_Angeles] location
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:04 America/Los_Angeles] post
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:04 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:04 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:04 America/Los_Angeles] action=elementor
+[24-Jun-2020 16:38:04 America/Los_Angeles] your param
+[24-Jun-2020 16:38:04 America/Los_Angeles] location
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:04 America/Los_Angeles] action
+[24-Jun-2020 16:38:04 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:04 America/Los_Angeles] elementor
+[24-Jun-2020 16:38:04 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:04 America/Los_Angeles] 
+[24-Jun-2020 16:38:04 America/Los_Angeles] PHP Warning:  Illegal string offset 'pro_widgets' in /nas/content/live/localrentokil/wp-content/plugins/elementor/includes/api.php on line 160
+[24-Jun-2020 16:38:04 America/Los_Angeles] PHP Notice:  Uninitialized string offset: 0 in /nas/content/live/localrentokil/wp-content/plugins/elementor/includes/api.php on line 160
+[24-Jun-2020 23:38:07 UTC] No Adwords Number found 
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005
+[24-Jun-2020 23:38:07 UTC] querystring item:
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005
+[24-Jun-2020 23:38:07 UTC] your param
+[24-Jun-2020 23:38:07 UTC] location
+[24-Jun-2020 23:38:07 UTC] keyval0
+[24-Jun-2020 23:38:07 UTC] elementor-preview
+[24-Jun-2020 23:38:07 UTC] keyval1
+[24-Jun-2020 23:38:07 UTC] 2005
+[24-Jun-2020 23:38:07 UTC] querystring item:
+[24-Jun-2020 23:38:07 UTC] ver=1593041884
+[24-Jun-2020 23:38:07 UTC] your param
+[24-Jun-2020 23:38:07 UTC] location
+[24-Jun-2020 23:38:07 UTC] keyval0
+[24-Jun-2020 23:38:07 UTC] ver
+[24-Jun-2020 23:38:07 UTC] keyval1
+[24-Jun-2020 23:38:07 UTC] 1593041884
+[24-Jun-2020 23:38:07 UTC] 2 total utms found
+[24-Jun-2020 23:38:07 UTC] 
+[24-Jun-2020 23:38:07 UTC] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:38:07 UTC] Query String
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005&ver=1593041884
+[24-Jun-2020 23:38:07 UTC] Your UTM Param
+[24-Jun-2020 23:38:07 UTC] content
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005
+[24-Jun-2020 23:38:07 UTC] querystring item:
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005
+[24-Jun-2020 23:38:07 UTC] your param
+[24-Jun-2020 23:38:07 UTC] content
+[24-Jun-2020 23:38:07 UTC] keyval0
+[24-Jun-2020 23:38:07 UTC] elementor-preview
+[24-Jun-2020 23:38:07 UTC] keyval1
+[24-Jun-2020 23:38:07 UTC] 2005
+[24-Jun-2020 23:38:07 UTC] querystring item:
+[24-Jun-2020 23:38:07 UTC] ver=1593041884
+[24-Jun-2020 23:38:07 UTC] your param
+[24-Jun-2020 23:38:07 UTC] content
+[24-Jun-2020 23:38:07 UTC] keyval0
+[24-Jun-2020 23:38:07 UTC] ver
+[24-Jun-2020 23:38:07 UTC] keyval1
+[24-Jun-2020 23:38:07 UTC] 1593041884
+[24-Jun-2020 23:38:07 UTC] 2 total utms found
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005
+[24-Jun-2020 23:38:07 UTC] querystring item:
+[24-Jun-2020 23:38:07 UTC] elementor-preview=2005
+[24-Jun-2020 23:38:07 UTC] your param
+[24-Jun-2020 23:38:07 UTC] location
+[24-Jun-2020 23:38:07 UTC] keyval0
+[24-Jun-2020 23:38:07 UTC] elementor-preview
+[24-Jun-2020 23:38:07 UTC] keyval1
+[24-Jun-2020 23:38:07 UTC] 2005
+[24-Jun-2020 23:38:07 UTC] querystring item:
+[24-Jun-2020 23:38:07 UTC] ver=1593041884
+[24-Jun-2020 23:38:07 UTC] your param
+[24-Jun-2020 23:38:07 UTC] location
+[24-Jun-2020 23:38:07 UTC] keyval0
+[24-Jun-2020 23:38:07 UTC] ver
+[24-Jun-2020 23:38:07 UTC] keyval1
+[24-Jun-2020 23:38:07 UTC] 1593041884
+[24-Jun-2020 23:38:07 UTC] 2 total utms found
+[24-Jun-2020 23:38:07 UTC] 
+[24-Jun-2020 23:38:07 UTC] PHP Notice:  Undefined index: class in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 278
+[24-Jun-2020 16:38:07 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] location
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] location
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:07 America/Los_Angeles] 
+[24-Jun-2020 16:38:07 America/Los_Angeles] PHP Notice:  Undefined index: class in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 278
+[24-Jun-2020 16:38:07 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:38:07 America/Los_Angeles] Query String
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005&ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:38:07 America/Los_Angeles] content
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] content
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] content
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] location
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] location
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:07 America/Los_Angeles] 
+[24-Jun-2020 16:38:07 America/Los_Angeles] PHP Notice:  Undefined index: class in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 278
+[24-Jun-2020 16:38:07 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:38:07 America/Los_Angeles] Query String
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005&ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:38:07 America/Los_Angeles] content
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] content
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] content
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview=2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] location
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] elementor-preview
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2005
+[24-Jun-2020 16:38:07 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver=1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] your param
+[24-Jun-2020 16:38:07 America/Los_Angeles] location
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval0
+[24-Jun-2020 16:38:07 America/Los_Angeles] ver
+[24-Jun-2020 16:38:07 America/Los_Angeles] keyval1
+[24-Jun-2020 16:38:07 America/Los_Angeles] 1593041884
+[24-Jun-2020 16:38:07 America/Los_Angeles] 2 total utms found
+[24-Jun-2020 16:38:07 America/Los_Angeles] 
+[24-Jun-2020 23:40:37 UTC] No Adwords Number found 
+[24-Jun-2020 16:40:37 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:40:38 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:40:38 UTC] No Adwords Number found 
+[24-Jun-2020 23:40:38 UTC] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 23:45:51 UTC] No Adwords Number found 
+[24-Jun-2020 23:45:51 UTC] querystring item not found
+[24-Jun-2020 23:45:51 UTC] 
+[24-Jun-2020 23:45:51 UTC] 
+[24-Jun-2020 23:45:51 UTC] querystring item not found
+[24-Jun-2020 23:45:51 UTC] 
+[24-Jun-2020 23:45:51 UTC] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:45:51 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:45:51 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:45:51 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:45:51 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:45:51 America/Los_Angeles] Query String
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:45:51 America/Los_Angeles] content
+[24-Jun-2020 16:45:51 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] Query String
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:45:51 America/Los_Angeles] content
+[24-Jun-2020 16:45:51 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] Query String
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:45:51 America/Los_Angeles] content
+[24-Jun-2020 16:45:51 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 16:45:51 America/Los_Angeles] 
+[24-Jun-2020 23:46:05 UTC] No Adwords Number found 
+[24-Jun-2020 23:46:05 UTC] utm_content=miami
+[24-Jun-2020 23:46:05 UTC] querystring item:
+[24-Jun-2020 23:46:05 UTC] utm_content=miami
+[24-Jun-2020 23:46:05 UTC] your param
+[24-Jun-2020 23:46:05 UTC] location
+[24-Jun-2020 23:46:05 UTC] keyval0
+[24-Jun-2020 23:46:05 UTC] utm_content
+[24-Jun-2020 23:46:05 UTC] keyval1
+[24-Jun-2020 23:46:05 UTC] miami
+[24-Jun-2020 23:46:05 UTC] 1 total utms found
+[24-Jun-2020 23:46:05 UTC] 
+[24-Jun-2020 23:46:05 UTC] utm_content=miami
+[24-Jun-2020 23:46:05 UTC] querystring item:
+[24-Jun-2020 23:46:05 UTC] utm_content=miami
+[24-Jun-2020 23:46:05 UTC] your param
+[24-Jun-2020 23:46:05 UTC] location
+[24-Jun-2020 23:46:05 UTC] keyval0
+[24-Jun-2020 23:46:05 UTC] utm_content
+[24-Jun-2020 23:46:05 UTC] keyval1
+[24-Jun-2020 23:46:05 UTC] miami
+[24-Jun-2020 23:46:05 UTC] 1 total utms found
+[24-Jun-2020 23:46:05 UTC] 
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param
+[24-Jun-2020 16:46:05 America/Los_Angeles] location
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:46:05 America/Los_Angeles] 
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param
+[24-Jun-2020 16:46:05 America/Los_Angeles] location
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:46:05 America/Los_Angeles] 
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:46:05 America/Los_Angeles] Query String
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param val
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:46:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:46:05 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 16:46:05 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 16:46:05 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 16:46:05 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 16:46:05 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 16:46:05 America/Los_Angeles] Miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Query String
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param val
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:46:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:46:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:46:05 America/Los_Angeles] Miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Query String
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval0
+[24-Jun-2020 16:46:05 America/Los_Angeles] utm_content
+[24-Jun-2020 16:46:05 America/Los_Angeles] keyval1
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:46:05 America/Los_Angeles] content
+[24-Jun-2020 16:46:05 America/Los_Angeles] your param val
+[24-Jun-2020 16:46:05 America/Los_Angeles] miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:46:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:46:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:46:05 America/Los_Angeles] Miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] Miami
+[24-Jun-2020 16:46:05 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:46:05 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 118
+[24-Jun-2020 16:46:05 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 135
+[24-Jun-2020 23:46:13 UTC] drop=false
+[24-Jun-2020 23:47:25 UTC] drop=false
+[24-Jun-2020 23:48:04 UTC] drop=false
+[24-Jun-2020 23:48:22 UTC] No Adwords Number found 
+[24-Jun-2020 23:48:22 UTC] utm_content=miami
+[24-Jun-2020 23:48:22 UTC] querystring item:
+[24-Jun-2020 23:48:22 UTC] utm_content=miami
+[24-Jun-2020 23:48:22 UTC] your param
+[24-Jun-2020 23:48:22 UTC] location
+[24-Jun-2020 23:48:22 UTC] keyval0
+[24-Jun-2020 23:48:22 UTC] utm_content
+[24-Jun-2020 23:48:22 UTC] keyval1
+[24-Jun-2020 23:48:22 UTC] miami
+[24-Jun-2020 23:48:22 UTC] 1 total utms found
+[24-Jun-2020 23:48:22 UTC] 
+[24-Jun-2020 23:48:22 UTC] utm_content=miami
+[24-Jun-2020 23:48:22 UTC] querystring item:
+[24-Jun-2020 23:48:22 UTC] utm_content=miami
+[24-Jun-2020 23:48:22 UTC] your param
+[24-Jun-2020 23:48:22 UTC] location
+[24-Jun-2020 23:48:22 UTC] keyval0
+[24-Jun-2020 23:48:22 UTC] utm_content
+[24-Jun-2020 23:48:22 UTC] keyval1
+[24-Jun-2020 23:48:22 UTC] miami
+[24-Jun-2020 23:48:22 UTC] 1 total utms found
+[24-Jun-2020 23:48:22 UTC] 
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param
+[24-Jun-2020 16:48:22 America/Los_Angeles] location
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:48:22 America/Los_Angeles] 
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param
+[24-Jun-2020 16:48:22 America/Los_Angeles] location
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:48:22 America/Los_Angeles] 
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:48:22 America/Los_Angeles] Query String
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param val
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:48:22 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:48:22 America/Los_Angeles] looking up geo20 locale
+[24-Jun-2020 16:48:22 America/Los_Angeles] local info array keys not found; using CSV lookup
+[24-Jun-2020 16:48:22 America/Los_Angeles] logging CSV file path for debugging
+[24-Jun-2020 16:48:22 America/Los_Angeles] /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/../resources/geo20.csv
+[24-Jun-2020 16:48:22 America/Los_Angeles] looked up geo locale; committed to static record
+[24-Jun-2020 16:48:22 America/Los_Angeles] Miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Query String
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param val
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:48:22 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:48:22 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:48:22 America/Los_Angeles] Miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Query String
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] querystring item:
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content=miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval0
+[24-Jun-2020 16:48:22 America/Los_Angeles] utm_content
+[24-Jun-2020 16:48:22 America/Los_Angeles] keyval1
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param: UTM_
+[24-Jun-2020 16:48:22 America/Los_Angeles] content
+[24-Jun-2020 16:48:22 America/Los_Angeles] your param val
+[24-Jun-2020 16:48:22 America/Los_Angeles] miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] 1 total utms found
+[24-Jun-2020 16:48:22 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:48:22 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:48:22 America/Los_Angeles] Miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] Miami
+[24-Jun-2020 16:48:22 America/Los_Angeles] got utm based locale query
+[24-Jun-2020 16:48:22 America/Los_Angeles] found static record of local info; no lookup required
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 118
+[24-Jun-2020 16:48:22 America/Los_Angeles] PHP Warning:  error_log() expects parameter 1 to be string, array given in /nas/content/live/localrentokil/wp-content/plugins/equips_2/classes/equips_stasis.php on line 135
+[24-Jun-2020 23:48:49 UTC] No Adwords Number found 
+[24-Jun-2020 23:48:49 UTC] querystring item not found
+[24-Jun-2020 23:48:49 UTC] 
+[24-Jun-2020 23:48:49 UTC] 
+[24-Jun-2020 23:48:49 UTC] querystring item not found
+[24-Jun-2020 23:48:49 UTC] 
+[24-Jun-2020 23:48:49 UTC] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:48:49 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:48:49 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] PHP Notice:  Undefined index: cc-expiration-date-radio in /nas/content/live/localrentokil/wp-content/plugins/city-coupon/city-coupon.php on line 287
+[24-Jun-2020 16:48:49 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] PHP Notice:  Undefined index: HTTP_REFERER in /nas/content/live/localrentokil/wp-content/themes/jupiterx-child/functions.php on line 145
+[24-Jun-2020 16:48:49 America/Los_Angeles] PHP Notice:  Undefined index: crs_review in /nas/content/live/localrentokil/wp-content/plugins/a-city-ranked-suite/suite/review/public/class-review-template.php on line 16
+[24-Jun-2020 16:48:49 America/Los_Angeles] Query String
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:48:49 America/Los_Angeles] content
+[24-Jun-2020 16:48:49 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] Query String
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:48:49 America/Los_Angeles] content
+[24-Jun-2020 16:48:49 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] Query String
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] Your UTM Param
+[24-Jun-2020 16:48:49 America/Los_Angeles] content
+[24-Jun-2020 16:48:49 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] querystring item not found
+[24-Jun-2020 16:48:49 America/Los_Angeles] 
+[24-Jun-2020 16:48:49 America/Los_Angeles] 

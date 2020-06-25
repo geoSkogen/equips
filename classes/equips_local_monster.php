@@ -14,9 +14,32 @@ class Equips_Local_Monster {
       error_log('local info array keys not found; using CSV lookup');
       $this->local_info = self::import_csv_geo($num_arg);
     } else {
-      error_log('local info array keys not found; using CSV lookup');
+      error_log('local info array keysfound; using static record');
     }
     return $this->local_info;
+  }
+
+  public function get_assoc() {
+    return self::impport_geo_keyvals();
+  }
+
+  public function impport_geo_keyvals() {
+    $result = array();
+    $subdir = "resources";
+    $result = [];
+    $key = "";
+    $valid_data = [];
+    error_log('logging javascript-swap CSV file path for debugging');
+    error_log(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv");
+    if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv", "r")) !== FALSE) {
+      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $result[$data[0]] = array('name'=>$data[1],'geos'=>$data[2]);
+      }
+      fclose($handle);
+    } else {
+      error_log('could not open file');
+    }
+    return $result;
   }
 
   public function import_csv_geo($num_arg) {
@@ -24,7 +47,7 @@ class Equips_Local_Monster {
     $result = [];
     $key = "";
     $valid_data = [];
-    error_log('logging CSV file path for debugging');
+    error_log('logging equips CSV file path for debugging');
     error_log(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv");
     if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv", "r")) !== FALSE) {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {

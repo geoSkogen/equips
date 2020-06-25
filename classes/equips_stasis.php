@@ -79,11 +79,14 @@ class Equips_Stasis {
 
   public static function init_equips_wp_scripts() {
     self::$eq_store;
+    $monster = new Equips_Local_Monster('geo20kv');
+    $loc_assoc = $monster->get_assoc();
     wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
       array(
         'params' => self::$eq_store['params'],
-        'site_url' => site_url()
+        'site_url' => site_url(),
+        'loc_assoc' => $loc_assoc
       )
     );
     wp_enqueue_script('equips-append-hrefs');
@@ -112,9 +115,10 @@ class Equips_Stasis {
       // do geopluign lookup ()
     }
     //check if the static property already exists
-    if (count(array_keys(self::$local_info)) && isset(self::$local_info[$db_slug])) {
+    if (count(array_keys(self::$local_info)) && !empty(self::$local_info[$db_slug])) {
       $result = self::$local_info[$db_slug];
       error_log('found static record of local info; no lookup required');
+      error_log($result);
     //if not, try looking it up
     } else if (isset($db_file)) {
       error_log("looking up $db_file locale");
@@ -125,12 +129,13 @@ class Equips_Stasis {
       //if the location was found, commit it to the static var for future use
       if ($result) {
         error_log('looked up geo locale; committed to static record');
+        error_log($result);
         self::$local_info = $loc_data;
       }
     } else {
 
     }
-
+    error_log($result);
     return $result;
   }
 
@@ -152,20 +157,33 @@ class Equips_Stasis {
     $result = '';
     if ($query_str) {
       $utm_arr = explode('&',$query_str);
+      error_log($utm_arr[0]);
       foreach($utm_arr as $item) {
         error_log('querystring item:');
         error_log($item);
+        error_log('your param');
+        error_log($param);
         $key_val = explode('=',$item);
-        if ($key_val[0]==='utm_' . $param) {
+        error_log('keyval0');
+        error_log($key_val[0]);
+        error_log('keyval1');
+        error_log($key_val[1]);
+        if ($key_val[0]=='utm_' . $param) {
           $key = str_replace('utm_','',$key_val[0]);
           $val = strip_tags($key_val[1]);
           $result = array('key'=>$key,'val'=>$val);
           error_log('your param: UTM_');
           error_log($key);
+          error_log('your param val');
+          error_log($val);
           self::$utm_assoc[$key] = $val;
           break;
         }
       }
+      error_log(strval(count($utm_arr)) . ' total utms found');
+    } else {
+      error_log('querystring item not found');
+      error_log($query_str);
     }
     return $result;
   }
@@ -190,6 +208,10 @@ class Equips_Stasis {
         break;
       case 'utm' :
         $query_str = $_SERVER['QUERY_STRING'];
+        error_log('Query String');
+        error_log($query_str);
+        error_log('Your UTM Param');
+        error_log(self::$options['param_' . $num_str]);
         $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
         $result = ($key_val) ? self::do_equips_utm($key_val['key'],$key_val['val']) : '';
         break;
@@ -261,7 +283,8 @@ class Equips_Stasis {
       $icon = '';
       $class = 'no_class';
     }
-    if ($eq_geo_options['include_phone_bar'] === 'include') {
+    if ( !empty($eq_geo_options['include_phone_bar'])
+         && $eq_geo_options['include_phone_bar'] === 'include') {
       add_action( 'wp_footer' , function () use ($href, $phone, $phone_bar_text) {
         $result = "<div id='sticky-bar'><p>";
         $result .= "<a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'>";

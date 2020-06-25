@@ -5,15 +5,62 @@ jQuery(document).ready( function($) {
   var utm_string = '?';
   var links = document.querySelectorAll('a')
   var ps = document.querySelectorAll('p')
+  var h3 = document.querySelector('h3');
+  var geoh3 = document.querySelector('.gb-cities-col');
   var pos = window.location.href.indexOf('?');
   var query_str = (pos) ? window.location.href.slice(pos+1) : '';
   var query_arr = query_str.split('&');
+  var utm_param = '';
+  var locale_name = '';
+  var locale_fallback = 'your area';
+  var geoblock_vals = '';
+  var str = '';
 
+  function geo_pipe(str) {
+    new_str = '';
+    new_arr = str.split(',');
+    for (var i = 0; i < new_arr.length; i++) {
+      new_str += new_arr[i];
+      new_str += (i < new_arr.length-1) ? ' | ' : '';
+    }
+    return new_str;
+  }
   query_arr.forEach( (e) => {
     pair = e.split('=')
     if (equips_settings_obj.params.indexOf(pair[0]) > -1 || pair[0].indexOf('utm_')===0) {
       //query-variable/url-parameter is in use by this plugin or it's a UTM parameter
       //add it to the record string
+
+      /* EQUIPS SWAP SUBROUTINE FOR UTMS */
+      if (pair[0].indexOf('utm_')===0) {
+        console.log('got utm param');
+        utm_param = pair[0].replace('utm_','');
+        if (equips_settings_obj.params.indexOf(utm_param) > -1) {
+          console.log('got registered utm param');
+          switch(utm_param) {
+            case 'content' :
+              if (equips_settings_obj.loc_assoc[pair[1]]) {
+                locale_name = equips_settings_obj.loc_assoc[pair[1]]['name'];
+                geoblock_vals = equips_settings_obj.loc_assoc[pair[1]]['geos'];
+                if (locale_name && geoblock_vals) {
+                  console.log(locale_name);
+                  console.log(geoblock_vals);
+                  str = h3.textContent;
+                  str = str.replace('your area',locale_name)
+                  h3.innerText = str;
+                  geoh3 = geo_pipe(geoblock_vals);
+                  console.log(str);
+                }
+              } else {
+                console.log('geo swap target not found');
+              }
+              break;
+            default :
+          }
+        }
+      }
+      /* EQUIPS SWAP SUBROUTINE FOR UTMS */
+
       pair_string += [pair[0]] + '=' + pair[1] + '&'
       if (pair[0].indexOf('utm_')===0) {
         //keep a separate string that's UTM params only
