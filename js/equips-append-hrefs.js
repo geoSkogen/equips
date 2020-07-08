@@ -1,5 +1,5 @@
 jQuery(document).ready( function($) {
-  console.log(equips_settings_obj);
+  //console.log(equips_settings_obj);
   var pair = []
   var pair_string = '?';
   var utm_string = '?';
