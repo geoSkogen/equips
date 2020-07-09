@@ -33,18 +33,18 @@ jQuery(document).ready( function($) {
 
       /* EQUIPS SWAP SUBROUTINE FOR UTMS */
       if (pair[0].indexOf('utm_')===0) {
-        console.log('got utm param');
+        //console.log('got utm param');
         utm_param = pair[0].replace('utm_','');
         if (equips_settings_obj.params.indexOf(utm_param) > -1) {
-          console.log('got registered utm param');
+          //console.log('got registered utm param');
           switch(utm_param) {
             case 'content' :
               if (equips_settings_obj.loc_assoc[pair[1]]) {
                 locale_name = equips_settings_obj.loc_assoc[pair[1]]['name'];
                 geoblock_vals = equips_settings_obj.loc_assoc[pair[1]]['geos'];
                 if (locale_name && geoblock_vals) {
-                  console.log(locale_name);
-                  console.log(geoblock_vals);
+                  //console.log(locale_name);
+                  //console.log(geoblock_vals);
                   if (h3) {
                     str = h3.textContent;
                     str = str.replace('your area', ' ' + locale_name);
@@ -53,10 +53,10 @@ jQuery(document).ready( function($) {
                   if (geoh3) {
                     geoh3.innerText = geo_pipe(geoblock_vals);
                   }
-                  console.log(str);
+                  //console.log(str);
                 }
               } else {
-                console.log('geo swap target not found');
+                //console.log('geo swap target not found');
               }
               break;
             default :

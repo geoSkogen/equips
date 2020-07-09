@@ -11,13 +11,11 @@ window.addEventListener('load', () => {
     pair = e.split('=')
     if (pair[0].indexOf('utm_')===0) {
       utm_param = pair[0].replace('utm_','')
-      console.log('pair 0');
-      console.log(pair[0]);
       if (utm_types.indexOf(utm_param) > -1)  {
         par = document.querySelector('.utm_' + utm_param + '_container')
         input = (par) ? par.querySelector('input') : {value:''}
         locale_val = pair[1]
-        console.log(locale_val)
+        //console.log(locale_val)
         input.value = locale_val
       }
     }
