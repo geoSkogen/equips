@@ -80,6 +80,7 @@ function eq_activate_db () {
     error_log('created new db table: ' . $table_name . ' for this install');
     $table_rows = eq_import_csv($import_filename, 'geo');
     if ($table_rows) {
+      set_time_limit ( 500 );
       foreach($table_rows as $row) {
         $wpdb->insert($table_name, $row);
       }
