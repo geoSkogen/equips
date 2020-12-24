@@ -19,17 +19,13 @@ class Equips_Stasis {
     self::$options = $eq_options;
     for ($i = 1; $i < $counter + 1; $i++) {
       $eq_num_str = strval($i);
-      if (
-          ( isset($eq_options['param_' . $eq_num_str]) &&
-            "" != $eq_options['param_' . $eq_num_str]
-          ) &&
-          ( isset($eq_options['shortcode_' . $eq_num_str]) &&
-            "" != $eq_options['shortcode_' . $eq_num_str]
-          )
-         )
-         {
+      if  ( !empty($eq_options['param_' . $eq_num_str]) &&
+            !empty($eq_options['shortcode_' . $eq_num_str]) ) {
         self::$eq_store['indices'][] = $eq_num_str;
         self::$eq_store['params'][] = $eq_options['param_' . $eq_num_str];
+        self::$eq_store['shortcodes'][] = $eq_options['shortcode_' . $eq_num_str];
+        self::$eq_store['fallbacks'][] = (!empty($eq_options['fallback_' . $eq_num_str])) ?
+          $eq_options['fallback_' . $eq_num_str] : null;
       }
     }
     self::equips_triage($eq_options);
@@ -40,7 +36,8 @@ class Equips_Stasis {
 
     $eq_geo_options = get_option('equips_geo');
     self::$geo_options = $eq_geo_options;
-
+    self::$eq_store['geo_shortcodes'] = [];
+    self::$eq_store['geo_fallbacks'] = [];
     add_action('wp_enqueue_scripts',array('Equips_Stasis','init_equips_wp_scripts'));
     //register the URL parameters and their dynamic shortcode handler
     add_filter( 'query_vars', function ( $vars ) {
@@ -58,33 +55,45 @@ class Equips_Stasis {
       add_shortcode(
         $eq_geo_options['phone_shortcode'], array('Equips_Stasis','eq_shortcode_handler_phone')
       );
+      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['phone_shortcode'];
+      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['phone'];
+
     }
     if ($eq_geo_options['locale_shortcode']) {
       add_shortcode(
         $eq_geo_options['locale_shortcode'], array('Equips_Stasis','eq_shortcode_handler_locale')
       );
+      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['locale_shortcode'];
+      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['locale'];
     }
     if ($eq_geo_options['region_shortcode']) {
       add_shortcode(
         $eq_geo_options['region_shortcode'], array('Equips_Stasis','eq_shortcode_handler_region')
       );
+      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['region_shortcode'];
+      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['region'];
     }
     if ($eq_geo_options['service_area_shortcode']) {
       add_shortcode(
         $eq_geo_options['service_area_shortcode'], array('Equips_Stasis','eq_shortcode_handler_service_area')
       );
+      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['service_area_shortcode'];
+      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['service_area'];
     }
     return;
   }
 
   public static function init_equips_wp_scripts() {
     self::$eq_store;
-    $monster = new Equips_Local_Monster('geo20kv');
+    $monster = new Equips_Local_Monster('geo20');
     $loc_assoc = $monster->get_assoc();
     wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
       array(
         'params' => self::$eq_store['params'],
+        'shortcodes' => self::$eq_store['fallbacks'],
+        'geo_shortcodes' => self::$eq_store['geo_shortcodes'],
+        'fallbacks' => self::$eq_store['fallbacks'],
         'site_url' => site_url(),
         'loc_assoc' => $loc_assoc
       )

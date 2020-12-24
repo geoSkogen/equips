@@ -38,17 +38,19 @@ window.addEventListener('load', () => {
   query_vars.forEach( (query) => {
     var this_in = ( document.querySelector('.query_var_' + query + '_container') ) ?
       document.querySelector('.query_var_' + query + '_container').querySelector('input') : null
+    if (this_in) {
+      if (this_in.value && document.querySelector('.query_var_container')) {
+        document.querySelector('.query_var_container').querySelector('input').value = this_in.value
+      }
 
-    if (this_in.value && document.querySelector('.query_var_container')) {
-      document.querySelector('.query_var_container').querySelector('input').value = this_in.value
+      if (this_in.value && document.querySelector('.utm_source_container')) {
+        document.querySelector('.utm_source_container').querySelector('input').value = this_in.value
+      }
+
+      if (this_in.value && document.querySelector('.utm_medium_container')) {
+        document.querySelector('.utm_medium_container').querySelector('input').value = 'cpc'
+      }
     }
 
-    if (this_in.value && document.querySelector('.utm_source_container')) {
-      document.querySelector('.utm_source_container').querySelector('input').value = this_in.value
-    }
-
-    if (this_in.value && document.querySelector('.utm_medium_container')) {
-      document.querySelector('.utm_medium_container').querySelector('input').value = 'cpc'
-    }
   })
 })

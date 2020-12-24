@@ -1,20 +1,15 @@
 jQuery(document).ready( function($) {
-  //console.log(equips_settings_obj);
+  console.log('append-hrefs-there');
   var pair = []
   var pair_string = '?';
   var utm_string = '?';
   var links = document.querySelectorAll('a')
-  var ps = document.querySelectorAll('p')
-  var h3 = document.querySelector('h3');
-  var geoh3 = document.querySelector('.gb-cities-col');
   var pos = window.location.href.indexOf('?');
   var query_str = (pos) ? window.location.href.slice(pos+1) : '';
   var query_arr = query_str.split('&');
   var utm_param = '';
-  var locale_name = '';
-  var locale_fallback = 'your area';
-  var geoblock_vals = '';
   var str = '';
+  var place = {}
 
   function geo_pipe(str) {
     new_str = '';
@@ -40,20 +35,14 @@ jQuery(document).ready( function($) {
           switch(utm_param) {
             case 'content' :
               if (equips_settings_obj.loc_assoc[pair[1]]) {
-                locale_name = equips_settings_obj.loc_assoc[pair[1]]['name'];
-                geoblock_vals = equips_settings_obj.loc_assoc[pair[1]]['geos'];
-                if (locale_name && geoblock_vals) {
-                  //console.log(locale_name);
-                  //console.log(geoblock_vals);
-                  if (h3) {
-                    str = h3.textContent;
-                    str = str.replace('your area', ' ' + locale_name);
-                    h3.innerText = str;
-                  }
-                  if (geoh3) {
-                    geoh3.innerText = geo_pipe(geoblock_vals);
-                  }
-                  //console.log(str);
+                place = equips_settings_obj.loc_assoc[pair[1]]
+                for (var i = 0; i < equips_settings_obj.shortcodes.length; i++) {
+                  var swap_els = document.querySelectorAll('.'+equips_settings_obj.shortcodes[i])
+                  swap_els.forEach( function (swap_el) {
+                    if (swap_el.innerText.indexOf(equips_settings_obj.fallbacks[i])>-1) {
+                      swap_el.innerText.replace(equips_settings_obj.fallbacks[i],place['city_name'])
+                    }
+                  })
                 }
               } else {
                 //console.log('geo swap target not found');

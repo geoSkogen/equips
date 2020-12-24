@@ -45,7 +45,16 @@ class Equips_Local_Monster {
     error_log(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv");
     if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv", "r")) !== FALSE) {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        $result[$data[0]] = array('name'=>$data[1],'geos'=>$data[2]);
+        $result[$data[0]] = array(
+          'city_name'=>$data[1],
+          'place_name'=>$data[2],
+          'country_code'=>$data[3],
+          'branch_name'=>$data[4],
+          'locale'=>$data[5],
+          'region'=>$data[6],
+          'phone'=>$data[7],
+          'service_area'=>$data[8]
+        );
       }
       fclose($handle);
     } else {

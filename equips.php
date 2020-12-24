@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name:  equips
-Description:  Extensible Queries of URL Parameters for Shortcode
+Description:  Extensible Queries of URL-Injected Placenames for Shortcode
 Version:      2020.01.10
-Author:       City Ranked Media
-Author URI:
+Author:       Joseph Scoggins
+Author URI:   https://github.com/geoSkogen/equips
 Text Domain:  equips
 */
 
