@@ -85,7 +85,7 @@ class Equips_Stasis {
 
   public static function init_equips_wp_scripts() {
     self::$eq_store;
-    $monster = new Equips_Local_Monster('geo20');
+    $monster = new Equips_Local_Monster('geo20',false);
     $loc_assoc = $monster->get_assoc();
     wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
@@ -101,41 +101,36 @@ class Equips_Stasis {
     );
     wp_enqueue_script('equips-append-hrefs');
   }
+
   // returns a local attribute by name and URL param
   public static function do_equips_location($db_slug) {
+
     $result = '';
-    if ( !empty(self::$utm_assoc['location']) ) {
-      $stripped_query = self::$utm_assoc['location'];
-      $db_file = 'geo20';
-      error_log('got utm based locale query');
-    } else if ( !empty(self::$utm_assoc['content']) ) {
-      $stripped_query = self::$utm_assoc['content'];
-      $db_file = 'geo20';
-      error_log('got utm based locale query');
-    } else if (get_query_var('location', false)) {
-      $raw_query = get_query_var('location', false);
-      //locations can only be looked up by unique numeric key
-      $stripped_query = is_numeric(strip_tags($raw_query)) ?
-        strip_tags($raw_query) : '';
-      $db_file = 'geo5';
-      error_log('got standard locale query');
-    } else {
-      /*
-      $query_str = $_SERVER['QUERY_STRING'];
-      $key_val = self::get_equips_utm('content',$query_str);
-      $stripped_query = (!empty(self::$utm_assoc['content'])) ?
-        self::$utm_assoc['content']: '';
-      */
-      // do geopluign lookup ()
-    }
     //check if the static property already exists
     if (count(array_keys(self::$local_info)) && !empty(self::$local_info[$db_slug])) {
       $result = self::$local_info[$db_slug];
       error_log('found static record of local info; no lookup required');
-    //if not, try looking it up
-    } else if (isset($db_file)) {
+    } else {
+      //if not, try looking it up
+      error_log('eq_location');
+      $raw_query = (get_query_var('location', false)) ?
+        get_query_var('location', false) : '';
+        //locations can only be looked up by unique numeric key
+      $stripped_query = is_numeric(strip_tags($raw_query)) ?
+        strip_tags($raw_query) : '';
+      $query_str = $_SERVER['QUERY_STRING'];
+      $key_val = (self::get_equips_utm('content',$query_str)) ?
+        self::get_equips_utm('content',$query_str) : '';
+      $stripped_query = empty($stripped_query) ?
+       (!empty(self::$utm_assoc['content']) ? self::$utm_assoc['content'] :
+          (!empty(self::$utm_assoc['location']) ? self::$utm_assoc['location'] : $stripped_query)
+        ) : $stripped_query;
+      $db_file = ($raw_query) ? 'geo5' : 'geo20';
+      $db_format = ($raw_query) ? true : false;
       error_log("looking up $db_file locale");
-      $equips_local_monster = new Equips_Local_Monster($db_file);
+      error_log($stripped_query);
+      error_log($raw_query);
+      $equips_local_monster = new Equips_Local_Monster($db_file,$db_format);
       $loc_data = $equips_local_monster->get_local($stripped_query);
       $result = (count(array_keys(($loc_data))) && isset($loc_data[$db_slug])) ?
         $loc_data[$db_slug] : $result;
@@ -145,8 +140,7 @@ class Equips_Stasis {
         error_log($result);
         self::$local_info = $loc_data;
       }
-    } else {
-
+        // do geopluign lookup ()
     }
     return $result;
   }
@@ -209,11 +203,10 @@ class Equips_Stasis {
         }
         break;
       case 'utm' :
-
         $query_str = $_SERVER['QUERY_STRING'];
         $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
         $result = ($key_val) ? self::do_equips_utm($key_val['key'],$key_val['val']) : '';
-        
+
         break;
       default :
     }

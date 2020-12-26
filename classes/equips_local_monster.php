@@ -5,14 +5,15 @@ class Equips_Local_Monster {
   public $local_info = array();
   public $filename = '';
 
-  function __construct($geo_data) {
+  function __construct($geo_data,$format) {
     $this->filename = $geo_data;
+    $this->query_mode = $format;
   }
 
   public function get_local($num_arg) {
     if (!count(array_keys($this->local_info))) {
       error_log('local info array keys not found; using CSV lookup');
-      $this->local_info = self::import_csv_geo($num_arg);
+      $this->local_info = self::import_geo_row($num_arg);
       //$this->local_info = $this->eq_locale_lookup($num_arg);
     } else {
       error_log('local info array keysfound; using static record');
@@ -32,10 +33,11 @@ class Equips_Local_Monster {
   }
 
   public function get_assoc() {
-    return self::impport_geo_keyvals();
+    return self::import_geo_rows();
   }
 
-  public function impport_geo_keyvals() {
+  public function import_geo_rows() {
+    //imports entire file
     $result = array();
     $subdir = "resources";
     $result = [];
@@ -63,7 +65,9 @@ class Equips_Local_Monster {
     return $result;
   }
 
-  public function import_csv_geo($num_arg) {
+  public function import_geo_row($arg) {
+    //terminates the file iteration as soon as the arg finds its match
+    //return the row only
     $subdir = "resources";
     $result = [];
     $key = "";
@@ -74,7 +78,7 @@ class Equips_Local_Monster {
       while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $valid_data = [];
         $key = strval($data[0]);
-        if ($key === $num_arg) {
+        if ($key === $arg) {
           $valid_data['city_name'] = strval($data[1]);
           $valid_data['country_code'] = strval($data[2]);
           $valid_data['branch_name'] = strval($data[3]);
