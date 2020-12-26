@@ -1,10 +1,10 @@
-# equips -'E.Q'.$u[i].'P.S';
+# 'E.Q'.$u[i].'P.S';
 ### Extensible Queries | URL-Injected Parameters | Shortcode
-## plugin for WordPress -
+## A plugin for WordPress
 # Allows WordPress to render dynamic landing pages
 ## Swap text values into pages in response to query variables & utm params
-## Generates 21626 different US & Canada place names using Google Ads Criteria ID
-### & associates it with one of 50 different sets of regional text nodes 
+## Generates 21626 US & Canada place names using Google Ads Criteria ID
+### (associates each with one of 50 different sets of regional text nodes)
 #### e.g. mydomain.tld/landing-page/?location=9052329 would generate:
 ### Brand-0 - Serving Linganore-Bartonsville since 1961
 #### We're the Best in Baltimore and Northern Maryland
