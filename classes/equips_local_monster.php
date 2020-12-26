@@ -37,7 +37,7 @@ class Equips_Local_Monster {
   }
 
   public function import_geo_rows() {
-    //imports entire file
+    //imports entire file to use as associative array in frontend swap
     $result = array();
     $subdir = "resources";
     $result = [];
@@ -74,26 +74,82 @@ class Equips_Local_Monster {
     $valid_data = [];
     error_log('logging equips CSV file path for debugging');
     error_log(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv");
-    if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv", "r")) !== FALSE) {
-      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        $valid_data = [];
-        $key = strval($data[0]);
-        if ($key === $arg) {
-          $valid_data['city_name'] = strval($data[1]);
-          $valid_data['country_code'] = strval($data[2]);
-          $valid_data['branch_name'] = strval($data[3]);
-          $valid_data['locale'] = strval($data[4]);
-          $valid_data['region'] = strval($data[5]);
-          $valid_data['phone'] = strval($data[6]);
-          $valid_data['service_area'] = explode(",",$data[7]);
-          break;
+    switch($this->query_mode) {
+
+      case false :
+
+        if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . ".csv", "r")) !== FALSE) {
+          while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $valid_data = [];
+            $key = strval($data[0]);
+            if ($key === $arg) {
+              $valid_data = array(
+                'city_name'=>$data[1],
+                'place_name'=>$data[2],
+                'country_code'=>$data[3],
+                'branch_name'=>$data[4],
+                'locale'=>$data[5],
+                'region'=>$data[6],
+                'phone'=>$data[7],
+                'service_area'=>explode(',',$data[8])
+              );
+              break;
+            }
+          }
+          fclose($handle);
+          $result = $valid_data;
+        } else {
+          error_log('could not open file');
         }
-      }
-      fclose($handle);
-      $result = $valid_data;
-    } else {
-      error_log('could not open file');
+        break;
+
+      case true :
+
+        $rel_id = -1;
+        if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . "-ids.csv", "r")) !== FALSE) {
+          while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $valid_data = [];
+            $key = strval($data[0]);
+            if ($key === $arg) {
+              $valid_data = array(
+                'city_name'=>$data[1],
+                'country_code'=>$data[2]
+              );
+              $rel_id = intval($data[3]);
+              break;
+            }
+          }
+          fclose($handle);
+        } else {
+          error_log('could not open file');
+        }
+
+        if ($rel_id > -1) {
+          $row_index = 0;
+          if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $this->filename . "-locales.csv", "r")) !== FALSE) {
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+              $local_data = array();
+              if ($rel_id === $row_index) {
+                $local_data = array(
+                  'branch_name'=>$data[0],
+                  'locale'=>$data[1],
+                  'region'=>$data[2],
+                  'phone'=>$data[3],
+                  'service_area'=>explode(',',$data[4])
+                );
+                break;
+              }
+              $row_index++;
+            }
+            fclose($handle);
+            $result = array_merge($valid_data,$local_data);
+          } else {
+            error_log('could not open file');
+          }
+        }
+      break;
     }
+
     return $result;
   }
 

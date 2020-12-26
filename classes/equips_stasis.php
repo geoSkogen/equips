@@ -109,10 +109,10 @@ class Equips_Stasis {
     //check if the static property already exists
     if (count(array_keys(self::$local_info)) && !empty(self::$local_info[$db_slug])) {
       $result = self::$local_info[$db_slug];
-      error_log('found static record of local info; no lookup required');
+      //error_log('found static record of local info; no lookup required');
     } else {
       //if not, try looking it up
-      error_log('eq_location');
+      //error_log('eq_location');
       $raw_query = (get_query_var('location', false)) ?
         get_query_var('location', false) : '';
         //locations can only be looked up by unique numeric key
@@ -127,17 +127,17 @@ class Equips_Stasis {
         ) : $stripped_query;
       $db_file = ($raw_query) ? 'geo5' : 'geo20';
       $db_format = ($raw_query) ? true : false;
-      error_log("looking up $db_file locale");
-      error_log($stripped_query);
-      error_log($raw_query);
+      //error_log("looking up $db_file locale");
+      //error_log($stripped_query);
+      //error_log($raw_query);
       $equips_local_monster = new Equips_Local_Monster($db_file,$db_format);
       $loc_data = $equips_local_monster->get_local($stripped_query);
       $result = (count(array_keys(($loc_data))) && isset($loc_data[$db_slug])) ?
         $loc_data[$db_slug] : $result;
       //if the location was found, commit it to the static var for future use
       if ($result) {
-        error_log('looked up geo locale; committed to static record');
-        error_log($result);
+        //error_log('looked up geo locale; committed to static record');
+        //error_log($result);
         self::$local_info = $loc_data;
       }
         // do geopluign lookup ()
