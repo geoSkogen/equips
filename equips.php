@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL-Injected Placenames for Shortcode
-Version:      2020.01.10
+Version:      2020.12.20
 Author:       Joseph Scoggins
 Author URI:   https://github.com/geoSkogen/equips
 Text Domain:  equips

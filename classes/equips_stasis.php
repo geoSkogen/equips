@@ -91,9 +91,10 @@ class Equips_Stasis {
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
       array(
         'params' => self::$eq_store['params'],
-        'shortcodes' => self::$eq_store['fallbacks'],
+        'shortcodes' => self::$eq_store['shortcodes'],
         'geo_shortcodes' => self::$eq_store['geo_shortcodes'],
         'fallbacks' => self::$eq_store['fallbacks'],
+        'geo_fallbacks' => self::$eq_store['geo_fallbacks'],
         'site_url' => site_url(),
         'loc_assoc' => $loc_assoc
       )
@@ -208,11 +209,11 @@ class Equips_Stasis {
         }
         break;
       case 'utm' :
-        /*
+
         $query_str = $_SERVER['QUERY_STRING'];
         $key_val = self::get_equips_utm(self::$options['param_' . $num_str],$query_str);
         $result = ($key_val) ? self::do_equips_utm($key_val['key'],$key_val['val']) : '';
-        */
+        
         break;
       default :
     }
