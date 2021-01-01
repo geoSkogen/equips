@@ -27,8 +27,9 @@ class Equips_Stasis {
         self::$eq_store['fallbacks'][] = (!empty($eq_options['fallback_' . $eq_num_str])) ?
           $eq_options['fallback_' . $eq_num_str] : null;
       }
+      if (count(self::$eq_store['params'])) { self::equips_triage($eq_options); }
     }
-    self::equips_triage($eq_options);
+
     return;
   }
 
@@ -40,10 +41,12 @@ class Equips_Stasis {
     self::$eq_store['geo_fallbacks'] = [];
     add_action('wp_enqueue_scripts',array('Equips_Stasis','init_equips_wp_scripts'));
     //register the URL parameters and their dynamic shortcode handler
-    add_filter( 'query_vars', function ( $vars ) {
-      $vars = array_merge($vars, self::$eq_store['params']);
-      return $vars;
-    });
+    if ( !empty(self::$eq_store['params'])) {
+      add_filter( 'query_vars', function ( $vars ) {
+        $vars = array_merge($vars, self::$eq_store['params']);
+        return $vars;
+      });
+    }
     foreach (self::$eq_store['indices'] as $store_key) {
       add_shortcode(
         $eq_options['shortcode_' . $store_key],
