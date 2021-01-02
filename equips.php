@@ -2,7 +2,7 @@
 /*
 Plugin Name:  equips
 Description:  Extensible Queries of URL-Injected Placenames for Shortcode
-Version:      2020.12.20
+Version:      2021.01.01
 Author:       Joseph Scoggins
 Author URI:   https://github.com/geoSkogen/equips
 Text Domain:  equips
@@ -38,7 +38,14 @@ if (is_admin()) {
 }
 
 function local_utm_content_gf_injector() {
-  wp_register_script('equips-utm-content-gf-injector', plugin_dir_url(__FILE__) . 'js/' . 'equips-utm-content-gf-injector' . '.js');
+  //included for hidden forms inside parent elements containing classnames:
+  //query)var_container, query_var_gclid_container, query_var_msclkid_container,
+  //utm_source_container, utm_medium_container, utm_campaign_container, utm_content_container
+
+  wp_register_script(
+    'equips-utm-content-gf-injector',
+    plugin_dir_url(__FILE__) . 'js/' . 'equips-utm-content-gf-injector' . '.js'
+  );
   wp_enqueue_script('equips-utm-content-gf-injector');
 }
 
