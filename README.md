@@ -1,4 +1,3 @@
-# 'eq'.$u[i].'ps';
 ### Extensible Queries | URL-Injected Parameters | Shortcode
 ## SEM plugin for WordPress
 # - allows WordPress users to render dynamic landing pages
