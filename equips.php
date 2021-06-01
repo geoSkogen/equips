@@ -39,7 +39,7 @@ if (is_admin()) {
 
 function local_utm_content_gf_injector() {
   //included for hidden forms inside parent elements containing classnames:
-  //query)var_container, query_var_gclid_container, query_var_msclkid_container,
+  //query_var_container, query_var_gclid_container, query_var_msclkid_container,
   //utm_source_container, utm_medium_container, utm_campaign_container, utm_content_container
 
   wp_register_script(
