@@ -3,112 +3,132 @@
 class Equips {
 
   protected $db_conn;
-  
+
   protected $indices;
   protected $params;
   protected $shortcodes;
   protected $fallbacks;
 
-  protected $options;
-  protected $geo_options = array();
+  protected $geo_shortcodes;
+  protected $geo_fallbacks;
 
-  public static $utm_assoc = array();
+  protected $options;
+  protected $geo_options;
+
+  public static $utm_assoc;
 
   public function __construct() {
     //
-    $this->$options = get_option('equips');
+    $this->options = get_option('equips');
+    $this->geo_options =  get_option('equips_geo');
+    $this->params = [];
 
     $field_count = !empty($this->options['field_count']) ?
       intval($this->options['field_count']) : 1
 
     for ($i = 1; $i < $fields_count + 1; $i++) {
+      //
       $eq_num_str = strval($i);
+      //
       if  ( !empty($this->options['param_' . $eq_num_str]) &&
             !empty($this->options['shortcode_' . $eq_num_str]) ) {
+        //
         $this->indices[] = $eq_num_str;
         $this->params[] = $this->options['param_' . $eq_num_str];
         $this->shortcodes[] = $this->options['shortcode_' . $eq_num_str];
         $this->fallbacks[] = (!empty($this->options['fallback_' . $eq_num_str])) ?
-          $this->options['fallback_' . $eq_num_str] : null;
+          $this->options['fallback_' . $eq_num_str] : '';
       }
-      if (count(self::$eq_store['params'])) { self::equips_triage($this->options); }
+      //
+      if ( count($this->$params) ) { $this->equips_triage(); }
     }
   }
 
 
-  public static function equips_triage($eq_options) {
+  protected function equips_triage($eq_options) {
+    // merges wordpress query vars with euqips query vars in use
+    // registers shotcodes
+    $geo_fields = ['locale','region','service_area','phone'];
 
-    $eq_geo_options = get_option('equips_geo');
-    self::$geo_options = $eq_geo_options;
-    self::$eq_store['geo_shortcodes'] = [];
-    self::$eq_store['geo_fallbacks'] = [];
-    add_action('wp_enqueue_scripts',array('Equips_Stasis','init_equips_wp_scripts'));
-    //register the URL parameters and their dynamic shortcode handler
-    if ( !empty(self::$eq_store['params'])) {
-      add_filter( 'query_vars', function ( $vars ) {
-        $vars = array_merge($vars, self::$eq_store['params']);
-        return $vars;
-      });
-    }
-    foreach (self::$eq_store['indices'] as $store_key) {
+    add_action('wp_enqueue_scripts', [$this,'init_equips_wp_scripts'] );
+
+
+    add_filter( 'query_vars', function ( $vars ) {
+      $vars = array_merge($vars, $this->params);
+      return $vars;
+    });
+    //
+    foreach ($this->indices as $store_key) {
+      //
       add_shortcode(
-        $eq_options['shortcode_' . $store_key],
-        function () use ($store_key) {  return self::do_equips($store_key); }
+        $this->options['shortcode_' . $store_key],
+        function () use ($store_key) {  return $this->do_equips( $store_key ); }
       );
     }
     //register the geo-swap shotcodes
-    if ($eq_geo_options['phone_shortcode']) {
-      add_shortcode(
-        $eq_geo_options['phone_shortcode'], array('Equips_Stasis','eq_shortcode_handler_phone')
-      );
-      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['phone_shortcode'];
-      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['phone'];
+    foreach ($geo_fields as $geo_field) {
+      //
+      if ( !empty($this->geo_options["{$geo_field}_shortcode"]) ) {
 
+        add_shortcode(
+          $this->geo_options["{$geo_field}_shortcode"],
+          [$this,"eq_shortcode_handler_{$geo_field}"]
+        );
+
+        $this->geo_shortcodes[] = $this->geo_options["{$geo_field}_shortcode"];
+        $this->geo_fallbacks[] = $this->geo_options[$geo_field];
+      }
     }
-    if ($eq_geo_options['locale_shortcode']) {
-      add_shortcode(
-        $eq_geo_options['locale_shortcode'], array('Equips_Stasis','eq_shortcode_handler_locale')
-      );
-      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['locale_shortcode'];
-      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['locale'];
-    }
-    if ($eq_geo_options['region_shortcode']) {
-      add_shortcode(
-        $eq_geo_options['region_shortcode'], array('Equips_Stasis','eq_shortcode_handler_region')
-      );
-      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['region_shortcode'];
-      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['region'];
-    }
-    if ($eq_geo_options['service_area_shortcode']) {
-      add_shortcode(
-        $eq_geo_options['service_area_shortcode'], array('Equips_Stasis','eq_shortcode_handler_service_area')
-      );
-      self::$eq_store['geo_shortcodes'][] = $eq_geo_options['service_area_shortcode'];
-      self::$eq_store['geo_fallbacks'][] = $eq_geo_options['service_area'];
-    }
+
+    add_action( 'wp_enqueue_scripts', [$this, 'init_equips_wp_scripts'] )
+
     return;
   }
 
-  public static function init_equips_wp_scripts() {
-    self::$eq_store;
-    $loc_assoc;
+  public function init_equips_wp_scripts() {
     /*
     $monster = new Equips_Local_Monster('geo20',false);
     $loc_assoc = $monster->get_assoc();
     */
+    $loc_assoc = [];
     wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
       array(
-        'params' => self::$eq_store['params'],
-        'shortcodes' => self::$eq_store['shortcodes'],
-        'geo_shortcodes' => self::$eq_store['geo_shortcodes'],
-        'fallbacks' => self::$eq_store['fallbacks'],
-        'geo_fallbacks' => self::$eq_store['geo_fallbacks'],
+        'params' => $this->params,
+        'shortcodes' => $this->shortcodes,
+        'geo_shortcodes' => $this->geo_shortcodes,
+        'fallbacks' => $this->fallbacks,
+        'geo_fallbacks' => $this->geo_fallbacks,
         'site_url' => site_url(),
         'loc_assoc' => $loc_assoc
       )
     );
     wp_enqueue_script('equips-append-hrefs');
+
+    wp_register_script(
+      'equips-utm-content-gf-injector',
+      plugin_dir_url(__FILE__) . '../js/' . 'equips-utm-content-gf-injector' . '.js'
+    );
+    wp_enqueue_script('equips-utm-content-gf-injector');
+  }
+
+  /*  */
+
+  protected function do_equips_utm($key,$val) {
+
+    $result = '';
+    switch($key) {
+
+      case 'location' :
+      case 'content' :
+
+        $result = $this->do_equips_location('city_name');
+        break;
+
+      default :
+    }
+
+    return $result;
   }
 
   // returns a local attribute by name and URL param
@@ -150,20 +170,6 @@ class Equips {
         self::$local_info = $loc_data;
       }
         // do geopluign lookup ()
-    }
-    return $result;
-  }
-
-  public static function do_equips_utm($key,$val) {
-    $result = '';
-    switch($key) {
-      //NOTE: RE: security - this plugin is currently only configured to lookup locations
-      //$stripped_query requires further validation before being injected into text content
-      case 'location' :
-      case 'content' :
-        $result = self::do_equips_location('city_name');
-        break;
-      default :
     }
     return $result;
   }

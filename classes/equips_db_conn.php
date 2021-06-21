@@ -9,29 +9,82 @@ class Equips_DB_Conn {
 
     $this->table_names = ['eq_equips_ids', 'eq_equips_locales'];
     $this->import_filenames = [ 'geo5-ids', 'geo5-locales'];
+    $this->props = [
+      'ids' => ['criteria_id','city_name','country_code','region_id'],
+      'locales' => ['branch_name','branch_area','region','phone','service_area']
+    ];
 
   }
 
-  public function eq_locale_lookup($num_arg) {
+  public function eq_local_lookup($num_arg) {
+    $result = [];
+    $local_info = [];
+    $place_ids = $this->criteria_id_lookup($num_arg);
+    if ( !empty( $place_ids['region_id'] )) {
+
+      $local_info = $this->region_id_lookup( $place_ids['region_id'] );
+    }
+    return is_array($place_ids) ? array_merge($place_ids,$local_info) : [];
+  }
+
+  public function eq_init_database() {
+
+    $this->eq_create_db_tables();
+
+    $this->eq_write_equips_data();
+
+    return;
+  }
+
+  protected function criteria_id_lookup($num_arg) {
     global $wpdb;
     $result = "";
     $table_name = $wpdb->prefix . "eq_equips";
     $result = $wpdb->get_row(
-     "SELECT * FROM wp_eq_equips WHERE criteria_id = " . $num_arg,
+     "SELECT * FROM wp_eq_equips_ids WHERE criteria_id = " . $num_arg,
      ARRAY_A
     );
     return ($result) ?  $result : '';
   }
 
-  protected function eq_import_csv($filename) {
-    $subdir = "resources";
-    $result = [];
-    $key = "";
-    $valid_data = [];
-    if (($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
-      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
+  protected function region_id_lookup($num_arg) {
+    global $wpdb;
+    $result = "";
+    $table_name = $wpdb->prefix . "eq_equips";
+    $result = $wpdb->get_row(
+     "SELECT * FROM wp_eq_equips_locales WHERE id = " . $num_arg,
+     ARRAY_A
+    );
+    return ($result) ?  $result : '';
+  }
+
+
+  protected function eq_import_csv($filename,$paginate) {
+    $result = [];
+    $subdir = "resources";
+    $row_index = 0;
+    $page_index = 0;
+
+    if ( ($handle = fopen(__DIR__ . "/../" . $subdir . "/" . $filename . ".csv", "r")) !== FALSE) {
+
+      while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        //
+        if ($paginate) {
+
+          if ($row_index > 999) {
+            $page_index++;
+            $row_index = 0;
+          }
+          //
+          $result[$page_index][] = $data;
+        } else {
+          //
+          $result[] = $data;
+        }
+        $row_index++;
       }
+
       fclose($handle);
       return $result;
     } else {
@@ -40,20 +93,87 @@ class Equips_DB_Conn {
     }
   }
 
-  public function eq_create_db_tables () {
+
+  protected function eq_bulk_insert($table_name,$data,$props) {
+
+    global $wpdb;
+    $this_table_name = $wpdb->prefix . $table_name;
+    $test_query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $this_table_name) );
+
+    if ( $wpdb->get_var( $test_query) == $this_table_name ) {
+
+      $insert = "INSERT INTO $this_table_name ";
+      $insert .= $this->assemble_sql_list($props,false) . ' VALUES ';
+
+      for ($i = 0; $i < count($data); $i++) {
+        //
+        $insert .= $this->assemble_sql_list($data[$i],true);
+        $insert .= ($i!=count($data)-1) ? ', ' : ';';
+      }
+
+      require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+      //
+      dbDelta( $insert );
+    } else {
+      error_log("the table $this_table_name was not found for eq bulk insert");
+    }
+    return;
+  }
+
+
+  protected function eq_paginate_bulk_insert($table_name,$paginated_data,$props) {
+
+    foreach($paginated_data as $data_page) {
+
+      $this->eq_bulk_insert($table_name,$data_page,$props);
+    }
+    return;
+  }
+
+
+  protected function assemble_sql_list($props,$str_args) {
+    $result = '(';
+    for ($i = 0 ; $i < count($props) ; $i++) {
+      $result .= (!$str_args) ? '' : '"';
+      $result .= "$props[$i]";
+      $result .= (!$str_args) ? '' : '"';
+      $result .= ($i!=count($props)-1) ? ', ' : '';
+    }
+    $result .= ')';
+    return $result;
+  }
+
+
+  protected function eq_write_equips_data() {
+
+    $criteria_id_table = $this->eq_import_csv('geo5-ids',true);
+    $locales_info_table = $this->eq_import_csv('geo5-locales',false);
+
+    if (!empty($criteria_id_table)) {
+      $this->eq_paginate_bulk_insert('eq_equips_ids',$criteria_id_table,$this->props['ids']);
+    }
+
+    if (!empty($locales_info_table)) {
+      $this->eq_bulk_insert('eq_equips_locales',$locales_info_table,$this->props['locales']);
+    }
+  }
+
+
+  protected function eq_create_db_tables() {
     global $wpdb;
 
     $charset_collate = $wpdb->get_charset_collate();
 
-    $sql['ids'] = "CREATE TABLE eq_equips_ids (
+    $sql['ids'] = "CREATE TABLE <%table_name%> (
       id mediumint(9) NOT NULL AUTO_INCREMENT,
       criteria_id int(10) NOT NULL,
       city_name text NOT NULL,
+      country_code text NOT NULL,
       region_id int(3),
       PRIMARY KEY  (id)
       ) $charset_collate;";
 
-    $sql['locales'] = "CREATE TABLE eq_equips_locales (
+    $sql['locales'] = "CREATE TABLE <%table_name%> (
       id mediumint(9) NOT NULL AUTO_INCREMENT,
       branch_name text NOT NULL,
       branch_area text NOT NULL,
@@ -66,26 +186,29 @@ class Equips_DB_Conn {
     foreach ( $this->table_names as $table_name) {
 
       $this_table_name = $wpdb->prefix . $table_name;
-      $test_query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $this_table_name ) );
+      $test_query = $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $this_table_name) );
 
       if ( $wpdb->get_var( $test_query ) == $this_table_name ) {
-        //
+
         error_log('db table: ' . $this_table_name . ' is already associated with this install');
       } else {
         //
-        error_log('db table: ' . $this_table_name . ' was not found; creating new tables . . . ');
         if ( is_admin() ) {
+
+          error_log('creating new db table: ' . $this_table_name . ' for this install');
 
           $prop = str_replace('eq_equips_','',$table_name);
 
+          $query = str_replace('<%table_name%>',$this_table_name,$sql[$prop]);
+
           require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
           //
-          dbDelta( $sql[$prop] );
+          dbDelta( $query );
         }
       }
     }// ends table name iteration
+    return;
   }
-
 
 }
 ?>
