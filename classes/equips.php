@@ -1,37 +1,40 @@
 <?php
 
-class Equips_Stasis {
+class Equips {
 
-  public static $eq_store = array('indices'=>[],'params=[]');
-  public static $options = array();
-  public static $geo_options = array();
-  public static $local_info = array();
+  protected $db_conn;
+  
+  protected $indices;
+  protected $params;
+  protected $shortcodes;
+  protected $fallbacks;
+
+  protected $options;
+  protected $geo_options = array();
+
   public static $utm_assoc = array();
 
-  function __construct() {
+  public function __construct() {
+    //
+    $this->$options = get_option('equips');
 
-  }
+    $field_count = !empty($this->options['field_count']) ?
+      intval($this->options['field_count']) : 1
 
-  public static function init_equips($counter) {
-
-    $eq_num_str = "";
-    $eq_options = get_option('equips');
-    self::$options = $eq_options;
-    for ($i = 1; $i < $counter + 1; $i++) {
+    for ($i = 1; $i < $fields_count + 1; $i++) {
       $eq_num_str = strval($i);
-      if  ( !empty($eq_options['param_' . $eq_num_str]) &&
-            !empty($eq_options['shortcode_' . $eq_num_str]) ) {
-        self::$eq_store['indices'][] = $eq_num_str;
-        self::$eq_store['params'][] = $eq_options['param_' . $eq_num_str];
-        self::$eq_store['shortcodes'][] = $eq_options['shortcode_' . $eq_num_str];
-        self::$eq_store['fallbacks'][] = (!empty($eq_options['fallback_' . $eq_num_str])) ?
-          $eq_options['fallback_' . $eq_num_str] : null;
+      if  ( !empty($this->options['param_' . $eq_num_str]) &&
+            !empty($this->options['shortcode_' . $eq_num_str]) ) {
+        $this->indices[] = $eq_num_str;
+        $this->params[] = $this->options['param_' . $eq_num_str];
+        $this->shortcodes[] = $this->options['shortcode_' . $eq_num_str];
+        $this->fallbacks[] = (!empty($this->options['fallback_' . $eq_num_str])) ?
+          $this->options['fallback_' . $eq_num_str] : null;
       }
-      if (count(self::$eq_store['params'])) { self::equips_triage($eq_options); }
+      if (count(self::$eq_store['params'])) { self::equips_triage($this->options); }
     }
-
-    return;
   }
+
 
   public static function equips_triage($eq_options) {
 
@@ -88,8 +91,11 @@ class Equips_Stasis {
 
   public static function init_equips_wp_scripts() {
     self::$eq_store;
+    $loc_assoc;
+    /*
     $monster = new Equips_Local_Monster('geo20',false);
     $loc_assoc = $monster->get_assoc();
+    */
     wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
       array(
