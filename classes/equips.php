@@ -60,8 +60,7 @@ class Equips {
     foreach ($this->indices as $store_key) {
 
       if (!empty($this->options['shortcode_' . $store_key])) {
-        error_log('adding shortcode ' . $store_key);
-        error_log($this->options['shortcode_' . $store_key]);
+
         add_shortcode(
           $this->options['shortcode_' . $store_key],
           function () use ($store_key) {  return $this->do_equips( $store_key ); }
@@ -72,9 +71,6 @@ class Equips {
     foreach ($geo_fields as $geo_field) {
       //
       if ( !empty($this->geo_options[$geo_field .'_shortcode']) ) {
-
-        error_log('adding geo shortcode ');
-        error_log($this->geo_options[$geo_field . '_shortcode']);
 
         add_shortcode(
           $this->geo_options[$geo_field . '_shortcode'],
@@ -92,11 +88,10 @@ class Equips {
   }
 
   public function init_equips_wp_scripts() {
-    /*
-    $monster = new Equips_Local_Monster('geo20',false);
-    $loc_assoc = $monster->get_assoc();
-    */
-    $loc_assoc = [];
+
+    $local_info_rows = $this->db->eq_import_csv( 'geo20', false);
+    $loc_assoc = $this->db->eq_associate_rows( $local_info_rows, $this->db->local_props );
+
     wp_register_script('equips-append-hrefs',plugin_dir_url(__FILE__) . '../js/equips-append-hrefs.js', array('jquery'));
     wp_localize_script( 'equips-append-hrefs', 'equips_settings_obj',
       array(

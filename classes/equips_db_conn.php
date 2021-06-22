@@ -4,6 +4,8 @@ class Equips_DB_Conn {
 
   public $table_names;
   public $impot_filename;
+  public $props;
+  public $local_props;
 
   function __construct() {
 
@@ -12,6 +14,10 @@ class Equips_DB_Conn {
     $this->props = [
       'ids' => ['criteria_id','city_name','country_code','region_id'],
       'locales' => ['branch_name','branch_area','region','phone','service_area']
+    ];
+    $this->local_props = [
+      'city_name','place_name','country_code','branch_name','locale','region',
+      'phone','service_area'
     ];
 
   }
@@ -64,7 +70,7 @@ class Equips_DB_Conn {
   }
 
 
-  protected function eq_import_csv($filename,$paginate) {
+  public function eq_import_csv($filename,$paginate) {
     $result = [];
     $subdir = "resources";
     $row_index = 0;
@@ -95,6 +101,18 @@ class Equips_DB_Conn {
       error_log('could not open file');
       return false;
     }
+  }
+
+
+  public function eq_associate_rows( $rows, $props) {
+    foreach ($rows as $row) {
+      $new_row = [];
+      for ($i = 0; $i < count($props); $i++) {
+        $new_row[ $props[$i] ] = $row[$i];
+      }
+      $table[] = $new_row;
+    }
+    return $table;
   }
 
 
