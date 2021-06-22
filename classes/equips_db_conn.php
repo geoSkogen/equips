@@ -29,9 +29,13 @@ class Equips_DB_Conn {
 
   public function eq_init_database() {
 
-    $this->eq_create_db_tables();
+    $table_results = $this->eq_create_db_tables();
 
-    $this->eq_write_equips_data();
+    error_log(print_r($table_results,true));
+
+    $insert_results = $this->eq_write_equips_data();
+
+    error_log(print_r($insert_results,true));
 
     return;
   }
@@ -123,11 +127,12 @@ class Equips_DB_Conn {
 
   protected function eq_paginate_bulk_insert($table_name,$paginated_data,$props) {
 
+    $results = [];
     foreach($paginated_data as $data_page) {
 
-      $this->eq_bulk_insert($table_name,$data_page,$props);
+      $results[] = $this->eq_bulk_insert($table_name,$data_page,$props);
     }
-    return;
+    return $results;
   }
 
 
@@ -146,22 +151,29 @@ class Equips_DB_Conn {
 
   protected function eq_write_equips_data() {
 
+    $results = ['paginated'=>[], 'bulk'=>[] ];
     $criteria_id_table = $this->eq_import_csv('geo5-ids',true);
     $locales_info_table = $this->eq_import_csv('geo5-locales',false);
 
     if (!empty($criteria_id_table)) {
-      $this->eq_paginate_bulk_insert('eq_equips_ids',$criteria_id_table,$this->props['ids']);
+      $results['paginated'] = $this->eq_paginate_bulk_insert('eq_equips_ids',$criteria_id_table,$this->props['ids']);
+    } else {
+      error_log('id csv table import failed');
     }
 
     if (!empty($locales_info_table)) {
-      $this->eq_bulk_insert('eq_equips_locales',$locales_info_table,$this->props['locales']);
+      $results['bulk'][] = $this->eq_bulk_insert('eq_equips_locales',$locales_info_table,$this->props['locales']);
+    } else {
+      error_log('local csv table import failed');
     }
+    $result = array_merge( $results['paginated'], $results['bulk'] );
+    return $result;
   }
 
 
   protected function eq_create_db_tables() {
     global $wpdb;
-
+    $results = [];
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql['ids'] = "CREATE TABLE <%table_name%> (
@@ -203,11 +215,11 @@ class Equips_DB_Conn {
 
           require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
           //
-          dbDelta( $query );
+          $results[] = dbDelta( $query );
         }
       }
     }// ends table name iteration
-    return;
+    return $results;
   }
 
 }

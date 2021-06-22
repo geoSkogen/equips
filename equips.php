@@ -28,11 +28,12 @@ if (is_admin()) {
 } else {
   // frontend
   if ( !class_exists( 'Equips' ) ) {
-     //include_once 'classes/equips.php';
-     $equips = new stdClass;
+     include_once 'classes/equips.php';
+     
+     $equips = new Equips();
   }
   //
-//  $equips = new Equips();
+//
 }
 
 if ( !class_exists( 'Equips_DB_Conn' ) ) {
