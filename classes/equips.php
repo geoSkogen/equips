@@ -137,8 +137,9 @@ class Equips {
   protected function do_equips_utm_location($raw_query,$prop_slug) {
 
     $stripped_query = strip_tags($raw_query);
+    $this->local_info = $this->db->eq_utm_local_lookup($stripped_query);
 
-    return $result;
+    return !empty($this->local_info[$prop_slug]) ? $this->local_info[$prop_slug] : '';
   }
 
 
@@ -151,18 +152,21 @@ class Equips {
       foreach($utm_arr as $item) {
 
         $key_val = explode('=',$item);
+
         if ($key_val[0]=='utm_' . $param) {
 
           $key = str_replace( 'utm_', '', $key_val[0] );
           $val = strip_tags( $key_val[1] );
           $result = [ 'key'=>$key, 'val'=>$val ];
           $this->utm_assoc[$key] = $val;
+          
           break;
+        } else {
+          error_log('querystring item is not UTM');
         }
       }
     } else {
       error_log('querystring item not found');
-      error_log($query_str);
     }
     return $result;
   }
