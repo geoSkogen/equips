@@ -40,7 +40,6 @@ class Equips {
         $this->fallbacks[] = (!empty($this->options['fallback_' . $eq_num_str])) ?
           $this->options['fallback_' . $eq_num_str] : '';
       }
-      //
     }
     if ( count($this->params) ) { $this->equips_triage(); }
   }
@@ -89,6 +88,7 @@ class Equips {
     return;
   }
 
+
   public function init_equips_wp_scripts() {
 
     $local_info_rows = $this->db->eq_import_csv( 'geo20', false);
@@ -115,7 +115,6 @@ class Equips {
     wp_enqueue_script('equips-utm-content-gf-injector');
   }
 
-  /*  */
 
   protected function do_equips_utm($key,$val) {
 
@@ -134,13 +133,14 @@ class Equips {
     return $result;
   }
 
+
   protected function do_equips_utm_location($raw_query,$prop_slug) {
 
     $stripped_query = strip_tags($raw_query);
 
-
     return $result;
   }
+
 
   protected function get_equips_utm($param,$query_str) {
     $result = '';
@@ -172,17 +172,18 @@ class Equips {
   protected function do_equips_location($raw_query,$prop_slug) {
 
     if (!$raw_query) {
-
+    //
       $stripped_query = is_numeric(
-        get_query_var($this->options['location'], false) ) ?
-        strip_tags( get_query_var($this->options['location'], false) ) : '';
-
+        get_query_var('location', false) ) ?
+        strip_tags( get_query_var('location', false) ) : '';
     } else {
+
       $stripped_query = is_numeric(strip_tags($raw_query)) ?
         strip_tags($raw_query) : '';
     }
-
+    //
     if (!$this->local_info && $stripped_query)  {
+      //
       $result = $this->db->eq_local_lookup($stripped_query);
 
       $this->local_info = count(array_keys($result)) ? $result :  $this->local_info;
@@ -198,18 +199,20 @@ class Equips {
     $result = '';
     $type = $this->options['type_' . $num_str];
     $fallback = $this->options['fallback_' . $num_str] ? : '';
+    $url_param = $this->options['param_' . $num_str];
 
     switch ($type) {
 
       case 'standard' :
 
-        if (get_query_var($this->options['param_' . $num_str], false)) {
+        if (get_query_var($url_param, false)) {
 
-          $raw_query_val = get_query_var($this->options['param_' . $num_str], false);
+          $raw_query_val = get_query_var($url_param, false);
 
-          switch ($this->options['param_' . $num_str]) {
+          switch ($url_param) {
 
             case 'location' :
+
               $result = $this->do_equips_location($raw_query_val,'city_name');
               break;
 
@@ -221,7 +224,7 @@ class Equips {
       case 'utm' :
 
         $query_str = $_SERVER['QUERY_STRING'];
-        $key_val = $this->get_equips_utm( $this->options['param_' . $num_str], $query_str);
+        $key_val = $this->get_equips_utm( $url_param, $query_str);
         $result = ($key_val) ? $this->do_equips_utm($key_val['key'],$key_val['val']) : '';
         break;
 
@@ -258,11 +261,14 @@ class Equips {
   }
 
   protected function eq_shortcode_handler_geo_dynamic($slug) {
-    $eq_geo_options = get_option('equips_geo');
-    $fallback = $eq_geo_options[$slug] ? : '';
-    $val = $this->do_equips_location($slug);
+
+    $fallback = $this->geo_options[$slug] ? : '';
+    // if an empty query var argument is passed do_equips_location pulls the 'location' parameter out of the url
+    $val = $this->do_equips_location('',$slug);
+    $vals = explode(',',$val);
     if ($slug==='service_area') {
-      $result = ($val) ? self::iterate_service_area($val) : $fallback;
+      //
+      $result = ($val) ? $this->iterate_service_area($vals) : $fallback;
     } else {
       $result = $val ? : $fallback;
     }
@@ -271,37 +277,42 @@ class Equips {
 
   public function eq_shortcode_handler_phone( $atts = array() ) {
 
-    $eq_geo_options = get_option('equips_geo');
-    $fallback = $eq_geo_options['phone'] ? : '';
-    $phone = self::do_equips_location('phone');
+    $fallback = $this->geo_options['phone'] ? : '';
+    $phone = $this->do_equips_location('','phone');
     $phone = $phone ? : $fallback;
+
     $href = str_replace( ['(',')','-','.',' '] ,"", $phone );
-    $icon = '';
-    $phone_bar_text = $eq_geo_options['phone_bar_text'] ? : '';
+    $phone_bar_text = $this->geo_options['phone_bar_text'] ? : '';
 
     extract(shortcode_atts(array(
        'class' => '',
        'icon' => ''
       ), $atts));
 
-    if ($atts) {
+    if (!empty($atts)) {
+
       $icon = ($atts['icon']) ?
-        '<i class="fa fa-phone" aria-hidden="true"></i>' :
-        $icon;
-      $class = $atts['class'] ? : 'no_class';
+        '<i class="fa fa-phone" aria-hidden="true"></i>' : '';
+      $class = !empty($atts['class']) ? : 'eq_phone_anchor';
     } else {
       $icon = '';
-      $class = 'no_class';
+      $class = 'eq_phone_anchor';
     }
-    if ( !empty($eq_geo_options['include_phone_bar'])
-         && $eq_geo_options['include_phone_bar'] === 'include') {
-      add_action( 'wp_footer' , function () use ($href, $phone, $phone_bar_text) {
-        $result = "<div id='sticky-bar'><p>";
-        $result .= "<a href='tel:+1$href'><span class='sticky-main-txt-desk display-span'>";
-        $result .= "<i class='fa fa-phone' aria-hidden='true'></i> $phone </span>";
-        $result .= "<span class='sb-deal-text'>$phone_bar_text</span></a></p></div>";
-        echo $result;
-      });
+
+    if ( !empty($this->geo_options['include_phone_bar'])
+         && $this->geo_options['include_phone_bar'] === 'include') {
+
+      add_action(
+        'wp_footer' ,
+        function () use ($href, $phone, $phone_bar_text) {
+          //
+          $result = "<div id='eq-sticky-bar'><p>";
+          $result .= "<a href='tel:+1$href'><span class='eq-anchor-text'>";
+          $result .= "<i class='fa fa-phone'></i> $phone </span>";
+          $result .= "<span class='eq-cta-text'>$phone_bar_text</span></a></p></div>";
+          echo $result;
+        }
+      );
     }
     return "<a class='$class' href='tel:+1" . $href . "' >$icon $phone</a>";
   }
