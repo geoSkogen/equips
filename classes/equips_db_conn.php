@@ -13,7 +13,7 @@ class Equips_DB_Conn {
     $this->import_filenames = [ 'geo5-ids', 'geo5-locales'];
     $this->props = [
       'ids' => ['criteria_id','city_name','country_code','region_id'],
-      'locales' => ['branch_name','branch_area','region','phone','service_area']
+      'locales' => ['branch_name','locale','region','phone','service_area']
     ];
     $this->local_props = [
       'city_name','place_name','country_code','branch_name','locale','region',
@@ -206,7 +206,7 @@ class Equips_DB_Conn {
     $sql['locales'] = "CREATE TABLE <%table_name%> (
       id mediumint(9) NOT NULL AUTO_INCREMENT,
       branch_name text NOT NULL,
-      branch_area text NOT NULL,
+      locale text NOT NULL,
       region text NOT NULL,
       phone text NOT NULL,
       service_area text NOT NULL,

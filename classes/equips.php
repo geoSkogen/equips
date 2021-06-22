@@ -171,11 +171,24 @@ class Equips {
   // returns a local attribute by name and URL param
   protected function do_equips_location($raw_query,$prop_slug) {
 
-    $stripped_query = is_numeric(strip_tags($raw_query)) ?
-      strip_tags($raw_query) : '';
-    $result = $this->db->eq_local_lookup($stripped_query);
+    if (!$raw_query) {
 
-    return !empty($result[$prop_slug]) ? $result[$prop_slug] : '';
+      $stripped_query = is_numeric(
+        get_query_var($this->options['location'], false) ) ?
+        strip_tags( get_query_var($this->options['location'], false) ) : '';
+
+    } else {
+      $stripped_query = is_numeric(strip_tags($raw_query)) ?
+        strip_tags($raw_query) : '';
+    }
+
+    if (!$this->local_info && $stripped_query)  {
+      $result = $this->db->eq_local_lookup($stripped_query);
+
+      $this->local_info = count(array_keys($result)) ? $result :  $this->local_info;
+    }
+
+    return !empty($this->local_info[$prop_slug]) ? $this->local_info[$prop_slug] : '';
   }
 
   // DYNAMIC shortcode handler
@@ -247,7 +260,7 @@ class Equips {
   protected function eq_shortcode_handler_geo_dynamic($slug) {
     $eq_geo_options = get_option('equips_geo');
     $fallback = $eq_geo_options[$slug] ? : '';
-    $val = self::do_equips_location($slug);
+    $val = $this->do_equips_location($slug);
     if ($slug==='service_area') {
       $result = ($val) ? self::iterate_service_area($val) : $fallback;
     } else {
