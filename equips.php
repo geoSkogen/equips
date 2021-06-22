@@ -38,9 +38,8 @@ if (is_admin()) {
      include_once 'classes/equips.php';
   }
 
-  $equips = new Equips();
+  $equips = new Equips($eq_db_conn);
 
-  $equips->db = $eq_db_conn;
 //
 }
 

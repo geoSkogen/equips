@@ -108,9 +108,9 @@ class Equips_DB_Conn {
     foreach ($rows as $row) {
       $new_row = [];
       for ($i = 0; $i < count($props); $i++) {
-        $new_row[ $props[$i] ] = $row[$i];
+        $new_row[ $props[$i] ] = $row[$i+1];
       }
-      $table[] = $new_row;
+      $table[$row[0]] = $new_row;
     }
     return $table;
   }

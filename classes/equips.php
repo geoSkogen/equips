@@ -16,9 +16,11 @@ class Equips {
   protected $geo_options;
 
   protected $utm_assoc;
+  public $local_info;
 
-  public function __construct() {
+  public function __construct($db) {
     //
+    $this->db = $db;
     $this->options = get_option('equips');
     $this->geo_options =  get_option('equips_geo');
 
