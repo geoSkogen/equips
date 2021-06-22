@@ -125,7 +125,7 @@ class Equips {
       case 'location' :
       case 'content' :
 
-        $result = $this->do_equips_location('city_name');
+        $result = $this->do_equips_utm_location($val,'city_name');
         break;
 
       default :
@@ -134,15 +134,15 @@ class Equips {
     return $result;
   }
 
-  // returns a local attribute by name and URL param
-  public static function do_equips_location($db_slug) {
+  protected function do_equips_utm_location($raw_query,$prop_slug) {
 
+    $stripped_query = strip_tags($raw_query);
 
 
     return $result;
   }
 
-  public static function get_equips_utm($param,$query_str) {
+  protected function get_equips_utm($param,$query_str) {
     $result = '';
     if ($query_str) {
 
@@ -166,9 +166,21 @@ class Equips {
     }
     return $result;
   }
+
+
+  // returns a local attribute by name and URL param
+  protected function do_equips_location($raw_query,$prop_slug) {
+
+    $stripped_query = is_numeric(strip_tags($raw_query)) ?
+      strip_tags($raw_query) : '';
+    $result = $this->db->eq_local_lookup($stripped_query);
+
+    return !empty($result[$prop_slug]) ? $result[$prop_slug] : '';
+  }
+
   // DYNAMIC shortcode handler
   // determines which URL param is being used, and whether it has a routine
-  public static function do_equips($num_str) {
+  public function do_equips($num_str) {
 
     $result = '';
     $type = $this->options['type_' . $num_str];
@@ -177,12 +189,15 @@ class Equips {
     switch ($type) {
 
       case 'standard' :
+
         if (get_query_var($this->options['param_' . $num_str], false)) {
+
+          $raw_query_val = get_query_var($this->options['param_' . $num_str], false);
 
           switch ($this->options['param_' . $num_str]) {
 
             case 'location' :
-              $result = $this->do_equips_location('city_name');
+              $result = $this->do_equips_location($raw_query_val,'city_name');
               break;
 
             default :
@@ -191,6 +206,7 @@ class Equips {
         break;
 
       case 'utm' :
+
         $query_str = $_SERVER['QUERY_STRING'];
         $key_val = $this->get_equips_utm( $this->options['param_' . $num_str], $query_str);
         $result = ($key_val) ? $this->do_equips_utm($key_val['key'],$key_val['val']) : '';
@@ -203,7 +219,7 @@ class Equips {
 
   // GEOBLOCK & SERVICE AREA shortcode handlers
 
-  static function iterate_service_area($name_arr) {
+  protected function iterate_service_area($name_arr) {
     $result = "";
     $result .= "<div>";
     for($i = 0; $i < count($name_arr); $i++) {
@@ -216,19 +232,19 @@ class Equips {
     return $result;
   }
 
-  public static function eq_shortcode_handler_service_area() {
-    return self::eq_shortcode_handler_geo_dynamic('service_area');
+  public function eq_shortcode_handler_service_area() {
+    return $this->eq_shortcode_handler_geo_dynamic('service_area');
   }
 
-  public static function eq_shortcode_handler_region() {
-    return self::eq_shortcode_handler_geo_dynamic('region');
+  public function eq_shortcode_handler_region() {
+    return $this->eq_shortcode_handler_geo_dynamic('region');
   }
 
-  public static function eq_shortcode_handler_locale() {
-    return self::eq_shortcode_handler_geo_dynamic('locale');
+  public function eq_shortcode_handler_locale() {
+    return $this->eq_shortcode_handler_geo_dynamic('locale');
   }
 
-  static function eq_shortcode_handler_geo_dynamic($slug) {
+  protected function eq_shortcode_handler_geo_dynamic($slug) {
     $eq_geo_options = get_option('equips_geo');
     $fallback = $eq_geo_options[$slug] ? : '';
     $val = self::do_equips_location($slug);
@@ -240,7 +256,7 @@ class Equips {
     return $result;
   }
 
-  public static function eq_shortcode_handler_phone( $atts = array() ) {
+  public function eq_shortcode_handler_phone( $atts = array() ) {
 
     $eq_geo_options = get_option('equips_geo');
     $fallback = $eq_geo_options['phone'] ? : '';
