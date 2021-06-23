@@ -60,7 +60,7 @@ class Equips_Options{
    }
 
    public function cb_equips_images_page() {
-     self::cb_equips_admin_page('equips_imges');
+     self::cb_equips_admin_page('equips_images');
    }
 
    public function cb_equips_image_styles_page() {

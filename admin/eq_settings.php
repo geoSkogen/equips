@@ -224,7 +224,7 @@ class Equips_Settings {
     $this_field = $field_name . "_" . strval($this->current_field_index);
     $this_label = ucwords($field_name) . " " . strval($this->current_field_index);
     $path_name = "img_fb_path_" . $this->current_field_index;
-    $this_path = !empty($this->options[$path_name]) ? $options[$path_name] : "";
+    $this_path = !empty($options[$path_name]) ? $options[$path_name] : "";
     // dynamic HTML attributes
     $placeholder = !empty($options[$this_field]) ? $options[$this_field] : "(not set)";
     $value_tag = !empty($options[$this_field]) ?  "value" : "placeholder" ;
@@ -343,35 +343,37 @@ class Equips_Settings {
   }
 
   public function cb_equips_images_field() {
-    $elm_arr = "";
+
+
     $eq_options = get_option('equips');
     $img_options = get_option('equips_images');
+    $elm_arr = "";
     $img_assoc_path = "";
+
+    $this_index = strval($this->eq_current_img_index);
     // dynamic headband values
-    $eq_param_setting = (isset($eq_options['param_' . strval(self::$eq_current_img_index)]) &&
-      $eq_options['param_' . strval(self::$eq_current_img_index)] != "") ?
-      $eq_options['param_' . strval(self::$eq_current_img_index)] :
+    $eq_param_setting = !empty($this->eq_options['param_' . $this_index]) ?
+      $eq_options['param_' . $this_index ] :
       "<span style='font-weight:700;'>Set the URL parameter for this fallback image.</span>";
-    $eq_shortcode_setting = (isset($eq_options['shortcode_' . strval(self::$eq_current_img_index)]) &&
-      $eq_options['shortcode_' . strval(self::$eq_current_img_index)] != "") ?
-      $eq_options['shortcode_' . strval(self::$eq_current_img_index)] :
+      //
+    $eq_shortcode_setting = !empty($eq_options['shortcode_' . $this_index ]) ?
+      $eq_options['shortcode_' . $this_index ] :
       "<span style='font-weight:700;'>Set the shortcode for this fallback image.</span>";
+    //
     //NOTE: outsource styles to stylesheet
     $eq_button_style = "background-color:#0085ba;border-color:#0073aa #006799 #006799;color:#fff;height:28px;width:94px;box-shadow:0 1px 0 #006799;text-shadow:0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;border-radius:3px;padding:3px 10px 0 10px;margin:1em;font-size:13px;line-height:26px;cursor:pointer;";
     // set key string base slugs
-    $img_assoc_id = 'img_assoc_id_' . strval(self::$eq_current_img_index);
-    $img_fb_path = (isset($eq_options['img_fb_path_' . strval(self::$eq_current_img_index)]) &&
-      $eq_options['img_fb_path_' . strval(self::$eq_current_img_index)] != "") ?
-      $eq_options['img_fb_path_' . strval(self::$eq_current_img_index)] :
-      "#";
-    $img_assoc_field = 'img_assoc_path_' . strval(self::$eq_current_img_index) . '_';
-    $img_assoc_file_field = 'img_assoc_file_' . strval(self::$eq_current_img_index) . '_';
-    $img_assoc_count_field = 'img_assoc_count_' . strval(self::$eq_current_img_index);
+    $img_assoc_id = 'img_assoc_id_' . $this_index ;
+    $img_fb_path = !empty($eq_options['img_fb_path_' . $this_index ]) ?
+      $eq_options['img_fb_path_' . $this_index ] : "#";
+    $img_assoc_field = 'img_assoc_path_' . $this_index  . '_';
+    $img_assoc_file_field = 'img_assoc_file_' . $this_index  . '_';
+    $img_assoc_count_field = 'img_assoc_count_' . $this_index ;
     // important procedural step
     $img_assoc_count = (isset($img_options[$img_assoc_count_field])) ?
       $img_options[$img_assoc_count_field] :
       0;
-    self::$eq_current_img_index += 1;
+    $this->eq_current_img_index += 1;
     // make base settings field
     $elm_arr .= "<div class='img_assoc' id='" . $img_assoc_id . "'>";
     $elm_arr .= "<div class='eq_assoc_settings' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size: 16px;'/>";
@@ -390,12 +392,14 @@ class Equips_Settings {
     $elm_arr .= "</div>";
     //begin associate-images-with-keywords
     if ($img_assoc_count) {
+
       for ($i = 1; $i < $img_assoc_count+1; $i++) {
+
         $this_img_assoc_field = $img_assoc_field . strval($i);
         $img_assoc_path = (isset($img_options[$this_img_assoc_field])) ?
           $img_options[$this_img_assoc_field] :
           "";
-        $img_assoc_keywords_field = 'img_assoc_keywords_' . strval(self::$eq_current_img_index-1) . '_' . strval($i);
+        $img_assoc_keywords_field = 'img_assoc_keywords_' . strval($this->eq_current_img_index-1) . '_' . strval($i);
         $img_assoc_keywords = (isset($img_options[$img_assoc_keywords_field])) ?
           $img_options[$img_assoc_keywords_field] :
           "";
