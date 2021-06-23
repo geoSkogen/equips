@@ -159,7 +159,7 @@ class Equips {
           $val = strip_tags( $key_val[1] );
           $result = [ 'key'=>$key, 'val'=>$val ];
           $this->utm_assoc[$key] = $val;
-          
+
           break;
         } else {
           error_log('querystring item is not UTM');
@@ -194,6 +194,17 @@ class Equips {
     }
 
     return !empty($this->local_info[$prop_slug]) ? $this->local_info[$prop_slug] : '';
+  }
+
+  protected function do_equips_image($num_str, $fb_filepath, $str) {
+    $result = '';
+    $eq_img_options = get_option('equips_images');
+    $best_match_index = RankSchema::testForBestMatch($str, $num_str, $eq_img_options, 'img');
+    $found_file = ($best_match_index) ?
+    $eq_img_options['img_assoc_path_' .  $num_str . "_" . strval($best_match_index)] :
+    $fb_filepath;
+    $result = "<img src='{$found_file}' style='' />";
+    return $result;
   }
 
   // DYNAMIC shortcode handler
@@ -236,6 +247,16 @@ class Equips {
     }
     return $result ? : $fallback;
   }
+
+  /*
+  switch ($eq_options['format_' . $num_str]) {
+     case 'img' :
+       $fb_filepath = ($eq_options['img_fb_path_' . $num_str]) ?
+         $eq_options['img_fb_path_' . $num_str] : $fallback;
+       $result = do_equips_image($num_str, $fb_filepath, $result);
+       break;
+   }
+  */
 
   // GEOBLOCK & SERVICE AREA shortcode handlers
 

@@ -8,7 +8,7 @@ class Equips_Options{
      'admin_menu',
      [$this,'equips_register_menu_page']
     );
-    
+
   }
 
    public function equips_register_menu_page() {
@@ -30,6 +30,24 @@ class Equips_Options{
         'equips_geo',             // menu Slug(page)
         [$this,'cb_equips_geo_page'] // CB Function plugin_options_page()
       );
+
+      add_submenu_page(
+       'equips',                         //parent menu
+       'equips images',                // Page Title
+       'equips images',               // Menu Title
+       'manage_options',             // for Capabilities level of user with:
+       'equips_images',             // menu Slug(page)
+       [$this,'cb_equips_images_page']       // CB Function plugin_options_page()
+      );
+
+      add_submenu_page(
+       'equips',                         //parent menu
+       'equips image styles',                // Page Title
+       'equips image styles',               // Menu Title
+       'manage_options',             // for Capabilities level of user with:
+       'equips_image_styles',             // menu Slug(page)
+       [$this,'cb_equips_image_styles_page']       // CB Function plugin_options_page()
+      );
    }
 
   //// template 1 - <form> body
@@ -39,6 +57,14 @@ class Equips_Options{
 
    public function cb_equips_options_page() {
      self::cb_equips_admin_page('equips');
+   }
+
+   public function cb_equips_images_page() {
+     self::cb_equips_admin_page('equips_imges');
+   }
+
+   public function cb_equips_image_styles_page() {
+     self::cb_equips_admin_page('equips_image_styles');
    }
 
    protected function cb_equips_admin_page($db_slug) {
