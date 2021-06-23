@@ -3,25 +3,26 @@
 class Equips_Settings {
 
   protected $eq_label_toggle;
-  protected $go_lable_toggle;
+  protected $geo_lable_toggle;
 
   protected $current_field_index = 0;
   protected $eq_label_toggle_index = 0;
   protected $geo_label_toggle_index = 0;
 
   protected $eq_current_img_index = 0;
-  protected $eq_current_img_style_index = 0;
+
+  protected $eq_param_ids_by_image_fields;
 
   public function __construct() {
-    $this->eq_label_toggle = array(
+    $this->eq_label_toggle = [
       "param",
       "shortcode",
       "format",
       "fallback",
       "type"
-    );
+    ];
 
-    $this->geo_label_toggle = array(
+    $this->geo_label_toggle = [
       "phone",
       "phone_shortcode",
       "locale",
@@ -30,7 +31,7 @@ class Equips_Settings {
       "region_shortcode",
       "service_area",
       "service_area_shortcode"
-    );
+    ];
 
     add_action(
       'admin_init',
@@ -71,28 +72,29 @@ class Equips_Settings {
      'Associate Keywords with Images',        //Title
      [$this,'cb_equips_images_section'],  //CallBack Function
      'equips_images'                         //page-slug
-   );
+    );
 
-   add_settings_section(
-     'equips_image_styles',                         //uniqueID
-     'Associate Style Rules with Images',        //Title
-     [$this,'cb_equips_image_styles_section'],             //CallBack Function
-     'equips_image_styles'                         //page-slug
-   );
+    add_settings_section(
+      'equips_image_styles',                         //uniqueID
+      'Associate Style Rules with Images',        //Title
+      [$this,'cb_equips_image_styles_section'],             //CallBack Function
+      'equips_image_styles'                         //page-slug
+    );
     // settings fields factory 1 -
     for ($i = 1; $i < $field_count + 1; $i++) {
       // foreach EQUIPS field
       $this->current_field_index = $i;
+      //$this->eq_current_img_index = $i;
 
-      $this->eq_current_img_index = $i;
-      $this->eq_current_img_style_index = $i;
-      $eq_images_field = "image_" . strval($this->eq_current_img_index);
-      $eq_images_label = "Image " . strval($this->eq_current_img_index);
-      $eq_image_styles_field = "image_style_" . strval($this->eq_current_img_style_index);
-      $eq_image_styles_label = "Image " . strval($this->eq_current_img_style_index) . " Styles";
+      if ($option['format_' . strval($i)]==='img') {
+        $this->eq_current_img_index++;
+        $this->eq_param_ids_by_image_fields[] = $i;
+      }
+      //
+
       // foreach subfield - param, shortcode, fallback
       for ($ii = 0; $ii < count($this->eq_label_toggle); $ii++) {
-        //
+      //
         $field_index = strval($this->current_field_index);
         $field_name = $this->eq_label_toggle[$ii];
         $this_field = $field_name . "_" . $field_index;
@@ -106,6 +108,28 @@ class Equips_Settings {
           'equips_settings'            //section (parent settings-section uniqueID)
         );
       }
+    }
+
+    add_settings_field(
+      'param_ids',
+      'Param IDs per Image Field',
+      [$this,'cb_equips_images_param_ids_field'],
+      'equips_images',
+      'equips_images'
+    );
+
+    $img_option = get_option('equips_images');
+    $img_option['param_ids'] = implode(',',$this->eq_param_ids_by_image_fields);
+    update_option('equips_images',$img_option);
+
+    for ($i = 1; $i < count($this->eq_param_ids_by_image_fields)+1; $i++) {
+
+      $this->eq_current_img_index = $i;
+
+      $eq_images_field = "image_" . strval($i);
+      $eq_images_label = "Image " . strval($i);
+      $eq_image_styles_field = "image_style_" . strval($i);
+      $eq_image_styles_label = "Image " . strval($i) . " Styles";
 
       add_settings_field(
         $eq_images_field,
@@ -127,7 +151,7 @@ class Equips_Settings {
     $this->current_field_index = 1;
 
     $this->eq_current_img_index = 1;
-    $this->eq_current_img_style_index = 1;
+
     // settings fields factory 2 - geo settings
     for ($iii = 0; $iii < count($this->geo_label_toggle); $iii++) {
 
@@ -270,6 +294,7 @@ class Equips_Settings {
     echo $str;
   }
 
+
   public function cb_equips_field_count() {
     $result = '<div>';
     $options = get_option('equips');
@@ -289,6 +314,7 @@ class Equips_Settings {
     //
     echo $result;
   }
+
 
   public function cb_equips_geo_field() {
 
@@ -314,6 +340,7 @@ class Equips_Settings {
     echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>" . $divider;
   }
 
+
   public function cb_equips_include_phone_bar_field() {
     $result = '';
     $options = get_option('equips_geo');
@@ -331,6 +358,7 @@ class Equips_Settings {
     echo $result;
   }
 
+
   public function cb_equips_phone_bar_field() {
     $options = get_option('equips_geo');
     //
@@ -342,30 +370,38 @@ class Equips_Settings {
     echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>";
   }
 
-  public function cb_equips_images_field() {
+  public function cb_equips_images_param_ids_field() {
+    $img_options = get_option('equips_images');
+    $param_ids_csv = !empty($img_options['param_ids']) ?
+      $img_options['param_ids'] : [];
+    $str = "<input type='text' name='equips_images[param_ids]' id='param_ids_field' class='invis' value={$param_ids_csv}";
+  }
 
+
+  public function cb_equips_images_field() {
 
     $eq_options = get_option('equips');
     $img_options = get_option('equips_images');
-    $elm_arr = "";
+    $str = "";
     $img_assoc_path = "";
-
+    
+    $eq_param_index = strval($this->eq_param_ids_by_image_fields[$this->eq_current_img_index-1]);
     $this_index = strval($this->eq_current_img_index);
     // dynamic headband values
-    $eq_param_setting = !empty($this->eq_options['param_' . $this_index]) ?
-      $eq_options['param_' . $this_index ] :
+    $eq_param_setting = !empty($eq_options['param_' . $eq_param_index]) ?
+      $eq_options['param_' . $eq_param_index ] :
       "<span style='font-weight:700;'>Set the URL parameter for this fallback image.</span>";
       //
-    $eq_shortcode_setting = !empty($eq_options['shortcode_' . $this_index ]) ?
-      $eq_options['shortcode_' . $this_index ] :
+    $eq_shortcode_setting = !empty($eq_options['shortcode_' . $eq_param_index ]) ?
+      $eq_options['shortcode_' . $eq_param_index ] :
       "<span style='font-weight:700;'>Set the shortcode for this fallback image.</span>";
     //
     //NOTE: outsource styles to stylesheet
     $eq_button_style = "background-color:#0085ba;border-color:#0073aa #006799 #006799;color:#fff;height:28px;width:94px;box-shadow:0 1px 0 #006799;text-shadow:0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;border-radius:3px;padding:3px 10px 0 10px;margin:1em;font-size:13px;line-height:26px;cursor:pointer;";
     // set key string base slugs
     $img_assoc_id = 'img_assoc_id_' . $this_index ;
-    $img_fb_path = !empty($eq_options['img_fb_path_' . $this_index ]) ?
-      $eq_options['img_fb_path_' . $this_index ] : "#";
+    $img_fb_path = !empty($eq_options['img_fb_path_' . $eq_param_index ]) ?
+      $eq_options['img_fb_path_' . $eq_param_index ] : "#";
     $img_assoc_field = 'img_assoc_path_' . $this_index  . '_';
     $img_assoc_file_field = 'img_assoc_file_' . $this_index  . '_';
     $img_assoc_count_field = 'img_assoc_count_' . $this_index ;
@@ -375,21 +411,21 @@ class Equips_Settings {
       0;
     $this->eq_current_img_index += 1;
     // make base settings field
-    $elm_arr .= "<div class='img_assoc' id='" . $img_assoc_id . "'>";
-    $elm_arr .= "<div class='eq_assoc_settings' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size: 16px;'/>";
-    $elm_arr .= "<div class='key-name'>URL Param:&nbsp;</div><div class='value'>" .  $eq_param_setting . "&nbsp;&nbsp;&nbsp;</div>";
-    $elm_arr .= "<div class='key-name'>Shortcode:&nbsp;</div><div class='value'>[" . $eq_shortcode_setting . "]</div>";
-    $elm_arr .= "</div>";
-    $elm_arr .= ($img_assoc_count > 0) ? "" : "<span style='font-weight:700;'>Upload images to associate with URL Param values </span><br/>";
-    $elm_arr .= "<div class='eq_assoc_panel' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size:16px;'/>";
-    $elm_arr .= "<div class='eq-add-assoc-button' style='margin: 2em 1em 2em 1em;" . $eq_button_style . "'>Add New Image</div>";
-    $elm_arr .= "<img style='width:80px;height:80px;margin:0.5em;' src='" . $img_fb_path . "' >";
-    $elm_arr .= "</div>";
-    $elm_arr .= "<div class='inivs-div' style='display:none;'>";
-    $elm_arr .= "<input type='number' name=equips_images[$img_assoc_count_field] value='{$img_assoc_count}' class='eq_assoc_count'>";
-    $elm_arr .= "</div>";
-    $elm_arr .= "<div class='eq_assoc_images' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
-    $elm_arr .= "</div>";
+    $str .= "<div class='img_assoc' id='" . $img_assoc_id . "'>";
+    $str .= "<div class='eq_assoc_settings' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size: 16px;'/>";
+    $str .= "<div class='key-name'>URL Param:&nbsp;</div><div class='value'>" .  $eq_param_setting . "&nbsp;&nbsp;&nbsp;</div>";
+    $str .= "<div class='key-name'>Shortcode:&nbsp;</div><div class='value'>[" . $eq_shortcode_setting . "]</div>";
+    $str .= "</div>";
+    $str .= ($img_assoc_count > 0) ? "" : "<span style='font-weight:700;'>Upload images to associate with URL Param values </span><br/>";
+    $str .= "<div class='eq_assoc_panel' style='display:flex;flex-flow:row wrap;justify-content:flex-start;font-size:16px;'/>";
+    $str .= "<div class='eq-add-assoc-button' style='margin: 2em 1em 2em 1em;" . $eq_button_style . "'>Add New Image</div>";
+    $str .= "<img style='width:80px;height:80px;margin:0.5em;' src='" . $img_fb_path . "' >";
+    $str .= "</div>";
+    $str .= "<div class='inivs-div' style='display:none;'>";
+    $str .= "<input type='number' name=equips_images[$img_assoc_count_field] value='{$img_assoc_count}' class='eq_assoc_count'>";
+    $str .= "</div>";
+    $str .= "<div class='eq_assoc_images' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
+    $str .= "</div>";
     //begin associate-images-with-keywords
     if ($img_assoc_count) {
 
@@ -403,19 +439,19 @@ class Equips_Settings {
         $img_assoc_keywords = (isset($img_options[$img_assoc_keywords_field])) ?
           $img_options[$img_assoc_keywords_field] :
           "";
-        $elm_arr .= "<div class='eq_assoc_section' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
-        $elm_arr .= "<img class='eq_assoc' style='width:80px;height:80px;margin:0.5em 0.5em 0.5em 3em;' src='" . $img_assoc_path . "' >";
-        $elm_arr .= "<textarea name=equips_images[$img_assoc_keywords_field] form='equips-images-form' rows='4' cols='50' style='margin:0.5em 1em;border-radius:3px;border:none;'>";
-        $elm_arr .= $img_assoc_keywords;
-        $elm_arr .= "</textarea><br/>";
-        $elm_arr .= "</div>";
-        $elm_arr .= "<div class='inivs-div' style='display:none;'>";
-        $elm_arr .= "<input type='text' name=equips_images[$this_img_assoc_field] value='{$img_assoc_path}'>";
-        $elm_arr .= "</div>";
+        $str .= "<div class='eq_assoc_section' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
+        $str .= "<img class='eq_assoc' style='width:80px;height:80px;margin:0.5em 0.5em 0.5em 3em;' src='" . $img_assoc_path . "' >";
+        $str .= "<textarea name=equips_images[$img_assoc_keywords_field] form='equips-images-form' rows='4' cols='50' style='margin:0.5em 1em;border-radius:3px;border:none;'>";
+        $str .= $img_assoc_keywords;
+        $str .= "</textarea><br/>";
+        $str .= "</div>";
+        $str .= "<div class='inivs-div' style='display:none;'>";
+        $str .= "<input type='text' name=equips_images[$this_img_assoc_field] value='{$img_assoc_path}'>";
+        $str .= "</div>";
       }
     }
-    $elm_arr .= "</div>";
-    echo $elm_arr;
+    $str .= "</div>";
+    echo $str;
   }
 
   static function cb_equips_image_styles_field() {

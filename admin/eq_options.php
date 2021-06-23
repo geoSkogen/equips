@@ -13,22 +13,13 @@ class Equips_Options{
 
    public function equips_register_menu_page() {
       add_menu_page(
-          'equips',                        // Page Title
-          'equips',                       // Menu Title
-          'manage_options',             // for Capabilities level of user with:
-          'equips',                    // menu Slug(page)
-          [$this,'cb_equips_options_page'], // CB Function cb_equips_options_page()
-          'dashicons-editor-code',  // Menu Icon
-          20
-      );
-
-      add_submenu_page(
-        'equips',                         //parent menu
-        'equips geo',                // Page Title
-        'equips geo',               // Menu Title
+        'equips',                        // Page Title
+        'equips',                       // Menu Title
         'manage_options',             // for Capabilities level of user with:
-        'equips_geo',             // menu Slug(page)
-        [$this,'cb_equips_geo_page'] // CB Function plugin_options_page()
+        'equips',                    // menu Slug(page)
+        [$this,'cb_equips_options_page'], // CB Function cb_equips_options_page()
+        'dashicons-editor-code',  // Menu Icon
+        20
       );
 
       add_submenu_page(
@@ -47,6 +38,15 @@ class Equips_Options{
        'manage_options',             // for Capabilities level of user with:
        'equips_image_styles',             // menu Slug(page)
        [$this,'cb_equips_image_styles_page']       // CB Function plugin_options_page()
+      );
+
+      add_submenu_page(
+        'equips',                         //parent menu
+        'equips geo',                // Page Title
+        'equips geo',               // Menu Title
+        'manage_options',             // for Capabilities level of user with:
+        'equips_geo',             // menu Slug(page)
+        [$this,'cb_equips_geo_page'] // CB Function plugin_options_page()
       );
    }
 

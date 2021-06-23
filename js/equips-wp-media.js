@@ -33,34 +33,3 @@ jQuery(document).ready(function($){
   });
 
 });
-
-/*
-var mediaUploader;
-var button;
-var img_sels = document.querySelectorAll('.equips-img-select');
-img_sels.forEach(function (elm) {
-  elm.onclick = function () {
-    button = this;
-    //e.preventDefault();
-    if (mediaUploader) {
-      medaUploader.open();
-      return;
-    }
-    mediaUploader = wp.media.frames.file_frame = wp.media(
-      {
-        title: 'Choose Image',
-        button: {
-          text: 'Choose Image'
-        },
-        multiple: false
-      }
-    );
-    mediaUploader.addEventListener("select", function () {
-      var attachment = mediaUploader.state().get('selection').first().toJSON();
-      var place = button.previousElementSibling;
-      place.value(attachment.url);
-    });
-    mediaUploader.open();
-  }
-});
-*/
