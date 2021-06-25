@@ -2,7 +2,8 @@
 
 class Equips {
 
-  protected $db_conn;
+  protected $db;
+  protected $schema_ranker;
 
   protected $indices;
   protected $params;
@@ -14,13 +15,16 @@ class Equips {
 
   protected $options;
   protected $geo_options;
+  protected $img_options;
 
   protected $utm_assoc;
   public $local_info;
+  public $result;
 
-  public function __construct($db) {
+  public function __construct($db,$schema_ranker) {
     //
     $this->db = $db;
+    $this->schema_ranker = $schema_ranker;
     $this->options = get_option('equips');
     $this->geo_options =  get_option('equips_geo');
 
@@ -46,7 +50,7 @@ class Equips {
 
 
   protected function equips_triage() {
-    // merges wordpress query vars with euqips query vars in use
+    // merges wordpress query vars with equips query vars in use
     // registers shotcodes
     $geo_fields = ['locale','region','service_area','phone'];
 
@@ -143,6 +147,11 @@ class Equips {
   }
 
 
+  protected function do_equips_utm_image($key,$val) {
+
+  }
+
+
   protected function get_equips_utm($param,$query_str) {
     $result = '';
     if ($query_str) {
@@ -196,14 +205,21 @@ class Equips {
     return !empty($this->local_info[$prop_slug]) ? $this->local_info[$prop_slug] : '';
   }
 
+
   protected function do_equips_image($num_str, $fb_filepath, $str) {
-    $result = '';
-    $eq_img_options = get_option('equips_images');
-    $best_match_index = RankSchema::testForBestMatch($str, $num_str, $eq_img_options, 'img');
+
+    $best_match_index = $this->schema_ranker::test_for_best_match(
+      $str,
+      $num_str,
+      $this->img_options,
+      'img'
+    );
+
     $found_file = ($best_match_index) ?
-    $eq_img_options['img_assoc_path_' .  $num_str . "_" . strval($best_match_index)] :
-    $fb_filepath;
-    $result = "<img src='{$found_file}' style='' />";
+      $this->img_options['img_assoc_path_' .  $num_str . "_" . strval($best_match_index)] :
+      $fb_filepath;
+
+    $result = "<img id='equips_image_{$num_str}' class='equips_image' src='{$found_file}' style='' />";
     return $result;
   }
 
@@ -212,51 +228,114 @@ class Equips {
   public function do_equips($num_str) {
 
     $result = '';
+    $format = $this->options['format_' . $num_str];
     $type = $this->options['type_' . $num_str];
     $fallback = $this->options['fallback_' . $num_str] ? : '';
     $url_param = $this->options['param_' . $num_str];
 
-    switch ($type) {
+    switch($format) {
+      /* EQUIPS format */
+      case 'txt' :
 
-      case 'standard' :
+        switch ($type) {
+          /* EQUIPS URL-parameter type */
+          case 'standard' :
 
-        if (get_query_var($url_param, false)) {
+            if (get_query_var($url_param, false)) {
 
-          $raw_query_val = get_query_var($url_param, false);
+              $raw_query_val = get_query_var($url_param, false);
 
-          switch ($url_param) {
+              switch ($url_param) {
+                /* URL-parameter | query-var */
+                case 'location' :
 
-            case 'location' :
+                  $result = $this->do_equips_location($raw_query_val,'city_name');
+                  error_log('equips result at return statement');
+                  error_log($result);
+                  break;
 
-              $result = $this->do_equips_location($raw_query_val,'city_name');
-              break;
+                default :
+              }
+            }
+            break;
 
-            default :
-          }
+          case 'utm' :
+
+            $query_str = $_SERVER['QUERY_STRING'];
+            $key_val = $this->get_equips_utm( $url_param, $query_str);
+            $result = ($key_val) ? $this->do_equips_utm($key_val['key'],$key_val['val']) : '';
+            break;
+
+          default :
         }
         break;
 
-      case 'utm' :
+      case 'img' :
 
-        $query_str = $_SERVER['QUERY_STRING'];
-        $key_val = $this->get_equips_utm( $url_param, $query_str);
-        $result = ($key_val) ? $this->do_equips_utm($key_val['key'],$key_val['val']) : '';
+        $this->img_options = get_option('equips_images');
+
+        switch($type) {
+
+          case 'standard' :
+
+            if (get_query_var($url_param, false)) {
+
+              $raw_query_val = get_query_var($url_param, false);
+
+              switch($url_param) {
+
+                case 'location' :
+                case 'content' :
+                case 'keywords' :
+
+                  $img_ids_arr = json_decode($this->img_options['img_ids'],true);
+                  $eq_img_index = $img_ids_arr[ $num_str ];
+
+                  $fallback_path = $this->options['img_fb_path_' . $num_str];
+
+                  error_log('url param in use');
+                  error_log($url_param);
+                  error_log('num str -> shortcode index');
+                  error_log($num_str);
+                  error_log('img ids arr');
+                  error_log(print_r($img_ids_arr,true));
+                  error_log('fallback image path');
+                  error_log($fallback_path);
+                  error_log('value of url param');
+                  error_log($raw_query_val);
+                  error_log('image index');
+                  error_log($eq_img_index);
+                  error_log('full image options array');
+                  error_log(print_r($this->img_options, true));
+
+                  $result = $this->do_equips_image($eq_img_index,$fallback_path,strip_tags($raw_query_val));
+
+                  break;
+                default :
+
+              }
+            }
+            break;
+
+          case 'utm' :
+
+            $query_str = $_SERVER['QUERY_STRING'];
+            $key_val = $this->get_equips_utm( $url_param, $query_str);
+            $result = ($key_val) ? $this->do_equips_img_utm($key_val['key'],$key_val['val']) : '';
+            break;
+          default:
+
+        }
         break;
 
       default :
+
     }
+    error_log('equips result at return statement');
+    error_log($result);
     return $result ? : $fallback;
   }
 
-  /*
-  switch ($eq_options['format_' . $num_str]) {
-     case 'img' :
-       $fb_filepath = ($eq_options['img_fb_path_' . $num_str]) ?
-         $eq_options['img_fb_path_' . $num_str] : $fallback;
-       $result = do_equips_image($num_str, $fb_filepath, $result);
-       break;
-   }
-  */
 
   // GEOBLOCK & SERVICE AREA shortcode handlers
 

@@ -32,15 +32,6 @@ class Equips_Options{
       );
 
       add_submenu_page(
-       'equips',                         //parent menu
-       'equips image styles',                // Page Title
-       'equips image styles',               // Menu Title
-       'manage_options',             // for Capabilities level of user with:
-       'equips_image_styles',             // menu Slug(page)
-       [$this,'cb_equips_image_styles_page']       // CB Function plugin_options_page()
-      );
-
-      add_submenu_page(
         'equips',                         //parent menu
         'equips geo',                // Page Title
         'equips geo',               // Menu Title
@@ -52,25 +43,23 @@ class Equips_Options{
 
   //// template 1 - <form> body
    public function cb_equips_geo_page() {
-     self::cb_equips_admin_page('equips_geo');
+     $this->cb_equips_admin_page('equips_geo');
    }
 
    public function cb_equips_options_page() {
-     self::cb_equips_admin_page('equips');
+     $this->cb_equips_admin_page('equips');
    }
 
    public function cb_equips_images_page() {
-     self::cb_equips_admin_page('equips_images');
-   }
-
-   public function cb_equips_image_styles_page() {
-     self::cb_equips_admin_page('equips_image_styles');
+     $this->cb_equips_admin_page('equips_images');
    }
 
    protected function cb_equips_admin_page($db_slug) {
+
+     $h1 = str_replace(['equips','_'],'',$db_slug)
      ?>
      <div class='form-wrap'>
-       <h2>equips - local</h2>
+       <h1>equips <?php echo $h1; ?></h1>
        <form method='post' action='options.php' id='<?php echo $db_slug; ?>_form'>
          <?php
            settings_fields( $db_slug );

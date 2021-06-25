@@ -3,15 +3,16 @@
 class Equips_Settings {
 
   protected $eq_label_toggle;
-  protected $geo_lable_toggle;
+  protected $geo_label_toggle;
 
   protected $current_field_index = 0;
   protected $eq_label_toggle_index = 0;
-  protected $geo_label_toggle_index = 0;
 
+  protected $geo_label_toggle_index = 0;
   protected $eq_current_img_index = 0;
 
-  protected $eq_param_ids_by_image_fields;
+  protected $param_ids_by_image_fields;
+  protected $image_fields_by_param_id;
 
   public function __construct() {
     $this->eq_label_toggle = [
@@ -32,6 +33,9 @@ class Equips_Settings {
       "service_area",
       "service_area_shortcode"
     ];
+
+    $this->param_ids_by_image_fields = [];
+    $this->image_fields_by_param_id = [];
 
     add_action(
       'admin_init',
@@ -74,21 +78,17 @@ class Equips_Settings {
      'equips_images'                         //page-slug
     );
 
-    add_settings_section(
-      'equips_image_styles',                         //uniqueID
-      'Associate Style Rules with Images',        //Title
-      [$this,'cb_equips_image_styles_section'],             //CallBack Function
-      'equips_image_styles'                         //page-slug
-    );
     // settings fields factory 1 -
     for ($i = 1; $i < $field_count + 1; $i++) {
       // foreach EQUIPS field
       $this->current_field_index = $i;
-      //$this->eq_current_img_index = $i;
 
-      if ($option['format_' . strval($i)]==='img') {
+      if (!empty($option['format_' . strval($i)]) && $option['format_' . strval($i)]==='img') {
+        // foreach image field
         $this->eq_current_img_index++;
-        $this->eq_param_ids_by_image_fields[] = $i;
+
+        $this->image_fields_by_param_id[strval($i)] = strval($this->eq_current_img_index);
+        $this->param_ids_by_image_fields[strval($this->eq_current_img_index)] = strval($i);
       }
       //
 
@@ -112,24 +112,26 @@ class Equips_Settings {
 
     add_settings_field(
       'param_ids',
-      'Param IDs per Image Field',
+      'Create Image Swap Rules',
       [$this,'cb_equips_images_param_ids_field'],
       'equips_images',
       'equips_images'
     );
 
-    $img_option = get_option('equips_images');
-    $img_option['param_ids'] = implode(',',$this->eq_param_ids_by_image_fields);
-    update_option('equips_images',$img_option);
+    add_settings_field(
+      'img_ids',
+      '<span></span>',
+      [$this,'cb_equips_images_img_ids_field'],
+      'equips_images',
+      'equips_images'
+    );
 
-    for ($i = 1; $i < count($this->eq_param_ids_by_image_fields)+1; $i++) {
+    for ($i = 1; $i < count($this->image_fields_by_param_id)+1; $i++) {
 
       $this->eq_current_img_index = $i;
 
       $eq_images_field = "image_" . strval($i);
       $eq_images_label = "Image " . strval($i);
-      $eq_image_styles_field = "image_style_" . strval($i);
-      $eq_image_styles_label = "Image " . strval($i) . " Styles";
 
       add_settings_field(
         $eq_images_field,
@@ -137,14 +139,6 @@ class Equips_Settings {
         [$this,'cb_equips_images_field'],
         'equips_images',
         'equips_images'
-      );
-
-      add_settings_field(
-        $eq_image_styles_field,
-        $eq_image_styles_label,
-        [$this,'cb_equips_image_styles_field'],
-        'equips_image_styles',
-        'equips_image_styles'
       );
     }
 
@@ -190,7 +184,6 @@ class Equips_Settings {
 
     register_setting( 'equips_images', 'equips_images' );
 
-    register_setting( 'equips_image_styles', 'equips_image_styles' );
   }
 
   // utility functions
@@ -271,7 +264,7 @@ class Equips_Settings {
 
     } else if ($field_name==='format') {
 
-      $img_sel = ($options[$this_field] === "img") ? "selected" : "";
+      $img_sel = (!empty($options[$this_field]) && $options[$this_field] === "img") ? "selected" : "";
 
       $str = "<select class='{$field_name}' name=equips[{$this_field}]>
                       <option value='txt'>plain text</option>
@@ -370,11 +363,31 @@ class Equips_Settings {
     echo "<input type='text' name=equips_geo[{$this_field}] {$value_tag}='{$placeholder}'/>";
   }
 
+
   public function cb_equips_images_param_ids_field() {
-    $img_options = get_option('equips_images');
-    $param_ids_csv = !empty($img_options['param_ids']) ?
-      $img_options['param_ids'] : [];
-    $str = "<input type='text' name='equips_images[param_ids]' id='param_ids_field' class='invis' value={$param_ids_csv}";
+
+    $param_ids_csv =
+      !empty($this->param_ids_by_image_fields) && is_array($this->param_ids_by_image_fields) ?
+
+        json_encode($this->param_ids_by_image_fields) : '';
+
+    $str = "<input type='text' name='equips_images[param_ids]' style='display:none;'
+             id='param_ids_field' class='invis' value='{$param_ids_csv}' />";
+
+    echo $str;
+  }
+
+  public function cb_equips_images_img_ids_field() {
+
+    $img_ids_csv =
+      !empty($this->image_fields_by_param_id) && is_array($this->image_fields_by_param_id) ?
+
+        json_encode($this->image_fields_by_param_id) : '';
+
+    $str = "<input type='text' name='equips_images[img_ids]' style='display:none;'
+             id='param_ids_field' class='invis' value='{$img_ids_csv}' />";
+
+    echo $str;
   }
 
 
@@ -384,8 +397,14 @@ class Equips_Settings {
     $img_options = get_option('equips_images');
     $str = "";
     $img_assoc_path = "";
-    
-    $eq_param_index = strval($this->eq_param_ids_by_image_fields[$this->eq_current_img_index-1]);
+
+    error_log(print_r($img_options,true));
+
+    $eq_param_index = strval($this->param_ids_by_image_fields[$this->eq_current_img_index]);
+
+    $img_fb_path = !empty($eq_options['img_fb_path_' . $eq_param_index ]) ?
+      $eq_options['img_fb_path_' . $eq_param_index ] : "#";
+
     $this_index = strval($this->eq_current_img_index);
     // dynamic headband values
     $eq_param_setting = !empty($eq_options['param_' . $eq_param_index]) ?
@@ -400,8 +419,6 @@ class Equips_Settings {
     $eq_button_style = "background-color:#0085ba;border-color:#0073aa #006799 #006799;color:#fff;height:28px;width:94px;box-shadow:0 1px 0 #006799;text-shadow:0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;border-radius:3px;padding:3px 10px 0 10px;margin:1em;font-size:13px;line-height:26px;cursor:pointer;";
     // set key string base slugs
     $img_assoc_id = 'img_assoc_id_' . $this_index ;
-    $img_fb_path = !empty($eq_options['img_fb_path_' . $eq_param_index ]) ?
-      $eq_options['img_fb_path_' . $eq_param_index ] : "#";
     $img_assoc_field = 'img_assoc_path_' . $this_index  . '_';
     $img_assoc_file_field = 'img_assoc_file_' . $this_index  . '_';
     $img_assoc_count_field = 'img_assoc_count_' . $this_index ;
@@ -437,11 +454,11 @@ class Equips_Settings {
           "";
         $img_assoc_keywords_field = 'img_assoc_keywords_' . strval($this->eq_current_img_index-1) . '_' . strval($i);
         $img_assoc_keywords = (isset($img_options[$img_assoc_keywords_field])) ?
-          $img_options[$img_assoc_keywords_field] :
-          "";
+          $img_options[$img_assoc_keywords_field] : "";
+
         $str .= "<div class='eq_assoc_section' style='display:flex;flex-flow:row wrap;justify-content:flex-start;'/>";
         $str .= "<img class='eq_assoc' style='width:80px;height:80px;margin:0.5em 0.5em 0.5em 3em;' src='" . $img_assoc_path . "' >";
-        $str .= "<textarea name=equips_images[$img_assoc_keywords_field] form='equips-images-form' rows='4' cols='50' style='margin:0.5em 1em;border-radius:3px;border:none;'>";
+        $str .= "<textarea name=equips_images[$img_assoc_keywords_field] form='equips_images_form' rows='4' cols='50' style='margin:0.5em 1em;border-radius:3px;border:none;'>";
         $str .= $img_assoc_keywords;
         $str .= "</textarea><br/>";
         $str .= "</div>";
@@ -454,10 +471,6 @@ class Equips_Settings {
     echo $str;
   }
 
-  static function cb_equips_image_styles_field() {
-    echo "<textarea></textarea>";
-  }
-
   ////template 2 - after settings section title
   static function cb_equips_geo_section() {
     $this->cb_equips_dynamic_section('equips_geo');
@@ -465,10 +478,6 @@ class Equips_Settings {
 
   static function cb_equips_settings_section() {
     $this->cb_equips_dynamic_section('equips');
-  }
-
-  static function cb_equips_image_styles_section() {
-    $this->cb_equips_dynamic_section('equips_image_styles');
   }
 
   static function cb_equips_dynamic_section($db_slug) {
@@ -482,7 +491,7 @@ class Equips_Settings {
       delete_option($db_slug);
       //
     } else {
-      //error_log("drop=false");
+
     }
 
     if ($db_slug==='equips') {
@@ -495,7 +504,7 @@ class Equips_Settings {
     ?>
     <hr/>
     <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
-      <input name='submit' type='submit' id='submit' class='button-primary' value='<?php _e("Save Changes") ?>' />
+      <input name='submit' type='submit' id='submit_top' class='button-primary' value='<?php _e("Save Changes") ?>' />
       <button id='drop_button' class='button-primary' style='border:1.5px solid red;'>
         <?php _e("Delete All") ?>
       </button>
@@ -505,6 +514,20 @@ class Equips_Settings {
 
   public function cb_equips_images_section() {
     $options = get_option('equips_images');
+    $str = '';
+
+    $h2 = "Add multiple swap-in images for each fallback
+    image uploaded.";
+    $h3 = "Add single values or keyword phrases; enter mutliple
+    values or keyword phrases in comma-separated format.";
+    $h4 = "The closest match to the value or keywords in the URL query parameter
+     will datermine which image is shown.";
+
+    $str .= "<h2>$h2</h2>";
+    $str .= "<h3>$h3</h3>";
+    $str .= "<h4>$h4</h4>";
+
+
     $dropped = (isset($options['drop'])) ?
       $options['drop'] :
       "FALSE";
@@ -512,10 +535,9 @@ class Equips_Settings {
       delete_option('equips_images');
     } else {
       if ($options) {
-        error_log("current equips_images");
+
         foreach ($options as $key => $val) {
-          error_log($key . " =>");
-          error_log("\t" . $val);
+
         }
       }
     }
@@ -525,6 +547,18 @@ class Equips_Settings {
     wp_enqueue_script('equips-add-assoc-img', plugin_dir_url(__FILE__) . '../js/equips-add-assoc-img.js');
     wp_enqueue_script('equips-set-assoc-counts', plugin_dir_url(__FILE__) . '../js/equips-set-assoc-counts.js');
     wp_enqueue_script( 'equips-wp-media' );
+
+    echo $str;
+
+    ?>
+    <hr/>
+    <div style="display:flex;flex-flow:row wrap;justify-content:space-between;">
+      <input name='submit' type='submit' id='submit_top' class='button-primary' value='<?php _e("Save Changes") ?>' />
+      <button id='drop_button' class='button-primary' style='border:1.5px solid red;'>
+        <?php _e("Delete All") ?>
+      </button>
+    </div>
+    <?php
   }
 
 }

@@ -23,24 +23,22 @@ if (is_admin()) {
   if ( !class_exists( 'Equips_Options' ) ) {
      include_once 'admin/eq_options.php';
   }
-
   if ( !class_exists( 'Equips_Settings' ) ) {
      include_once 'admin/eq_settings.php';
   }
-
   $admin->options = new Equips_Options();
-
   $admin->settings = new Equips_Settings();
-
+  // ends admin layer
 } else {
   // frontend
   if ( !class_exists( 'Equips' ) ) {
      include_once 'classes/equips.php';
   }
-
-  $equips = new Equips($eq_db_conn);
-
-//
+  if ( !class_exists( 'Schema_Ranker' ) ) {
+     include_once 'classes/schema_ranker.php';
+  }
+  $schema_ranker = new Schema_Ranker();
+  $equips = new Equips( $eq_db_conn, $schema_ranker );
 }
 
 register_activation_hook( __FILE__, [$eq_db_conn,'eq_init_database'] );
