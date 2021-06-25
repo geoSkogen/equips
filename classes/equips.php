@@ -27,6 +27,7 @@ class Equips {
     $this->schema_ranker = $schema_ranker;
     $this->options = get_option('equips');
     $this->geo_options =  get_option('equips_geo');
+    $this->img_options = get_option('equips_images');
 
     $field_count = !empty($this->options['field_count']) ?
       intval($this->options['field_count']) : 1;
@@ -230,7 +231,21 @@ class Equips {
     $result = '';
     $format = $this->options['format_' . $num_str];
     $type = $this->options['type_' . $num_str];
+
     $fallback = $this->options['fallback_' . $num_str] ? : '';
+    // set up fallback value to return an image tag instead of plain text
+    if ($format==='img') {
+
+      $param_ids = !empty($this->img_options['param_ids']) ?
+        json_decode($this->img_options['param_ids'],true) : [];
+
+      $fallback_path = $this->options['img_fb_path_' . $num_str ] ? : '';
+      $fallback_tag = "<img id='equips_image_{$num_str}' class='equips_image'
+        src='{$fallback_path}' style='' />";
+
+      $fallback = $fallback_tag;
+    }
+
     $url_param = $this->options['param_' . $num_str];
 
     switch($format) {
@@ -271,9 +286,10 @@ class Equips {
         break;
 
       case 'img' :
-
-        $this->img_options = get_option('equips_images');
-
+      error_log('processing fallbacks - has path and tag?');
+      error_log($fallback_path);
+      error_log($fallback_tag);
+      error_log($fallback);
         switch($type) {
 
           case 'standard' :
@@ -290,8 +306,6 @@ class Equips {
 
                   $img_ids_arr = json_decode($this->img_options['img_ids'],true);
                   $eq_img_index = $img_ids_arr[ $num_str ];
-
-                  $fallback_path = $this->options['img_fb_path_' . $num_str];
 
                   error_log('url param in use');
                   error_log($url_param);
@@ -311,8 +325,11 @@ class Equips {
                   $result = $this->do_equips_image($eq_img_index,$fallback_path,strip_tags($raw_query_val));
 
                   break;
-                default :
 
+                default :
+                error_log('query var for this img  shortcode was not found');
+                error_log('fallbak value is');
+                error_log($fallback);
               }
             }
             break;
@@ -323,6 +340,7 @@ class Equips {
             $key_val = $this->get_equips_utm( $url_param, $query_str);
             $result = ($key_val) ? $this->do_equips_img_utm($key_val['key'],$key_val['val']) : '';
             break;
+
           default:
 
         }
@@ -333,6 +351,8 @@ class Equips {
     }
     error_log('equips result at return statement');
     error_log($result);
+    error_log('equips fallback at return statement');
+    error_log($fallback);
     return $result ? : $fallback;
   }
 
