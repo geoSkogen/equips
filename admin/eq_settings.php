@@ -43,7 +43,7 @@ class Equips_Settings {
     );
   }
 
-  public static function settings_api_init() {
+  public function settings_api_init() {
 
     $option = get_option('equips');
     $field_count = !empty($option['field_count']) ?
