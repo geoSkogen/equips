@@ -339,9 +339,12 @@ class Equips_Settings {
     $options = get_option('equips_geo');
     //
     $this_field = 'include_phone_bar';
-    $incl_is_checked = ( $options[$this_field] ||
-      "include" === ($options[$this_field])) ? "checked" : "";
-    $excl_is_checked = ("exclude" === ($options[$this_field])) ? "checked" : "";
+    $incl_is_checked =
+      ( !empty($options) &&
+      ( $options[$this_field] || "include" === $options[$this_field] ) ) ?
+      "checked" : "";
+    $excl_is_checked = ( !empty($options) && "exclude" === ($options[$this_field])) ?
+      "checked" : "";
     //
     $result .= "<input type='radio' name=equips_geo[{$this_field}] value='include' $incl_is_checked/>";
     $result .= "<label for='include'>include</label>";
@@ -472,19 +475,19 @@ class Equips_Settings {
   }
 
   ////template 2 - after settings section title
-  static function cb_equips_geo_section() {
+  public function cb_equips_geo_section() {
     $this->cb_equips_dynamic_section('equips_geo');
   }
 
-  static function cb_equips_settings_section() {
+  public function cb_equips_settings_section() {
     $this->cb_equips_dynamic_section('equips');
   }
 
-  static function cb_equips_dynamic_section($db_slug) {
+  protected function cb_equips_dynamic_section($db_slug) {
     //
     $options = get_option($db_slug);
     //
-    $dropped = $options['drop'];
+    $dropped = !empty($options) ? $options['drop'] : null;
 
     if ($dropped === "TRUE") {
       error_log('got drop');
